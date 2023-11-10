@@ -1,0 +1,131 @@
+@startuml
+abstract class tile.Tile {
++ int x
++ int speed
++ String direction
++ int spriteCounter
++ int spriteNum
+}
+abstract class entity.Entity {
++ int x
++ int speed
++ Image up1
++ String direction
++ int spriteCounter
++ int spriteNum
++ int getX()
++ int getY()
++ int getSpeed()
++ int getSpriteCounter()
++ int getSpriteNum()
++ String getDirection()
+}
+class Main {
++ {static} void main(String[])
++ void start(Stage)
+}
+class main.KeyHandler {
+- {static} ArrayList<KeyCode> keyPressed
++ boolean upPressed
++ {static} boolean getKeyPressed(KeyCode)
++ {static} void setKeyPressed(KeyCode,boolean)
+}
+abstract class object.basicAttack {
++ int x
++ int speed
++ int range
++ int baserange
++ Player player
++ boolean visible
++ boolean destroyed
++ Image up1
++ String direction
++ int spriteCounter
++ int spriteNum
++ int getX()
++ int getY()
++ int getSpeed()
++ void setDirection(String)
++ void setY(int)
++ void setX(int)
++ void setSpriteNum(int)
++ void setSpriteCounter(int)
++ void setSpeed(int)
++ int getSpriteCounter()
++ int getSpriteNum()
++ String getDirection()
++ void setVisible(boolean)
++ boolean getVisible(boolean)
++ void setRange(int)
++ int getRange()
++ int getBaserange()
++ void setBaserange(int)
++ void setPlayer(Player)
++ Player getPlayer()
++ void setDestroyed(boolean)
+}
+class tile.Background {
++ void draw(GraphicsContext)
++ boolean isDestroyed()
++ boolean isVisible()
+}
+class entity.CoffeeLv1 {
+~ Image shoot1
+~ Image shoot2
++ void loadpic()
+}
+interface tile.TileFunction {
+~ void draw(GraphicsContext)
+~ boolean isDestroyed()
+~ boolean isVisible()
+}
+class object.AttackObj {
++ void setDefaultValues(Player)
++ void loadpic()
++ void update()
++ void draw(GraphicsContext)
++ boolean isDestroyed()
++ boolean isVisible()
++ void attack()
+}
+class entity.Player {
++ void setDefaultValues()
++ void loadpic()
++ void update()
++ void draw(GraphicsContext)
++ boolean isDestroyed()
++ boolean isVisible()
+}
+class main.GamePanel {
+~ KeyHandler keyH
+~ Player player
+~ AttackObj atkobj
+~ Background background
+~ GraphicsContext gc
++ void addkeylistener()
++ void update()
++ void paintComponent()
+}
+interface entity.EntityFunction {
+~ void draw(GraphicsContext)
+~ boolean isDestroyed()
+~ boolean isVisible()
+}
+interface object.basicAttackFunction {
+~ void draw(GraphicsContext)
+~ boolean isDestroyed()
+~ boolean isVisible()
+~ void attack()
+}
+
+
+javafx.application.Application <|-- Main
+tile.TileFunction <|.. tile.Background
+tile.Tile <|-- tile.Background
+entity.Player <|-- entity.CoffeeLv1
+object.basicAttackFunction <|.. object.AttackObj
+object.basicAttack <|-- object.AttackObj
+entity.EntityFunction <|.. entity.Player
+entity.Entity <|-- entity.Player
+javafx.scene.canvas.Canvas <|-- main.GamePanel
+@enduml
