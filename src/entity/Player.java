@@ -10,6 +10,12 @@ public class Player extends Entity implements EntityFunction {
     private double playerX;
     private double playerY;
 
+    private int HP;
+    private int maxHP;
+    private Image HPB;
+
+    //stamina next!
+
     public Player(){
 
         setDefaultValues();
@@ -18,41 +24,48 @@ public class Player extends Entity implements EntityFunction {
 
     public void setDefaultValues() {
 
-        playerX = 100;
-        playerY = 100;
+        setX(100);
+        setY(100);
         setSpeed(1);
+        setMaxHP(100);
+        setHP(100);
         setDirection("down");
         loadpic();
+        setCurrentImage(null);
 
     }
 
     public void loadpic(){
-        up1 =  new Image("file:res/player/boy_up_1.png");
-        up2 =  new Image("file:res/player/boy_up_2.png");
-        down1 =  new Image("file:res/player/boy_down_1.png");
-        down2 =  new Image("file:res/player/boy_down_2.png");
-        left1 =  new Image("file:res/player/boy_left_1.png");
-        left2 =  new Image("file:res/player/boy_left_2.png");
-        right1 =  new Image("file:res/player/boy_right_1.png");
-        right2 =  new Image("file:res/player/boy_right_2.png");
+
+        setUp1(new Image("file:res/player/boy_up_1.png"));
+        setUp2(new Image("file:res/player/boy_up_2.png"));
+        setDown1(new Image("file:res/player/boy_down_1.png"));
+        setDown2(new Image("file:res/player/boy_down_2.png"));
+        setLeft1(new Image("file:res/player/boy_left_1.png"));
+        setLeft2(new Image("file:res/player/boy_left_2.png"));
+        setRight1(new Image("file:res/player/boy_right_1.png"));
+        setRight2(new Image("file:res/player/boy_right_2.png"));
+
+        setHPB(new Image("file:res/player/hpdemo.png"));
+
     }
 
     public void update(){
         // update
         if (KeyHandler.getKeyPressed(KeyCode.W)){
-            playerY -= getSpeed();
+            setY(getY()-getSpeed());
             setDirection("up");
         }
         if (KeyHandler.getKeyPressed(KeyCode.A)){
-            playerX -= getSpeed();
+            setX(getX()-getSpeed());
             setDirection("left");
         }
         if (KeyHandler.getKeyPressed(KeyCode.S)){
-            playerY += getSpeed();
+            setY(getY()+getSpeed());
             setDirection("down");
         }
         if (KeyHandler.getKeyPressed(KeyCode.D)){
-            playerX += getSpeed();
+            setX(getX()+getSpeed());
             setDirection("right");
         }
 
@@ -75,46 +88,47 @@ public class Player extends Entity implements EntityFunction {
 
     @Override
     public void draw(GraphicsContext gc) {
-        Image playerimage = null;
 
         switch(getDirection()) {
             case "up":
                 if(spriteNum == 1) {
-                    playerimage = up1;
+                    setCurrentImage(getUp1());
                     //System.out.println(spriteNum);
                 }
                 if(spriteNum == 2) {
-                    playerimage = up2;
+                    setCurrentImage(getUp2());
                     //System.out.println(spriteNum);
                 }
                 break;
             case "down":
                 if(spriteNum == 1) {
-                    playerimage = down1;
+                    setCurrentImage(getDown1());
                 }
                 if(spriteNum == 2) {
-                    playerimage = down2;
+                    setCurrentImage(getDown2());
                 }
                 break;
             case "right":
                 if(spriteNum == 1) {
-                    playerimage = right1;
+                    setCurrentImage(getRight1());
                 }
                 if(spriteNum == 2) {
-                    playerimage = right2;
+                    setCurrentImage(getRight2());
                 }
                 break;
             case "left":
                 if(spriteNum == 1) {
-                    playerimage = left1;
+                    setCurrentImage(getLeft1()
+                    );
                 }
                 if(spriteNum == 2) {
-                    playerimage = left2;
+                    setCurrentImage(getLeft2());
                 }
                 break;
         }
 
-        gc.drawImage(playerimage,playerX,playerY);
+        gc.drawImage(getCurrentImage(),getX(),getY());
+        gc.drawImage(getHPB(),getX()-6,getY()-5);
     }
 
     @Override
@@ -135,5 +149,40 @@ public class Player extends Entity implements EntityFunction {
     @Override
     public double getY() {
         return playerY;
+    }
+
+    public int getHP() {
+        return HP;
+    }
+
+    public int getMaxHP() {
+        return maxHP;
+    }
+
+    public Image getHPB() {
+        return HPB;
+    }
+
+    public void setHP(int HP) {
+        if(HP > getMaxHP()){
+            HP = getMaxHP();
+        }
+        this.HP = HP;
+    }
+
+    public void setHPB(Image HPB) {
+        this.HPB = HPB;
+    }
+
+    public void setMaxHP(int maxHP) {
+        this.maxHP = maxHP;
+    }
+
+    public void setX(double playerX) {
+        this.playerX = playerX;
+    }
+
+    public void setY(double playerY) {
+        this.playerY = playerY;
     }
 }
