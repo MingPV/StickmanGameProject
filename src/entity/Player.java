@@ -64,7 +64,13 @@ public class Player extends Entity implements EntityFunction {
 
     public void update(){
 
-        updateAttackobj();
+
+        if(KeyHandler.getKeyPressed(KeyCode.K)){
+            attack();
+        }else{
+            getAttackObj().setVisible(false);
+        }
+        updateAttackObj();
 
         // update
         if (KeyHandler.getKeyPressed(KeyCode.W)){
@@ -208,7 +214,10 @@ public class Player extends Entity implements EntityFunction {
     public void setAttackObj(AttackObj attackObj) {
         this.attackObj = attackObj;
     }
-    public void updateAttackobj(){
+    public void updateAttackObj(){
         getAttackObj().update();
+    }
+    public void attack(){
+        getAttackObj().setVisible(true);
     }
 }

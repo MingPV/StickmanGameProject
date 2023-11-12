@@ -10,9 +10,9 @@ public abstract class Entity {
     private double speed;
 
     //public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
-    public Image up1, up2, down1, down2, left1, left2, right1, right2;
+    private Image up1, up2, down1, down2, left1, left2, right1, right2;
 
-    public Image currentImage;
+    private Image currentImage;
     private String direction;
 
     public int spriteCounter = 0;
