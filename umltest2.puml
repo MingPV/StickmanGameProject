@@ -1,0 +1,227 @@
+@startuml
+abstract class tile.Tile {
+- int x
+- int speed
+- String direction
++ int spriteCounter
++ int spriteNum
++ void setX(int)
++ void setY(int)
++ void setSpeed(int)
++ void setDirection(String)
++ int getX()
++ int getY()
++ int getSpeed()
++ String getDirection()
+}
+abstract class entity.Entity {
+- double x
+- double speed
+- Image up1
+- Image currentImage
+- String direction
++ int spriteCounter
++ int spriteNum
++ double getX()
++ double getY()
++ double getSpeed()
++ int getSpriteCounter()
++ int getSpriteNum()
++ String getDirection()
++ void setX(double)
++ void setY(double)
++ void setSpeed(double)
++ void setSpriteNum(int)
++ void setSpriteCounter(int)
++ void setDirection(String)
++ Image getUp1()
++ Image getUp2()
++ Image getDown1()
++ Image getDown2()
++ Image getLeft1()
++ Image getLeft2()
++ Image getRight1()
++ Image getRight2()
++ void setDown1(Image)
++ void setDown2(Image)
++ void setLeft1(Image)
++ void setLeft2(Image)
++ void setRight1(Image)
++ void setRight2(Image)
++ void setUp1(Image)
++ void setUp2(Image)
++ Image getCurrentImage()
++ void setCurrentImage(Image)
+}
+class Main {
++ {static} void main(String[])
++ void start(Stage)
+}
+class main.KeyHandler {
+- {static} ArrayList<KeyCode> keyPressed
++ boolean upPressed
++ {static} boolean getKeyPressed(KeyCode)
++ {static} void setKeyPressed(KeyCode,boolean)
+}
+abstract class object.basicAttack {
+- double x
+- double sizeX
+- double speed
+- double damage
+- int range
+- int baseRange
+- Player player
+- boolean visible
+- boolean destroyed
+- Image up1
+- String direction
++ int spriteCounter
++ int spriteNum
++ double getX()
++ double getY()
++ double getSpeed()
++ void setDirection(String)
++ void setY(double)
++ void setX(double)
++ void setSpriteNum(int)
++ void setSpriteCounter(int)
++ void setSpeed(int)
++ int getSpriteCounter()
++ int getSpriteNum()
++ String getDirection()
++ void setVisible(boolean)
++ boolean getVisible(boolean)
++ void setRange(int)
++ int getRange()
++ int getBaseRange()
++ void setBaseRange(int)
++ void setPlayer(Player)
++ Player getPlayer()
++ void setDestroyed(boolean)
++ double getDamage()
++ void setDamage(double)
++ void setSizeX(double)
++ double getSizeX()
++ double getSizeY()
++ void setSizeY(double)
++ void setUp2(Image)
++ void setUp1(Image)
++ void setRight2(Image)
++ void setRight1(Image)
++ void setLeft2(Image)
++ void setLeft1(Image)
++ void setDown2(Image)
++ void setDown1(Image)
++ void setSpeed(double)
++ Image getRight2()
++ Image getRight1()
++ Image getLeft2()
++ Image getLeft1()
++ Image getDown2()
++ Image getDown1()
++ Image getUp2()
++ Image getUp1()
++ boolean isVisible()
++ boolean isDestroyed()
+}
+class tile.Background {
++ void draw(GraphicsContext)
++ boolean isDestroyed()
++ boolean isVisible()
+}
+interface tile.TileFunction {
+~ void draw(GraphicsContext)
+~ boolean isDestroyed()
+~ boolean isVisible()
+}
+class object.AttackObj {
++ void setDefaultValues(Player)
++ void loadpic()
++ void update()
++ void draw(GraphicsContext)
+}
+class entity.Player {
+- double playerX
+- double playerY
+- double HP
+- double maxHP
+- Image HPB
+~ AttackObj attackObj
++ void setDefaultValues()
++ void loadpic()
++ void update()
++ void draw(GraphicsContext)
++ boolean isDestroyed()
++ boolean isVisible()
++ double getX()
++ double getY()
++ double getHP()
++ double getMaxHP()
++ Image getHPB()
++ void setHP(double)
++ void setHPB(Image)
++ void setMaxHP(double)
++ void setX(double)
++ void setY(double)
++ AttackObj getAttackObj()
++ void setAttackObj(AttackObj)
++ void updateAttackObj()
++ void attack()
+}
+class main.GamePanel {
+~ KeyHandler keyH
+~ Player player
+~ Monster monster
++ {static} ArrayList<Monster> monsters
+~ Background background
+~ GraphicsContext gc
++ void addkeylistener()
++ void update()
++ void paintComponent()
+}
+interface entity.EntityFunction {
+~ void draw(GraphicsContext)
+~ boolean isDestroyed()
+~ boolean isVisible()
+}
+class entity.Monster {
+~ Player player
+- double HP
+- double maxHP
+- Image HPB
++ void setDefaultValues(Player)
++ void loadpic()
++ void update(Player)
++ void draw(GraphicsContext)
++ void delete()
++ void updateAll(ArrayList<Monster>)
++ void drawAll(ArrayList<Monster>,GraphicsContext)
++ boolean isDestroyed()
++ boolean isVisible()
++ void setPlayer(Player)
++ Image getHPB()
++ void setHPB(Image)
++ double getMaxHP()
++ void setMaxHP(double)
++ double getHP()
++ void setHP(double)
++ void drawHp(GraphicsContext)
+}
+interface object.basicAttackFunction {
+~ void draw(GraphicsContext)
+~ boolean isDestroyed()
+~ boolean isVisible()
+}
+
+
+javafx.application.Application <|-- Main
+tile.TileFunction <|.. tile.Background
+tile.Tile <|-- tile.Background
+object.basicAttackFunction <|.. object.AttackObj
+object.basicAttack <|-- object.AttackObj
+entity.EntityFunction <|.. entity.Player
+entity.Entity <|-- entity.Player
+javafx.scene.canvas.Canvas <|-- main.GamePanel
+entity.EntityFunction <|.. entity.Monster
+entity.Entity <|-- entity.Monster
+@enduml
