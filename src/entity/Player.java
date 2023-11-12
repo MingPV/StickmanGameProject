@@ -6,6 +6,8 @@ import javafx.scene.input.KeyCode;
 import main.KeyHandler;
 import object.AttackObj;
 
+import static main.GamePanel.monsters;
+
 public class Player extends Entity implements EntityFunction {
 
     private double playerX;
@@ -37,6 +39,11 @@ public class Player extends Entity implements EntityFunction {
         setCurrentImage(null);
 
         setAttackObj(new AttackObj(this));
+
+        monsters.add(new Monster(this));
+        monsters.add(new Monster(this));
+
+
 
     }
 

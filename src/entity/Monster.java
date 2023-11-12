@@ -3,8 +3,10 @@ package entity;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
+import static main.GamePanel.monsters;
 
 public class Monster extends Entity implements EntityFunction {
 
@@ -13,6 +15,10 @@ public class Monster extends Entity implements EntityFunction {
     private double HP;
     private double maxHP;
     private Image HPB;
+
+    public Monster(){
+        // just for calling updateAll and drawAll
+    }
 
     public Monster(Player player){
 
@@ -44,7 +50,7 @@ public class Monster extends Entity implements EntityFunction {
         setRight1(new Image("file:res/player/boy_right_1.png"));
         setRight2(new Image("file:res/player/boy_right_2.png"));
 
-        setHPB(new Image("file:res/player/hpdemo2.png"));
+        setHPB(new Image("file:res/player/hpdemored.png"));
 
     }
 
@@ -52,6 +58,10 @@ public class Monster extends Entity implements EntityFunction {
         // update
 
         setPlayer(player);
+
+        if(getHP() <= 0){
+            delete();
+        }
 
         if (player.getY()<getY()){
             setY(getY()-getSpeed());
@@ -150,8 +160,30 @@ public class Monster extends Entity implements EntityFunction {
         }
 
         gc.drawImage(getCurrentImage(),getX(),getY());
-        gc.drawImage(getHPB(),getX()-6,getY()-5);
+        drawHp(gc);
 
+    }
+
+    public void delete(){
+        monsters.add(new Monster(player));
+        monsters.add(new Monster(player));
+        monsters.remove(this);
+    }
+
+    public void updateAll(ArrayList<Monster> monsters){
+        if(!monsters.isEmpty()){
+            for (int i=0;i<monsters.size();i++) {
+                monsters.get(i).update(player);
+            }
+        }
+    }
+
+    public void drawAll(ArrayList<Monster> monsters, GraphicsContext gc){
+        if(!monsters.isEmpty()){
+            for (Monster monster : monsters) {
+                monster.draw(gc);
+            }
+        }
     }
 
     @Override
@@ -193,5 +225,13 @@ public class Monster extends Entity implements EntityFunction {
             HP = getMaxHP();
         }
         this.HP = HP;
+    }
+
+    public void drawHp(GraphicsContext gc){
+        double dot = getMaxHP()/32;
+        int dots = (int)(getHP()/dot);
+        for(int i=0;i<dots;i++){
+            gc.drawImage(getHPB(),getX()-6+i,getY()-5);
+        }
     }
 }
