@@ -6,9 +6,9 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
-import object.AttackObj;
 import tile.Background;
 
+import java.util.ArrayList;
 
 
 public class GamePanel extends Canvas {
@@ -16,7 +16,9 @@ public class GamePanel extends Canvas {
     KeyHandler keyH = new KeyHandler();
     Player player = new Player();
     Monster monster = new Monster(player);
-    AttackObj atkobj = new AttackObj(player);
+    public static ArrayList<Monster> monsters = new ArrayList<Monster>();
+
+
     Background background = new Background();
 
     GraphicsContext gc = this.getGraphicsContext2D();
@@ -46,16 +48,17 @@ public class GamePanel extends Canvas {
 
     public void update(){
         // update
+
         player.update();
-        monster.update(player);
-        atkobj.update();
+        monster.updateAll(monsters);
+
+
     }
 
     public void paintComponent(){
         background.draw(gc);
         player.draw(gc);
-        monster.draw(gc);
-        atkobj.draw(gc);
+        monster.drawAll(monsters,gc);
     }
 
 

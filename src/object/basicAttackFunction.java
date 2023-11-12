@@ -7,6 +7,5 @@ public interface basicAttackFunction {
     boolean isDestroyed();
     boolean isVisible();
 
-    void attack();
 
 }
