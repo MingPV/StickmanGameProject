@@ -2,16 +2,16 @@ package entity;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
-import main.KeyHandler;
+
+import java.util.Objects;
 
 
 public class Monster extends Entity implements EntityFunction {
 
     Player player;
 
-    private int HP;
-    private int maxHP;
+    private double HP;
+    private double maxHP;
     private Image HPB;
 
     public Monster(Player player){
@@ -27,6 +27,8 @@ public class Monster extends Entity implements EntityFunction {
         setX(Math.floor(Math.random() *(800)));
         setY(Math.floor(Math.random() *(600)));
         setSpeed(0.3);
+        setMaxHP(100);
+        setHP(100);
         setDirection("down");
         loadpic();
 
@@ -67,6 +69,25 @@ public class Monster extends Entity implements EntityFunction {
             setX(getX()+getSpeed());
             setDirection("right");
         }
+        if(Objects.equals(player.getDirection(), "right")){
+            if(getX() >= player.getAttackObj().getX() && getX() <= player.getAttackObj().getX()+ player.getAttackObj().getRange() && getY() >= player.getAttackObj().getY() && getY()<= player.getAttackObj().getY()+player.getAttackObj().getSizeY()/2 && player.getAttackObj().isVisible()){
+                setHP(getHP()-player.getAttackObj().getDamage());
+            }
+        }else if(Objects.equals(player.getDirection(), "left")){
+            if(getX() <= player.getAttackObj().getX() && getX() >= player.getAttackObj().getX()- player.getAttackObj().getRange() && getY() >= player.getAttackObj().getY() && getY()<= player.getAttackObj().getY()+player.getAttackObj().getSizeY()/2 && player.getAttackObj().isVisible()){
+                setHP(getHP()-player.getAttackObj().getDamage());
+            }
+        }else if(Objects.equals(player.getDirection(), "down")){
+            if(getX() <= player.getX()+10 && getX()>=player.getX()-10 && getY()>= player.getY() && getY()<= player.getY()+player.getAttackObj().getRange() && player.getAttackObj().isVisible()){
+                setHP(getHP()-player.getAttackObj().getDamage());
+            }
+        }else if(Objects.equals(player.getDirection(), "up")){
+            if(getX() <= player.getX()+20 && getX()>=player.getX()-20 && getY()<= player.getY() && getY()>= player.getY()-player.getAttackObj().getRange() && player.getAttackObj().isVisible()){
+                setHP(getHP()-player.getAttackObj().getDamage());
+            }
+        }
+
+
 
         spriteCounter++;
         if(spriteCounter > 20) {
@@ -80,6 +101,8 @@ public class Monster extends Entity implements EntityFunction {
             }
             spriteCounter = 0;
         }
+
+        System.out.println(getHP());
 
     }
 
@@ -153,19 +176,19 @@ public class Monster extends Entity implements EntityFunction {
         this.HPB = HPB;
     }
 
-    public int getMaxHP() {
+    public double getMaxHP() {
         return maxHP;
     }
 
-    public void setMaxHP(int maxHP) {
+    public void setMaxHP(double maxHP) {
         this.maxHP = maxHP;
     }
 
-    public int getHP() {
+    public double getHP() {
         return HP;
     }
 
-    public void setHP(int HP) {
+    public void setHP(double HP) {
         if (getHP() > getMaxHP()){
             HP = getMaxHP();
         }

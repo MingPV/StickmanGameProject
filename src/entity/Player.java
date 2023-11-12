@@ -4,15 +4,18 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import main.KeyHandler;
+import object.AttackObj;
 
 public class Player extends Entity implements EntityFunction {
 
     private double playerX;
     private double playerY;
 
-    private int HP;
-    private int maxHP;
+    private double HP;
+    private double maxHP;
     private Image HPB;
+
+    AttackObj attackObj;
 
     //stamina next!
 
@@ -33,6 +36,8 @@ public class Player extends Entity implements EntityFunction {
         loadpic();
         setCurrentImage(null);
 
+        setAttackObj(new AttackObj(this));
+
     }
 
     public void loadpic(){
@@ -51,6 +56,9 @@ public class Player extends Entity implements EntityFunction {
     }
 
     public void update(){
+
+        updateAttackobj();
+
         // update
         if (KeyHandler.getKeyPressed(KeyCode.W)){
             setY(getY()-getSpeed());
@@ -129,6 +137,7 @@ public class Player extends Entity implements EntityFunction {
 
         gc.drawImage(getCurrentImage(),getX(),getY());
         gc.drawImage(getHPB(),getX()-6,getY()-5);
+        getAttackObj().draw(gc);
     }
 
     @Override
@@ -151,11 +160,11 @@ public class Player extends Entity implements EntityFunction {
         return playerY;
     }
 
-    public int getHP() {
+    public double getHP() {
         return HP;
     }
 
-    public int getMaxHP() {
+    public double getMaxHP() {
         return maxHP;
     }
 
@@ -163,7 +172,7 @@ public class Player extends Entity implements EntityFunction {
         return HPB;
     }
 
-    public void setHP(int HP) {
+    public void setHP(double HP) {
         if(HP > getMaxHP()){
             HP = getMaxHP();
         }
@@ -174,7 +183,7 @@ public class Player extends Entity implements EntityFunction {
         this.HPB = HPB;
     }
 
-    public void setMaxHP(int maxHP) {
+    public void setMaxHP(double maxHP) {
         this.maxHP = maxHP;
     }
 
@@ -184,5 +193,15 @@ public class Player extends Entity implements EntityFunction {
 
     public void setY(double playerY) {
         this.playerY = playerY;
+    }
+
+    public AttackObj getAttackObj() {
+        return attackObj;
+    }
+    public void setAttackObj(AttackObj attackObj) {
+        this.attackObj = attackObj;
+    }
+    public void updateAttackobj(){
+        getAttackObj().update();
     }
 }

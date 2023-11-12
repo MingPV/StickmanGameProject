@@ -7,7 +7,9 @@ import javafx.scene.image.Image;
 public abstract class basicAttack {
 
     public double x, y;
+    public double sizeX,sizeY;
     public double speed;
+    public double damage;
     public int range;
     public int baserange;
 
@@ -108,5 +110,27 @@ public abstract class basicAttack {
         this.destroyed = destroyed;
     }
 
+    public double getDamage() {
+        return damage;
+    }
 
+    public void setDamage(double damage) {
+        this.damage = damage;
+    }
+
+    public void setSizeX(double size) {
+        this.sizeX = size;
+    }
+
+    public double getSizeX() {
+        return sizeX;
+    }
+
+    public double getSizeY() {
+        return sizeY;
+    }
+
+    public void setSizeY(double sizeY) {
+        this.sizeY = sizeY;
+    }
 }

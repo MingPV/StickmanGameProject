@@ -16,7 +16,7 @@ public class GamePanel extends Canvas {
     KeyHandler keyH = new KeyHandler();
     Player player = new Player();
     Monster monster = new Monster(player);
-    AttackObj atkobj = new AttackObj(player);
+
     Background background = new Background();
 
     GraphicsContext gc = this.getGraphicsContext2D();
@@ -48,14 +48,12 @@ public class GamePanel extends Canvas {
         // update
         player.update();
         monster.update(player);
-        atkobj.update();
     }
 
     public void paintComponent(){
         background.draw(gc);
         player.draw(gc);
         monster.draw(gc);
-        atkobj.draw(gc);
     }
 
 

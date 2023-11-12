@@ -28,9 +28,12 @@ public class AttackObj extends basicAttack implements basicAttackFunction {
         setPlayer(player);
 
         setSpeed(1);
+        setDamage(0.5);
         setRange(60);
         setDirection(player.getDirection());
         loadpic();
+        setSizeX(32);
+        setSizeY(32);
 
 
     }
