@@ -28,19 +28,15 @@ public class Main extends Application {
         stage.setTitle("Coffee Man");
         stage.setScene(SceneStart());
         stage.show();
-
-
     }
 
     public Scene SceneGame(){
         StackPane root = new StackPane();
         Scene scene = new Scene(root);
 
-
-
         GamePanel gamePanel = new GamePanel(800,600);
 
-        root.getChildren().add(gamePanel);
+        root.getChildren().addAll(gamePanel);
         gamePanel.requestFocus();
 
         AnimationTimer animation = new AnimationTimer() {
@@ -53,19 +49,16 @@ public class Main extends Application {
 
         animation.start();
         return scene;
-
     }
 
     public Scene SceneStart(){
         VBox home = new VBox(30);
         home.setAlignment(Pos.CENTER);
-
         home.setStyle("-fx-background-color: transparent;" +
                 "-fx-background-image: url(file:res/element/backgroundHome.png);" +
                 "-fx-background-size: cover;"
         );
-
-        //Button Start --- click to play game
+        //Button Start - click to play game
         Button btnStart = new Button("PLAY GAME");
         btnStart.setFont(new Font("Courier New", 40));
         btnStart.setStyle(
@@ -80,7 +73,6 @@ public class Main extends Application {
             stage.setScene(SceneGame());
             stage.show();
         });
-
         //Function Setting --- to set the volume of sound or sound effect(optional)
         Button btnSetting = new Button("SETTING");
         btnSetting.setPrefSize(250, 70);
@@ -90,8 +82,7 @@ public class Main extends Application {
                         "-fx-background-image: url('file:res/element/blockMenuSmall.png');" +
                         "-fx-background-size: cover;"
         );
-
-
+        //exit button
         Button btnExit = new Button("EXIT");
         btnExit.setPrefSize(250, 70);
         btnExit.setFont(new Font("Courier New", 30));
@@ -104,7 +95,6 @@ public class Main extends Application {
             stage.close();
         });
 
-
         HBox menu = new HBox(50); // 20 is the spacing between buttons
         menu.setAlignment(Pos.CENTER);
         menu.getChildren().addAll(btnSetting, btnExit);
@@ -112,8 +102,7 @@ public class Main extends Application {
         VBox.setMargin(btnStart, new Insets(200, 0, 0, 0));
         home.getChildren().addAll(btnStart, menu );
 
-        Scene sceneStart = new Scene(home, 800, 600);
-        return sceneStart;
+        return new Scene(home, 800, 600);
 
     }
 }
