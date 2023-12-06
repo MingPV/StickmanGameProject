@@ -17,7 +17,7 @@ public class Monster extends Entity implements EntityFunction {
     private Image HPB;
 
     public Monster(){
-        // just for calling updateAll and drawAll
+        // just for calling updateAll and drawAll //
     }
 
     public Monster(Player player){
