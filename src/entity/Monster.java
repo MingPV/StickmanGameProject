@@ -1,11 +1,13 @@
 package entity;
 
+import effect.diedEffect;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
+import static main.GamePanel.diedEffects;
 import static main.GamePanel.monsters;
 
 public class Monster extends Entity implements EntityFunction {
@@ -60,7 +62,9 @@ public class Monster extends Entity implements EntityFunction {
         setPlayer(player);
 
         if(getHP() <= 0){
+
             delete();
+
         }
 
         if (player.getY()<getY()){
@@ -165,6 +169,7 @@ public class Monster extends Entity implements EntityFunction {
     }
 
     public void delete(){
+        diedEffects.add(new diedEffect(this));
         monsters.add(new Monster(player));
         monsters.add(new Monster(player));
         monsters.remove(this);
