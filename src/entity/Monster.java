@@ -64,6 +64,7 @@ public class Monster extends Entity implements EntityFunction {
         if(getHP() <= 0){
 
             delete();
+            player.setExp(player.getExp()+15);
 
         }
 
@@ -116,7 +117,7 @@ public class Monster extends Entity implements EntityFunction {
             spriteCounter = 0;
         }
 
-        System.out.println(getHP());
+        //System.out.println(getHP());
 
     }
 

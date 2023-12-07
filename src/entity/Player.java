@@ -15,8 +15,13 @@ public class Player extends Entity implements EntityFunction {
 
     private double HP;
     private double maxHP;
+    private double mana;
+    private double maxMana;
+    private double exp;
+    private double maxExp;
     private Image HPB;
-
+    private Image manaB;
+    private Image expB;
     AttackObj attackObj;
 
     //stamina next!
@@ -34,6 +39,11 @@ public class Player extends Entity implements EntityFunction {
         setSpeed(1);
         setMaxHP(100);
         setHP(100);
+        setMaxExp(100);
+        setExp(0);
+        setMaxMana(100);
+        setMana(100);
+
         setDirection("down");
         loadpic();
         setCurrentImage(null);
@@ -59,6 +69,9 @@ public class Player extends Entity implements EntityFunction {
         setRight2(new Image("file:res/player/boy_right_2.png"));
 
         setHPB(new Image("file:res/player/hpdemo.png"));
+
+        setManaB(new Image("file:res/player/manademo.png"));
+        setExpB(new Image("file:res/player/expdemo.png"));
 
     }
 
@@ -102,6 +115,8 @@ public class Player extends Entity implements EntityFunction {
             }
             spriteCounter = 0;
         }
+
+        System.out.println(getExp());
 
     }
 
@@ -149,8 +164,35 @@ public class Player extends Entity implements EntityFunction {
         }
 
         gc.drawImage(getCurrentImage(),getX(),getY());
-        gc.drawImage(getHPB(),getX()-6,getY()-5);
+        drawHp(gc);
+        drawMana(gc);
+        drawExp(gc);
         getAttackObj().draw(gc);
+    }
+
+    public void drawHp(GraphicsContext gc){
+        double dot = getMaxHP()/32;
+        int dots = (int)(getHP()/dot);
+        for(int i=0;i<dots;i++){
+            gc.drawImage(getHPB(),getX()-6+i,getY()-7);
+
+        }
+    }
+
+    public void drawMana(GraphicsContext gc){
+        double dot = getMaxMana()/32;
+        int dots = (int)(getMana()/dot);
+        for(int i=0;i<dots;i++){
+            gc.drawImage(getManaB(),getX()-6+i,getY()-4.5);
+
+        }
+    }
+    public void drawExp(GraphicsContext gc){
+        double dot = getMaxExp()/800;
+        int dots = (int)(getExp()/dot);
+        for(int i=0;i<dots;i++){
+            gc.drawImage(getExpB(),i,595);
+        }
     }
 
     @Override
@@ -198,6 +240,62 @@ public class Player extends Entity implements EntityFunction {
 
     public void setMaxHP(double maxHP) {
         this.maxHP = maxHP;
+    }
+
+    public void setMana(double mana) {
+        if(mana > getMana()){
+            mana = getMaxMana();
+        }
+        this.mana = mana;
+    }
+
+    public void setExp(double exp) {
+        if(exp >= getMaxExp()){
+            exp = 0;
+            // change level here
+            // change maxEXP here
+        }
+        this.exp = exp;
+    }
+
+    public void setExpB(Image expB) {
+        this.expB = expB;
+    }
+
+    public void setMaxExp(double maxExp) {
+        this.maxExp = maxExp;
+    }
+
+    public void setMaxMana(double maxMana) {
+        this.maxMana = maxMana;
+    }
+
+    public void setManaB(Image manaB) {
+        this.manaB = manaB;
+    }
+
+    public double getExp() {
+        return exp;
+    }
+
+    public double getMana() {
+        return mana;
+    }
+
+    public double getMaxExp() {
+        return maxExp;
+    }
+
+    public double getMaxMana() {
+        return maxMana;
+    }
+
+    public Image getExpB() {
+        return expB;
+    }
+
+    public Image getManaB() {
+        return manaB;
     }
 
     public void setX(double playerX) {
