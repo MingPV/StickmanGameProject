@@ -1,3 +1,5 @@
+package main;
+
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -10,6 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import main.GamePanel;
+import scenes.StartScene;
 
 
 public class Main extends Application {
@@ -26,7 +29,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
         stage.setTitle("Coffee Man");
-        stage.setScene(SceneStart());
+        stage.setScene(new StartScene(stage));
         stage.show();
     }
 
