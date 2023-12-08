@@ -1,14 +1,16 @@
 package tile;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 
 public class Background extends Tile implements TileFunction {
+
+    private Image Background = new Image("file:res/background/BackgroundG.png");
     @Override
     public void draw(GraphicsContext gc) {
-        gc.setFill(Color.BLACK);
-        gc.fillRect(0,0,800, 600);
+        gc.drawImage(Background,0,0);
     }
 
     @Override
