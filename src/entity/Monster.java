@@ -182,7 +182,7 @@ public class Monster extends Entity implements EntityFunction {
 
     public void delete(){
         diedEffects.add(new diedEffect(this));
-        itemOnFloors.add(new Potion(this));
+        itemOnFloors.add(new Potion(this,player));
         monsters.add(new Monster(player));
         monsters.add(new Monster(player));
         monsters.remove(this);

@@ -4,19 +4,24 @@ import entity.Monster;
 import entity.Player;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+
+import static java.lang.Math.pow;
 import static main.GamePanel.*;
 
 public class Potion extends BaseItem implements BaseFunction{
 
-    public Potion(Monster monster){
-        super(monster);
+    public Potion(Monster monster, Player player){
+        super(monster,player);
         setItemImage(new Image("file:res/item/RedPotion.png"));
     }
 
     @Override
     public void use(Player player) {
-        player.setExp(player.getExp()+10);
-        delete(player);
+        if(player != null){
+            player.setExp(player.getExp()+10);
+            deleteItem(player);
+            System.out.println("Deleteeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+        }
     }
 
     @Override
@@ -28,6 +33,13 @@ public class Potion extends BaseItem implements BaseFunction{
         }else if (spriteNum == 2){
             setX(getX()-0.2);
             setY(getY()+0.8);
+        }else if(spriteNum == 3){
+            if(player != null){
+                if(pow(player.getX()-getX(),2) <= 25 && pow(player.getY()-getY(),2) <= 25 ){
+                    additem(player);
+                }
+            }
+
         }
 
 
@@ -38,11 +50,28 @@ public class Potion extends BaseItem implements BaseFunction{
             spriteNum = 3;    // not use value
         }
 
+
+
+        if(getPrepareDelete() == 1){
+            setDeleteCounter(getDeleteCounter()+1);
+            if(getDeleteCounter() == 30){
+                setWink(true);
+            }
+            if(getDeleteCounter() == 60){
+                setWink(false);
+                setDeleteCounter(0);
+            }
+        }
+
+        autoDelete();
+
     }
 
     @Override
     public void draw(GraphicsContext gc) {
-        gc.drawImage(getItemImage(),getX(),getY());
+        if(!isPicked() && !isWink()){
+            gc.drawImage(getItemImage(),getX(),getY());
+        }
     }
 
     @Override
@@ -51,9 +80,13 @@ public class Potion extends BaseItem implements BaseFunction{
         for(int i=0;i<10;i++){
             if(!player.getInventoryBar().getItems().get(i).isEmpty()){
                 if(player.getInventoryBar().getItems().get(i).get(0).getClass() == Potion.class){
-                    player.getInventoryBar().getItems().get(i).add(this);
+                    if(!isAdded() && player.getInventoryBar().getItems().get(i).size() < 9){
+                        player.getInventoryBar().getItems().get(i).add(this);
+                    }
                     found = true;
+                    setSlot(i);
                     setAdded(true);
+                    setPicked(true);
                     return;
                 }
             }
@@ -61,8 +94,12 @@ public class Potion extends BaseItem implements BaseFunction{
         if(!found){
             for(int i=0;i<10;i++){
                 if(player.getInventoryBar().getItems().get(i).isEmpty()){
-                    player.getInventoryBar().getItems().get(i).add(this);
+                    if(!isAdded() && player.getInventoryBar().getItems().get(i).size() < 9){
+                        player.getInventoryBar().getItems().get(i).add(this);
+                    }
+                    setSlot(i);
                     setAdded(true);
+                    setPicked(true);
                 }
             }
         }
@@ -70,7 +107,7 @@ public class Potion extends BaseItem implements BaseFunction{
 
 
     @Override
-    public void delete(Player player) {
+    public void deleteItem(Player player) {
         for(int i=0;i<10;i++){
             if(!player.getInventoryBar().getItems().get(i).isEmpty()){
                 if(player.getInventoryBar().getItems().get(i).get(0).getClass() == Potion.class){
@@ -80,6 +117,19 @@ public class Potion extends BaseItem implements BaseFunction{
             }
         }
     }
+
+    @Override
+    public void autoDelete() {
+
+        if(spriteCounter == 1200){
+            setPrepareDelete(1);
+        }
+
+        if(spriteCounter > 1700){
+            itemOnFloors.remove(this);
+        }
+    }
+
 
 
 }

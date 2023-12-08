@@ -98,7 +98,7 @@ public class Player extends Entity implements EntityFunction {
         }
         updateAttackObj();
 
-        inventoryBar.update();
+        inventoryBar.update(this);
 
 
 
@@ -133,7 +133,6 @@ public class Player extends Entity implements EntityFunction {
             spriteCounter = 0;
         }
 
-        System.out.println(getExp());
 
 
     }

@@ -5,6 +5,7 @@ import Item.BaseItem;
 import effect.diedEffect;
 import entity.Monster;
 import entity.Player;
+import font.Number;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
@@ -19,11 +20,12 @@ public class GamePanel extends Canvas {
     KeyHandler keyH = new KeyHandler();
     Player player = new Player();
     Monster monster = new Monster(player);
+    public static Number number = new Number();
     diedEffect diedEffect = new diedEffect(monster);
-    BaseItem baseItemOnFloor = new BaseItem(monster);
+    BaseItem baseItemOnFloor = new BaseItem(monster,player);
     public static ArrayList<Monster> monsters = new ArrayList<Monster>();
     public static ArrayList<diedEffect> diedEffects = new ArrayList<diedEffect>();
-    public static ArrayList<BaseForItem> itemOnFloors = new ArrayList<BaseForItem>();
+    public static ArrayList<BaseItem> itemOnFloors = new ArrayList<BaseItem>();
 
 
     Background background = new Background();
