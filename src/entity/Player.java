@@ -90,6 +90,10 @@ public class Player extends Entity implements EntityFunction {
         }
         updateAttackObj();
 
+        inventoryBar.update();
+
+
+
         // update
         if (KeyHandler.getKeyPressed(KeyCode.W)){
             setY(getY()-getSpeed());
