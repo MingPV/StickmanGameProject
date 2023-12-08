@@ -1,6 +1,6 @@
 package Inventory;
 
-import Item.BaseItem;
+import Item.BaseForItem;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class InventoryBar {
 
-    private ArrayList<BaseItem> items = new ArrayList<BaseItem>();
+    private ArrayList<ArrayList<BaseForItem>> items = new ArrayList<ArrayList<BaseForItem>>();
 
     private Image InventoryB = new Image("file:res/player/InventoryB.png");
     private Image SelectedSlot = new Image("file:res/player/SelectedSlot.png");
@@ -55,6 +55,8 @@ public class InventoryBar {
         return this.selectedslot;
     }
 
-
+    public ArrayList<ArrayList<BaseForItem>> getItems() {
+        return items;
+    }
 
 }

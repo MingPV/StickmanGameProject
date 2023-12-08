@@ -1,5 +1,6 @@
 package entity;
 
+import Item.Potion;
 import effect.diedEffect;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -8,8 +9,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import static java.lang.Math.pow;
-import static main.GamePanel.diedEffects;
-import static main.GamePanel.monsters;
+import static main.GamePanel.*;
 
 public class Monster extends Entity implements EntityFunction {
 
@@ -182,6 +182,7 @@ public class Monster extends Entity implements EntityFunction {
 
     public void delete(){
         diedEffects.add(new diedEffect(this));
+        itemOnFloors.add(new Potion(this));
         monsters.add(new Monster(player));
         monsters.add(new Monster(player));
         monsters.remove(this);
