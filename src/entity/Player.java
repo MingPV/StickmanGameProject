@@ -1,5 +1,6 @@
 package entity;
 
+import Inventory.InventoryBar;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
@@ -24,6 +25,8 @@ public class Player extends Entity implements EntityFunction {
     private Image expB;
     AttackObj attackObj;
 
+    InventoryBar inventoryBar;
+
     //stamina next!
 
     public Player(){
@@ -47,6 +50,8 @@ public class Player extends Entity implements EntityFunction {
         setDirection("down");
         loadpic();
         setCurrentImage(null);
+        setInventoryBar(new InventoryBar());
+
 
         setAttackObj(new AttackObj(this));
 
@@ -118,6 +123,7 @@ public class Player extends Entity implements EntityFunction {
 
         System.out.println(getExp());
 
+
     }
 
 
@@ -168,6 +174,8 @@ public class Player extends Entity implements EntityFunction {
         drawMana(gc);
         drawExp(gc);
         getAttackObj().draw(gc);
+
+
     }
 
     public void drawHp(GraphicsContext gc){
@@ -317,5 +325,13 @@ public class Player extends Entity implements EntityFunction {
     }
     public void attack(){
         getAttackObj().setVisible(true);
+    }
+
+    public void setInventoryBar(InventoryBar inventoryBar) {
+        this.inventoryBar = inventoryBar;
+    }
+
+    public InventoryBar getInventoryBar() {
+        return inventoryBar;
     }
 }

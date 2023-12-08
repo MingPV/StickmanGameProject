@@ -65,6 +65,7 @@ public class GamePanel extends Canvas {
         player.draw(gc);
         monster.drawAll(monsters,gc);
         diedEffect.drawAll(diedEffects,gc);
+        player.getInventoryBar().draw(gc);
     }
 
 
