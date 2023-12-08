@@ -6,14 +6,18 @@ import javafx.animation.AnimationTimer;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import main.GamePanel;
 import javafx.scene.control.Button;
+import main.KeyHandler;
 
 import java.awt.*;
 
 public class GameScene extends Scene {
+
+    public static AnimationTimer animation;
 
     public GameScene(Stage stage) {
         super(new StackPane(), 800, 600);
@@ -33,15 +37,22 @@ public class GameScene extends Scene {
 
 
 
-        AnimationTimer animation = new AnimationTimer() {
+        animation = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                gamePanel.update();
+                try {
+                    gamePanel.update();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
                 gamePanel.paintComponent();
             }
         };
 
         animation.start();
+
+
+
     }
 }
 

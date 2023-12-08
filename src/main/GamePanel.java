@@ -53,7 +53,7 @@ public class GamePanel extends Canvas {
 
     }
 
-    public void update(){
+    public void update() throws InterruptedException {
         // update
 
         player.update();

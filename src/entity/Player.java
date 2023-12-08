@@ -1,11 +1,14 @@
 package entity;
 
 import Inventory.InventoryBar;
+import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
+import main.GamePanel;
 import main.KeyHandler;
 import object.AttackObj;
+import scenes.GameScene;
 
 import static main.GamePanel.monsters;
 
@@ -80,7 +83,12 @@ public class Player extends Entity implements EntityFunction {
 
     }
 
-    public void update(){
+    public void update() throws InterruptedException {
+
+        //if(KeyHandler.getKeyPressed(KeyCode.I)){
+        //    GameScene.animation.wait();
+        //}
+
 
 
         if(KeyHandler.getKeyPressed(KeyCode.K)){
