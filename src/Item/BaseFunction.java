@@ -9,6 +9,8 @@ public interface BaseFunction {
     void update(Player player);
     void draw(GraphicsContext gc);
     void additem(Player player);
-    void delete(Player player);
+    void deleteItem(Player player);
+    void autoDelete();
+
 
 }

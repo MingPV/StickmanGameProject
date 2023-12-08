@@ -1,6 +1,8 @@
 package entity;
 
+import Item.BluePotion;
 import Item.Potion;
+import Item.RedPotion;
 import effect.diedEffect;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -182,7 +184,9 @@ public class Monster extends Entity implements EntityFunction {
 
     public void delete(){
         diedEffects.add(new diedEffect(this));
-        itemOnFloors.add(new Potion(this));
+        itemOnFloors.add(new Potion(this,player));
+        itemOnFloors.add(new RedPotion(this,player));
+        itemOnFloors.add(new BluePotion(this,player));
         monsters.add(new Monster(player));
         monsters.add(new Monster(player));
         monsters.remove(this);

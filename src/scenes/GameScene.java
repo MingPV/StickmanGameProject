@@ -6,15 +6,23 @@ import javafx.animation.AnimationTimer;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import main.GamePanel;
 import javafx.scene.control.Button;
+<<<<<<< HEAD
 import scenes.SelectedScene;
+||||||| 84ba862
+=======
+import main.KeyHandler;
+>>>>>>> a5af8699b9248a6bde3284e128ded0726a31656d
 
 import java.awt.*;
 
 public class GameScene extends Scene {
+
+    public static AnimationTimer animation;
 
     public GameScene(Stage stage) {
 
@@ -26,15 +34,32 @@ public class GameScene extends Scene {
 
         gamePanel.requestFocus();
 
+<<<<<<< HEAD
         AnimationTimer animation = new AnimationTimer() {
+||||||| 84ba862
+
+
+        AnimationTimer animation = new AnimationTimer() {
+=======
+
+
+        animation = new AnimationTimer() {
+>>>>>>> a5af8699b9248a6bde3284e128ded0726a31656d
             @Override
             public void handle(long l) {
-                gamePanel.update();
+                try {
+                    gamePanel.update();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
                 gamePanel.paintComponent();
             }
         };
 
         animation.start();
+
+
+
     }
 }
 

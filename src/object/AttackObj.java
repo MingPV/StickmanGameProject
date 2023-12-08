@@ -79,7 +79,6 @@ public class AttackObj extends basicAttack implements basicAttackFunction {
         Image playerimage = null;
 
         if(!isVisible()){
-            System.out.println("Ming");
             return;
         }
 

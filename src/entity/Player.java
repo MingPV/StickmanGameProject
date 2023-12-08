@@ -1,11 +1,14 @@
 package entity;
 
 import Inventory.InventoryBar;
+import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
+import main.GamePanel;
 import main.KeyHandler;
 import object.AttackObj;
+import scenes.GameScene;
 
 import static main.GamePanel.monsters;
 
@@ -41,11 +44,11 @@ public class Player extends Entity implements EntityFunction {
         setY(100);
         setSpeed(1);
         setMaxHP(100);
-        setHP(100);
+        setHP(50);
         setMaxExp(100);
         setExp(0);
         setMaxMana(100);
-        setMana(100);
+        setMana(20);
 
         setDirection("down");
         loadpic();
@@ -80,7 +83,12 @@ public class Player extends Entity implements EntityFunction {
 
     }
 
-    public void update(){
+    public void update() throws InterruptedException {
+
+        //if(KeyHandler.getKeyPressed(KeyCode.I)){
+        //    GameScene.animation.wait();
+        //}
+
 
 
         if(KeyHandler.getKeyPressed(KeyCode.K)){
@@ -90,7 +98,7 @@ public class Player extends Entity implements EntityFunction {
         }
         updateAttackObj();
 
-        inventoryBar.update();
+        inventoryBar.update(this);
 
 
 
@@ -125,7 +133,6 @@ public class Player extends Entity implements EntityFunction {
             spriteCounter = 0;
         }
 
-        System.out.println(getExp());
 
 
     }
@@ -255,7 +262,7 @@ public class Player extends Entity implements EntityFunction {
     }
 
     public void setMana(double mana) {
-        if(mana > getMana()){
+        if(mana > getMaxMana()){
             mana = getMaxMana();
         }
         this.mana = mana;
