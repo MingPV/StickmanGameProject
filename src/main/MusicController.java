@@ -14,33 +14,33 @@ import javafx.stage.Popup;
 import java.io.File;
 
 public class MusicController {
-    private MediaPlayer mediaPlayer;
+    public static MediaPlayer mediaPlayer;
 
-    public static void playMusic(){
-
+    public static void playMusic() {
         String musicFile = "res/element/itty-bitty-8-bit-kevin-macleod-main-version-03-13-7983.mp3";
         Media backgroundMusic = new Media(new File(musicFile).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(backgroundMusic);
+
+        // Use the static variable instead of creating a local variable
+        mediaPlayer = new MediaPlayer(backgroundMusic);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.play();
-
     }
 
+
     private void togglePlayPause() {
-        if (mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
-            mediaPlayer.pause();
-        } else {
-            mediaPlayer.play();
+        if (getMediaPlayer().getStatus() == MediaPlayer.Status.PLAYING) {
+            getMediaPlayer().pause();
+        } else {getMediaPlayer().play();
         }
     }
 
-    private void showMusicControllerPopup(Button button) {
+    public static void showMusicControllerPopup(Button button) {
         // Create the popup
         Popup popup = new Popup();
         popup.setAutoHide(true);
 
         // Create volume slider
-        Slider volumeSlider = new Slider(0, 1, mediaPlayer.getVolume());
+        Slider volumeSlider = new Slider(0, 1, getMediaPlayer().getVolume());
         volumeSlider.setShowTickLabels(true);
         volumeSlider.setShowTickMarks(true);
         volumeSlider.valueProperty().addListener((observable, oldValue, newValue) -> setVolume(newValue.doubleValue()));
@@ -57,13 +57,16 @@ public class MusicController {
         popup.getContent().add(popupContent);
 
         // Show the popup below the setting button
+
         popup.show(button.getScene().getWindow(), button.getScene().getWindow().getX() + button.getLayoutX(),
                 button.getScene().getWindow().getY() + button.getLayoutY() + button.getHeight());
     }
 
-    private void setVolume(double volume) {
-        mediaPlayer.setVolume(volume);
+    private static void setVolume(double volume) {
+       getMediaPlayer().setVolume(volume);
     }
 
-
+    public static MediaPlayer getMediaPlayer() {
+        return mediaPlayer;
+    }
 }

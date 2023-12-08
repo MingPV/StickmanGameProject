@@ -8,6 +8,7 @@ import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import main.MusicController;
 
 import java.io.File;
 
@@ -38,6 +39,9 @@ public class StartScene extends Scene {
         btnSetting.setBackground(new Background(new BackgroundFill(javafx.scene.paint.Color.WHITE.deriveColor(1, 1, 1, 0.8), null, null)));
         btnSetting.setPrefSize(150, 60);
         btnSetting.setFont(new javafx.scene.text.Font("Courier New", 20));
+        btnSetting.setOnAction(event -> {
+            MusicController.showMusicControllerPopup(btnStart);
+        });
 
         Button btnExit = new Button("EXIT");
         btnExit.setBackground(new Background(new BackgroundFill(javafx.scene.paint.Color.WHITE.deriveColor(1, 1, 1, 0.8), null, null)));
@@ -56,4 +60,6 @@ public class StartScene extends Scene {
 
         return home;
     }
+
+
 }
