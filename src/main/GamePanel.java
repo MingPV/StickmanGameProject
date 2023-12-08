@@ -1,6 +1,7 @@
 package main;
 
-import effect.Effect;
+import Item.BaseForItem;
+import Item.BaseItem;
 import effect.diedEffect;
 import entity.Monster;
 import entity.Player;
@@ -19,8 +20,10 @@ public class GamePanel extends Canvas {
     Player player = new Player();
     Monster monster = new Monster(player);
     diedEffect diedEffect = new diedEffect(monster);
+    BaseItem baseItemOnFloor = new BaseItem(monster);
     public static ArrayList<Monster> monsters = new ArrayList<Monster>();
     public static ArrayList<diedEffect> diedEffects = new ArrayList<diedEffect>();
+    public static ArrayList<BaseForItem> itemOnFloors = new ArrayList<BaseForItem>();
 
 
     Background background = new Background();
@@ -56,16 +59,18 @@ public class GamePanel extends Canvas {
         player.update();
         monster.updateAll(monsters);
         diedEffect.updateAll(diedEffects);
-
+        baseItemOnFloor.updateAll(player);
 
     }
 
     public void paintComponent(){
         background.draw(gc);
+        baseItemOnFloor.drawAll(gc);
         player.draw(gc);
         monster.drawAll(monsters,gc);
         diedEffect.drawAll(diedEffects,gc);
         player.getInventoryBar().draw(gc);
+
     }
 
 
