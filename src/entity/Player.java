@@ -44,11 +44,11 @@ public class Player extends Entity implements EntityFunction {
         setY(100);
         setSpeed(1);
         setMaxHP(100);
-        setHP(100);
+        setHP(50);
         setMaxExp(100);
         setExp(0);
         setMaxMana(100);
-        setMana(100);
+        setMana(20);
 
         setDirection("down");
         loadpic();
@@ -262,7 +262,7 @@ public class Player extends Entity implements EntityFunction {
     }
 
     public void setMana(double mana) {
-        if(mana > getMana()){
+        if(mana > getMaxMana()){
             mana = getMaxMana();
         }
         this.mana = mana;

@@ -23,6 +23,11 @@ public abstract class BaseForItem {
 
     private int prepareDelete;
 
+    private Object itemClass;
+
+    private int dropDirection;
+    private int dropRange;
+
 
 
     public double getX() {
@@ -127,5 +132,37 @@ public abstract class BaseForItem {
 
     public void setWink(boolean wink) {
         isWink = wink;
+    }
+
+    public void setItemClass(Object itemClass) {
+        this.itemClass = itemClass;
+    }
+
+    public Object getItemClass() {
+        return itemClass;
+    }
+
+    public int getDropDirection() {
+        return dropDirection;
+    }
+
+    public void setDropDirection(int dropDirection) {
+        this.dropDirection = dropDirection;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setDropRange(int dropRange) {
+        this.dropRange = dropRange;
+    }
+
+    public int getDropRange() {
+        return dropRange;
     }
 }

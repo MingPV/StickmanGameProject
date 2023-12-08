@@ -10,9 +10,17 @@ import static main.GamePanel.*;
 
 public class Potion extends BaseItem implements BaseFunction{
 
+    public Potion(int slotNumber){
+        super(slotNumber);
+        setItemImage(new Image("file:res/item/PurplePotion.png"));
+        setDropRange(1);
+
+    }
+
     public Potion(Monster monster, Player player){
         super(monster,player);
-        setItemImage(new Image("file:res/item/RedPotion.png"));
+        setItemImage(new Image("file:res/item/PurplePotion.png"));
+        setDropRange(1);
     }
 
     @Override
@@ -20,7 +28,6 @@ public class Potion extends BaseItem implements BaseFunction{
         if(player != null){
             player.setExp(player.getExp()+10);
             deleteItem(player);
-            System.out.println("Deleteeeeeeeeeeeeeeeeeeeeeeeeeeeee");
         }
     }
 
@@ -28,20 +35,18 @@ public class Potion extends BaseItem implements BaseFunction{
     public void update(Player player) {
 
         if(spriteNum == 1){
-            setX(getX()-0.4);
+            setX(getX()-0.4*getDropDirection()*getDropRange());
             setY(getY()-0.6);
         }else if (spriteNum == 2){
-            setX(getX()-0.2);
+            setX(getX()-0.2*getDropDirection()*getDropRange());
             setY(getY()+0.8);
         }else if(spriteNum == 3){
             if(player != null){
-                if(pow(player.getX()-getX(),2) <= 25 && pow(player.getY()-getY(),2) <= 25 ){
+                if(pow(player.getX()-getX(),2) <= 45 && pow(player.getY()-getY(),2) <= 45 ){
                     additem(player);
                 }
             }
-
         }
-
 
         spriteCounter++;
         if(spriteCounter == 10) {
@@ -49,8 +54,6 @@ public class Potion extends BaseItem implements BaseFunction{
         }else if(spriteCounter == 20){
             spriteNum = 3;    // not use value
         }
-
-
 
         if(getPrepareDelete() == 1){
             setDeleteCounter(getDeleteCounter()+1);
@@ -76,31 +79,25 @@ public class Potion extends BaseItem implements BaseFunction{
 
     @Override
     public void additem(Player player) {
-        boolean found = false;
-        for(int i=0;i<10;i++){
-            if(!player.getInventoryBar().getItems().get(i).isEmpty()){
-                if(player.getInventoryBar().getItems().get(i).get(0).getClass() == Potion.class){
-                    if(!isAdded() && player.getInventoryBar().getItems().get(i).size() < 9){
-                        player.getInventoryBar().getItems().get(i).add(this);
+
+        for(int i=0;i<player.getInventoryBar().getItems().size();i++){
+                if(player.getInventoryBar().getItems().get(i).getClass() == getItemClass()){
+                    if(!isAdded() && player.getInventoryBar().getItems().get(i).getAmount() < 9){
+                        player.getInventoryBar().getItems().get(i).setAmount(player.getInventoryBar().getItems().get(i).getAmount()+1);
                     }
-                    found = true;
                     setSlot(i);
                     setAdded(true);
                     setPicked(true);
                     return;
                 }
-            }
         }
-        if(!found){
-            for(int i=0;i<10;i++){
-                if(player.getInventoryBar().getItems().get(i).isEmpty()){
-                    if(!isAdded() && player.getInventoryBar().getItems().get(i).size() < 9){
-                        player.getInventoryBar().getItems().get(i).add(this);
-                    }
-                    setSlot(i);
-                    setAdded(true);
-                    setPicked(true);
-                }
+
+        if(!isAdded()){
+            if(player.getInventoryBar().getItems().size() < 9){
+                player.getInventoryBar().getItems().add(this);
+                setSlot(player.getInventoryBar().getItems().size()-1);
+                setAdded(true);
+                setPicked(true);
             }
         }
     }
@@ -109,9 +106,12 @@ public class Potion extends BaseItem implements BaseFunction{
     @Override
     public void deleteItem(Player player) {
         for(int i=0;i<10;i++){
-            if(!player.getInventoryBar().getItems().get(i).isEmpty()){
-                if(player.getInventoryBar().getItems().get(i).get(0).getClass() == Potion.class){
-                    player.getInventoryBar().getItems().get(i).remove(player.getInventoryBar().getItems().get(i).size()-1);
+            if(player.getInventoryBar().getItems().get(i).getAmount()!=0){
+                if(player.getInventoryBar().getItems().get(i).getClass() == getItemClass()){
+                    player.getInventoryBar().getItems().get(i).setAmount(player.getInventoryBar().getItems().get(i).getAmount()-1);
+                    if(player.getInventoryBar().getItems().get(i).getAmount() == 0){
+                        player.getInventoryBar().getItems().remove(i);
+                    }
                     return;
                 }
             }

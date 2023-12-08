@@ -1,7 +1,9 @@
 package Inventory;
 
 import Item.BaseItem;
+import Item.BluePotion;
 import Item.Potion;
+import Item.RedPotion;
 import entity.Player;
 import font.Number;
 import javafx.scene.canvas.GraphicsContext;
@@ -12,10 +14,12 @@ import main.KeyHandler;
 
 import java.util.ArrayList;
 
+import static main.GamePanel.itemOnFloors;
+
 
 public class InventoryBar {
 
-    private ArrayList<ArrayList<BaseItem>> items;
+    private ArrayList<BaseItem> items;
 
     private Player player;
 
@@ -44,10 +48,8 @@ public class InventoryBar {
         setPressed(false);
         setPlayer(player);
 
-        setItems(new ArrayList<ArrayList<BaseItem>>());
-        for(int i=0;i<10;i++){
-            getItems().add(new ArrayList<BaseItem>());
-        }
+        setItems(new ArrayList<BaseItem>());
+
     }
 
 
@@ -68,16 +70,22 @@ public class InventoryBar {
                 setSelectedSlot(getSelectedSlot()-1);
                 pressed = true;
             }else if(KeyHandler.getKeyPressed(KeyCode.J)){
-                if(!getItems().get(getSelectedSlot()).isEmpty()){
-                    BaseItem itemA = getItems().get(getSelectedSlot()).get(0);
-                    if(itemA.getClass() == Potion.class){
-                        ((Potion) itemA).use(player);
+                if(getSelectedSlot() < getItems().size()){
+                    BaseItem itemA = getItems().get(getSelectedSlot());
+
+                    // add more item class use switch case here
+
+                    switch (String.valueOf(itemA.getClass())) {
+                        case "class Item.Potion":
+                            ((Potion) itemA).use(player);
+                            break;
+                        case "class Item.BluePotion":
+                            ((BluePotion) itemA).use(player);
+                            break;
+                        case "class Item.RedPotion":
+                            ((RedPotion) itemA).use(player);
+                            break;
                     }
-
-                    // add more item class use switch case
-
-
-
                 }
                 pressed = true;
             }
@@ -92,29 +100,37 @@ public class InventoryBar {
     }
 
     public void updateInventory(){
-        for(int i=0;i<10;i++){
-            if(!items.get(i).isEmpty()){
-                items.get(i).get(0).updateAll(player);
+
+            if (!items.isEmpty()) {
+                for (int i = 0; i < items.size(); i++) {
+                    switch (String.valueOf(items.get(i).getClass())) {
+                        case "class Item.Potion":
+                            ((Potion) items.get(i)).update(player);
+                            break;
+                        case "class Item.BluePotion":
+                            ((BluePotion) items.get(i)).update(player);
+                            break;
+                        case "class Item.RedPotion":
+                            ((RedPotion) items.get(i)).update(player);
+                            break;
+                    }
+                }
             }
-        }
     }
     public void drawItemInInventory(GraphicsContext gc){
-        for(int i=0;i<10;i++){
-            if(!items.get(i).isEmpty()){
-                for(int j=0;i<items.get(i).size();i++){
-                    gc.drawImage(items.get(i).get(j).getItemImage(),120+i*60,543);
-                    if(GamePanel.number != null){
-                        int amount = items.get(i).size();
-                        gc.drawImage(GamePanel.number.getNumberImage(amount), 137+i*60,550);
-
-                    }
+        if(!items.isEmpty()){
+            for(int i=0;i<items.size();i++){
+                System.out.println(items.get(i));
+                gc.drawImage(items.get(i).getItemImage(),120+i*60,543);
+                if(GamePanel.number != null){
+                    gc.drawImage(GamePanel.number.getNumberImage(items.get(i).getAmount()),137+i*60,550 );
                 }
             }
         }
     }
 
 
-    public ArrayList<ArrayList<BaseItem>> getItems() {
+    public ArrayList<BaseItem> getItems() {
         return items;
     }
 
@@ -144,7 +160,7 @@ public class InventoryBar {
         InventoryB = inventoryB;
     }
 
-    public void setItems(ArrayList<ArrayList<BaseItem>> items) {
+    public void setItems(ArrayList<BaseItem> items) {
         this.items = items;
     }
 
