@@ -1,5 +1,7 @@
 package main;
 
+import effect.Effect;
+import effect.diedEffect;
 import entity.Monster;
 import entity.Player;
 import javafx.scene.canvas.Canvas;
@@ -16,7 +18,9 @@ public class GamePanel extends Canvas {
     KeyHandler keyH = new KeyHandler();
     Player player = new Player();
     Monster monster = new Monster(player);
+    diedEffect diedEffect = new diedEffect(monster);
     public static ArrayList<Monster> monsters = new ArrayList<Monster>();
+    public static ArrayList<diedEffect> diedEffects = new ArrayList<diedEffect>();
 
 
     Background background = new Background();
@@ -51,6 +55,7 @@ public class GamePanel extends Canvas {
 
         player.update();
         monster.updateAll(monsters);
+        diedEffect.updateAll(diedEffects);
 
 
     }
@@ -59,6 +64,7 @@ public class GamePanel extends Canvas {
         background.draw(gc);
         player.draw(gc);
         monster.drawAll(monsters,gc);
+        diedEffect.drawAll(diedEffects,gc);
     }
 
 

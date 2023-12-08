@@ -1,48 +1,57 @@
-// StartScene.java
 package scenes;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import main.Main;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
-import java.nio.BufferUnderflowException;
+import java.net.URL;
+import java.util.Objects;
 
 public class StartScene extends Scene {
 
+    private static MediaPlayer mediaPlayer;
+
     public StartScene(Stage stage) {
         super(createStartScene(stage), 800, 600);
+
     }
 
     private static VBox createStartScene(Stage stage) {
         VBox home = new VBox(30);
         home.setAlignment(Pos.CENTER);
         home.setStyle("-fx-background-color: transparent;" +
+                "-fx-background-image: url(file:res/element/BackgroundHome.jpg);" +
                 "-fx-background-size: cover;");
 
         Button btnStart = new Button("PLAY GAME");
-        btnStart.setFont(new Font("Courier New", 40));
-        btnStart.setStyle(
-                "-fx-background-color: transparent;" +
-                        "-fx-background-image: url('file:res/element/blockMenu.png');" +
-                        "-fx-background-size: cover;"
-        );
-        btnStart.setPrefSize(600, 80);
-        btnStart.setPadding(Insets.EMPTY);
-        btnStart.setOnMouseClicked(event -> {
-            // Pass the stage to the sceneGame method
+        btnStart.setPrefSize(400, 60);
+        btnStart.setBackground(new Background(new BackgroundFill(Color.WHITE.deriveColor(1, 1, 1, 0.8), null, null)));
+        btnStart.setFont(new Font("Courier New", 30));
+        btnStart.setOnAction(event -> {
+
             stage.setScene(new GameScene(stage));
-            stage.show();
-        });;
+        });
 
         Button btnSetting = new Button("SETTING");
+        btnSetting.setBackground(new Background(new BackgroundFill(Color.WHITE.deriveColor(1, 1, 1, 0.8), null, null)));
+        btnSetting.setPrefSize(150, 60);
+        btnSetting.setFont(new Font("Courier New", 20));
+
         Button btnExit = new Button("EXIT");
-        btnExit.setOnMouseClicked(event -> stage.close());
+        btnExit.setBackground(new Background(new BackgroundFill(Color.WHITE.deriveColor(1, 1, 1, 0.8), null, null)));
+        btnExit.setPrefSize(150, 60);
+        btnExit.setFont(new Font("Courier New", 20));
+        btnExit.setOnMouseClicked(event -> {
+
+            stage.close();
+        });
 
         HBox menu = new HBox(50);
         menu.setAlignment(Pos.CENTER);
@@ -53,4 +62,5 @@ public class StartScene extends Scene {
 
         return home;
     }
+
 }
