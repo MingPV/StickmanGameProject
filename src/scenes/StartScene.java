@@ -8,15 +8,12 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-import java.net.URL;
-import java.util.Objects;
+
 
 public class StartScene extends Scene {
 
-    private static MediaPlayer mediaPlayer;
 
     public StartScene(Stage stage) {
         super(createStartScene(stage), 800, 600);
