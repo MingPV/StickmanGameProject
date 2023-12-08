@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72d6a0c5-5d8e-4596-8aa8-7f1363aef7c6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/element/itty-bitty-8-bit-kevin-macleod-main-version-03-13-7983.mp3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/MusicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MusicController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scenes/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/GameScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scenes/StartScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/StartScene.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,8 +40,9 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "257c65a1",
-    "project.structure.last.edited": "Modules",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "84ba862c",
+    "project.structure.last.edited": "Global Libraries",
     "project.structure.proportion": "0.15527344",
     "project.structure.side.proportion": "0.2"
   }

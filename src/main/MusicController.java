@@ -1,72 +1,101 @@
 package main;
 
-import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
-import javafx.scene.layout.HBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
 import javafx.stage.Popup;
-
 
 import java.io.File;
 
 public class MusicController {
-    public static MediaPlayer mediaPlayer;
+    private static MediaPlayer mediaPlayer;
 
     public static void playMusic() {
-        String musicFile = "res/element/itty-bitty-8-bit-kevin-macleod-main-version-03-13-7983.mp3";
+        String musicFile = "res/element/soundtrack.mp3";
         Media backgroundMusic = new Media(new File(musicFile).toURI().toString());
 
-        // Use the static variable instead of creating a local variable
         mediaPlayer = new MediaPlayer(backgroundMusic);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.play();
     }
 
-
-    private void togglePlayPause() {
-        if (getMediaPlayer().getStatus() == MediaPlayer.Status.PLAYING) {
-            getMediaPlayer().pause();
-        } else {getMediaPlayer().play();
-        }
-    }
-
     public static void showMusicControllerPopup(Button button) {
-        // Create the popup
+
         Popup popup = new Popup();
-        popup.setAutoHide(true);
+        popup.setAutoHide(false);
 
-        // Create volume slider
-        Slider volumeSlider = new Slider(0, 1, getMediaPlayer().getVolume());
-        volumeSlider.setShowTickLabels(true);
-        volumeSlider.setShowTickMarks(true);
-        volumeSlider.valueProperty().addListener((observable, oldValue, newValue) -> setVolume(newValue.doubleValue()));
+        Slider volumeSlider = new Slider(0, 100, mediaPlayer.getVolume() * 100);
+        volumeSlider.setShowTickLabels(false);
+        volumeSlider.setShowTickMarks(false);
+        volumeSlider.valueProperty().addListener((observable, oldValue, newValue) -> setVolume(newValue.doubleValue() / 100));
+        volumeSlider.setPrefWidth(200);
+        volumeSlider.setPadding(new Insets(8, 0, 8, 0));
+        volumeSlider.setStyle("-fx-control-inner-background: #464646;");
+        volumeSlider.setOnMouseEntered(event -> volumeSlider.setCursor(Cursor.HAND));
+        volumeSlider.setOnMouseExited(event -> volumeSlider.setCursor(Cursor.DEFAULT));
 
-        // Create a label for volume
-        Label volumeLabel = new Label("Volume:");
+        Image sound_open = new Image("file:res/element/sound.png");
+        Image sound_close = new Image("file:res/element/close_Volume.png");
+        ImageView soundLoud = new ImageView(sound_open);
+        soundLoud.setFitWidth(20);
+        soundLoud.setFitHeight(20);
 
-        // Create layout for the popup content
-        HBox popupContent = new HBox(10);
-        popupContent.getChildren().addAll(volumeLabel, volumeSlider);
-        popupContent.setPadding(new Insets(10));
+        ImageView soundLow = new ImageView(sound_close);
+        soundLow.setFitWidth(20);
+        soundLow.setFitHeight(20);
 
-        // Add content to the popup
-        popup.getContent().add(popupContent);
+        Button soundBtn = new Button();
+        soundBtn.setGraphic(soundLoud);
+        soundBtn.setAlignment(Pos.CENTER);
+        soundBtn.setStyle("-fx-background-color: transparent;");
+        soundBtn.setOnAction(event -> {
+            if(mediaPlayer.getVolume() != 0){
+                setVolume(0);
+                soundBtn.setGraphic(soundLow);
+            }
+            else {
+                setVolume(100);
+                soundBtn.setGraphic(soundLoud);
+            }
+        });
 
-        // Show the popup below the setting button
+        Image image = new Image("file:res/element/close.png");
+        ImageView closeImage = new ImageView(image);
+
+        Button closebtn = new Button();
+        closebtn.setGraphic(closeImage);
+        closebtn.setStyle("-fx-background-color: transparent;");
+        closebtn.setOnAction(event -> {popup.hide();});
+
+        HBox popupSetting = new HBox(10);
+        popupSetting.setMinSize(350, 20);
+        popupSetting.getChildren().addAll(soundBtn, volumeSlider, closebtn);
+        popupSetting.setPadding(new Insets(15, 15, 15, 30));
+        popupSetting.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
+        popupSetting.setStyle("-fx-background-color: transparent;" +
+                "-fx-background-image: url(file:res/element/shortBox.png);" +
+                "-fx-background-size: cover;");
+
+
+        popup.getContent().addAll(popupSetting);
 
         popup.show(button.getScene().getWindow(), button.getScene().getWindow().getX() + button.getLayoutX(),
-                button.getScene().getWindow().getY() + button.getLayoutY() + button.getHeight());
+                button.getScene().getWindow().getY() + button.getLayoutY() +  button.getHeight() + 120);
     }
 
     private static void setVolume(double volume) {
-       getMediaPlayer().setVolume(volume);
+        if (mediaPlayer != null) {
+            mediaPlayer.setVolume(volume);
+        }
     }
 
-    public static MediaPlayer getMediaPlayer() {
-        return mediaPlayer;
-    }
 }
