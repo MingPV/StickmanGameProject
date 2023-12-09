@@ -9,6 +9,7 @@ import main.GamePanel;
 import main.KeyHandler;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class InventoryBar {
@@ -121,7 +122,12 @@ public class InventoryBar {
         if(!items.isEmpty()){
             for(int i=0;i<items.size();i++){
                 System.out.println(items.get(i));
-                gc.drawImage(items.get(i).getItemImage(),120+i*60,543);
+                if(Objects.equals(String.valueOf(items.get(i).getClass()), "class Item.CoffeePotion")){
+                    gc.drawImage(items.get(i).getItemImage(),112+i*60,531);
+                }else{
+                    gc.drawImage(items.get(i).getItemImage(),120+i*60,543);
+                }
+
                 if(GamePanel.number != null){
                     gc.drawImage(GamePanel.number.getNumberImage(items.get(i).getAmount()),137+i*60,550 );
                 }

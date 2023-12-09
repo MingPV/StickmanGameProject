@@ -49,6 +49,7 @@ public class GamePanel extends Canvas {
     }
 
 
+
     public void addkeylistener(){
         this.setOnKeyPressed((KeyEvent event) -> {
             KeyHandler.setKeyPressed(event.getCode(), true);

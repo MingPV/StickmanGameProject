@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import main.KeyHandler;
 import object.AttackObj;
+import profile.ProfileBox;
 
 import static main.GamePanel.Effects;
 import static main.GamePanel.monsters;
@@ -36,10 +37,13 @@ public class Player extends Entity implements EntityFunction {
     private int point;
     private int monsterDied;
     private int waitForStart;
+    private ProfileBox profileBox;
+
 
     AttackObj attackObj;
 
     InventoryBar inventoryBar;
+
 
     //stamina next!
 
@@ -77,6 +81,8 @@ public class Player extends Entity implements EntityFunction {
 
 
         setAttackObj(new AttackObj(this));
+
+        setProfileBox(new ProfileBox());
 
         monsters.add(new Monster(this));
         monsters.add(new Monster(this));
@@ -197,6 +203,9 @@ public class Player extends Entity implements EntityFunction {
             setSleepiness(getSleepiness()+1);
         }
 
+        profileBox.update(this);
+
+
 
 
 
@@ -269,6 +278,7 @@ public class Player extends Entity implements EntityFunction {
         drawExp(gc);
         drawSleepiness(gc);
         getAttackObj().draw(gc);
+        profileBox.draw(gc);
 
 
     }
@@ -495,5 +505,12 @@ public class Player extends Entity implements EntityFunction {
 
     public void setWaitForStart(int waitForStart) {
         this.waitForStart = waitForStart;
+    }
+
+    public void setProfileBox(ProfileBox profileBox) {
+        this.profileBox = profileBox;
+    }
+    public ProfileBox getProfileBox() {
+        return profileBox;
     }
 }

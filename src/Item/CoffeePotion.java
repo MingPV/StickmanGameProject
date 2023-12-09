@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
 public class CoffeePotion extends Potion {
     public CoffeePotion(int slotNumber){
         super(slotNumber);
-        setItemImage(new Image("file:res/item/PurplePotion.png"));
+        setItemImage(new Image("file:res/item/CoffeePotion.png"));
         setItemClass(CoffeePotion.class);
         // have to fix
         setDropDirection(1);
@@ -16,7 +16,7 @@ public class CoffeePotion extends Potion {
     }
     public CoffeePotion(Monster monster, Player player) {
         super(monster, player);
-        setItemImage(new Image("file:res/item/PurplePotion.png"));
+        setItemImage(new Image("file:res/item/CoffeePotion.png"));
         setItemClass(CoffeePotion.class);
         // have to fix
         setDropDirection(1);
