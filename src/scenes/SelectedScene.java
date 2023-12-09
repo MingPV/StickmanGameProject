@@ -14,8 +14,8 @@ import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 public class SelectedScene extends Scene {
-    private static String playerName;
-    private static String selectedCharacter;
+    public static String playerName;
+    public static String selectedCharacter;
 
     public SelectedScene(Stage stage) {
         super(createSelectedScene(stage), 800, 600);

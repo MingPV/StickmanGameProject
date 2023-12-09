@@ -9,6 +9,8 @@ import main.KeyHandler;
 
 import java.util.ArrayList;
 
+import static scenes.SelectedScene.selectedCharacter;
+
 public class ProfileBox {
 
     private Player player;
@@ -28,7 +30,12 @@ public class ProfileBox {
     public void setDefaultValues(){
 
         setProfileImageURL("player/ProfileImage_1_1.png");
-        setProfileBoxURL("player/ProfileBox_1.png");
+        if(selectedCharacter == "1"){
+            setProfileBoxURL("player/ProfileBox_1.png");
+        }else if(selectedCharacter == "2"){
+            setProfileBoxURL("player/ProfileBox_2.png");
+        }
+
 
         setProfileImage(new Image(String.valueOf(ClassLoader.getSystemResource(getProfileImageURL()))));
         setProfileBoxImage(new Image(String.valueOf(ClassLoader.getSystemResource(getProfileBoxURL()))));

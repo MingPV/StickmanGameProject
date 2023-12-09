@@ -5,8 +5,7 @@ import Item.BaseItem;
 import effect.BaseEffect;
 import effect.Effect;
 import effect.diedEffect;
-import entity.Monster;
-import entity.Player;
+import entity.*;
 import font.Number;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -25,9 +24,11 @@ public class GamePanel extends Canvas {
     public static Number number = new Number();
     BaseEffect Effect = new BaseEffect(monster,player);
     BaseItem baseItemOnFloor = new BaseItem(monster,player);
+    BaseProp baseProp = new BaseProp(0,0);
     public static ArrayList<Monster> monsters = new ArrayList<Monster>();
     public static ArrayList<BaseEffect> Effects = new ArrayList<BaseEffect>();
     public static ArrayList<BaseItem> itemOnFloors = new ArrayList<BaseItem>();
+    public static ArrayList<BaseProp> Props = new ArrayList<BaseProp>();
 
 
     Background background = new Background();
@@ -45,6 +46,7 @@ public class GamePanel extends Canvas {
 
         //fix some shadow
         Effects.remove(monster.getShadowEffect());
+        setAllProp();
 
     }
 
@@ -68,6 +70,7 @@ public class GamePanel extends Canvas {
         monster.updateAll(monsters);
         Effect.updateAll(player);
         baseItemOnFloor.updateAll(player);
+        baseProp.updateAll();
 
     }
 
@@ -78,6 +81,15 @@ public class GamePanel extends Canvas {
         monster.drawAll(monsters,gc);
         Effect.drawAll(gc);
         player.getInventoryBar().draw(gc);
+        baseProp.drawAll(gc);
+
+    }
+
+    public void setAllProp(){
+        Props.add(new ChristmasTree(400,300));
+        Props.add(new Gift(450,300));
+        Props.add(new Gift2(500,300));
+        Props.add(new Snowman(550,300));
 
     }
 

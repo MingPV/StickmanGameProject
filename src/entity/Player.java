@@ -1,9 +1,8 @@
 package entity;
 
 import Inventory.InventoryBar;
-import effect.ShadowEffect;
-import effect.diedEffect;
-import effect.spawnEffect;
+import Item.*;
+import effect.*;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
@@ -11,8 +10,11 @@ import main.KeyHandler;
 import object.AttackObj;
 import profile.ProfileBox;
 
+import java.util.Objects;
+
 import static main.GamePanel.Effects;
 import static main.GamePanel.monsters;
+import static scenes.SelectedScene.selectedCharacter;
 
 public class Player extends Entity implements EntityFunction {
 
@@ -41,6 +43,10 @@ public class Player extends Entity implements EntityFunction {
     private int monsterDied;
     private int waitForStart;
     private ProfileBox profileBox;
+
+    private SuperSeiya superSeiya;
+    private boolean isSuperSeiya;
+    private boolean pressedV = false;
 
 
     AttackObj attackObj;
@@ -72,6 +78,8 @@ public class Player extends Entity implements EntityFunction {
         setSleepCounter(0);
         setPoint(0);
         setMonsterDied(0);
+        setSuperSeiya(false);
+        setPressedV(false);
         setSpawned(false);
         setWaitForStart(150);
         setEntityClass(Player.class);
@@ -117,18 +125,35 @@ public class Player extends Entity implements EntityFunction {
 
     public void loadpic(){
 
-        setUp1(new Image("file:res/player/boy_up_1.png"));
-        setUp2(new Image("file:res/player/boy_up_2.png"));
-        setUp3(new Image("file:res/player/boy_up_3.png"));
-        setDown1(new Image("file:res/player/boy_down_1.png"));
-        setDown2(new Image("file:res/player/boy_down_2.png"));
-        setDown3(new Image("file:res/player/boy_down_3.png"));
-        setLeft1(new Image("file:res/player/boy_left_1.png"));
-        setLeft2(new Image("file:res/player/boy_left_2.png"));
-        setLeft3(new Image("file:res/player/boy_left_3.png"));
-        setRight1(new Image("file:res/player/boy_right_1.png"));
-        setRight2(new Image("file:res/player/boy_right_2.png"));
-        setRight3(new Image("file:res/player/boy_right_3.png"));
+        if(Objects.equals(selectedCharacter, "1")){
+            setUp1(new Image("file:res/player/boy_up_1.png"));
+            setUp2(new Image("file:res/player/boy_up_2.png"));
+            setUp3(new Image("file:res/player/boy_up_3.png"));
+            setDown1(new Image("file:res/player/boy_down_1.png"));
+            setDown2(new Image("file:res/player/boy_down_2.png"));
+            setDown3(new Image("file:res/player/boy_down_3.png"));
+            setLeft1(new Image("file:res/player/boy_left_1.png"));
+            setLeft2(new Image("file:res/player/boy_left_2.png"));
+            setLeft3(new Image("file:res/player/boy_left_3.png"));
+            setRight1(new Image("file:res/player/boy_right_1.png"));
+            setRight2(new Image("file:res/player/boy_right_2.png"));
+            setRight3(new Image("file:res/player/boy_right_3.png"));
+        }else if (Objects.equals(selectedCharacter, "2")){
+            setUp1(new Image("file:res/player/boy2_up_1.png"));
+            setUp2(new Image("file:res/player/boy2_up_2.png"));
+            setUp3(new Image("file:res/player/boy2_up_3.png"));
+            setDown1(new Image("file:res/player/boy2_down_1.png"));
+            setDown2(new Image("file:res/player/boy2_down_2.png"));
+            setDown3(new Image("file:res/player/boy2_down_3.png"));
+            setLeft1(new Image("file:res/player/boy2_left_1.png"));
+            setLeft2(new Image("file:res/player/boy2_left_2.png"));
+            setLeft3(new Image("file:res/player/boy2_left_3.png"));
+            setRight1(new Image("file:res/player/boy2_right_1.png"));
+            setRight2(new Image("file:res/player/boy2_right_2.png"));
+            setRight3(new Image("file:res/player/boy2_right_3.png"));
+        }
+
+
 
         setHPB(new Image("file:res/player/hpdemo.png"));
         setHPB2(new Image("file:res/player/HPB_2.png"));
@@ -160,8 +185,6 @@ public class Player extends Entity implements EntityFunction {
 
             inventoryBar.update(this);
 
-
-
             // update
             if (KeyHandler.getKeyPressed(KeyCode.W)){
                 setY(getY()-getSpeed());
@@ -180,7 +203,30 @@ public class Player extends Entity implements EntityFunction {
                 setDirection("right");
             }
             setAttack(KeyHandler.getKeyPressed(KeyCode.K));
+
+            if(!isPressedV() && !isSuperSeiya()) {
+                if (KeyHandler.getKeyPressed(KeyCode.V)) {
+                    setSuperSeiya(new SuperSeiya(this));
+                    Effects.add(getSuperSeiya());
+                    setSuperSeiya(true);
+                    setPressedV(true);
+                }
+            }else if(!isPressedV() && isSuperSeiya()){
+                if(KeyHandler.getKeyPressed(KeyCode.V)){
+                    Effects.remove(getSuperSeiya());
+                    setSuperSeiya(false);
+                    setPressedV(true);
+                }
+            }else{
+                if(!(KeyHandler.getKeyPressed(KeyCode.V))){
+                    setPressedV(false);
+                }
+            }
+
         }
+
+
+
 
 
 
@@ -326,11 +372,6 @@ public class Player extends Entity implements EntityFunction {
         }
     }
     public void drawSleepiness(GraphicsContext gc){
-        double dot = getMaxSleepiness()/800;
-        int dots = (int)(getSleepiness()/dot);
-        for(int i=0;i<dots;i++){
-            gc.drawImage(getManaB(),i,580);
-        }
         double dot2 = getMaxSleepiness()/207;
         int dots2 = (int)(getSleepiness()/dot2);
         for(int i=0;i<dots2-1;i++){
@@ -559,5 +600,29 @@ public class Player extends Entity implements EntityFunction {
 
     public void setManaB2(Image manaB2) {
         this.manaB2 = manaB2;
+    }
+
+    public void setSuperSeiya(SuperSeiya superSeiya) {
+        this.superSeiya = superSeiya;
+    }
+
+    public SuperSeiya getSuperSeiya() {
+        return superSeiya;
+    }
+
+    public void setSuperSeiya(boolean superSeiya) {
+        isSuperSeiya = superSeiya;
+    }
+
+    public boolean isSuperSeiya() {
+        return isSuperSeiya;
+    }
+
+    public boolean isPressedV() {
+        return pressedV;
+    }
+
+    public void setPressedV(boolean pressedV) {
+        this.pressedV = pressedV;
     }
 }

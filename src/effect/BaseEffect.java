@@ -83,6 +83,8 @@ public class BaseEffect extends Effect {
                     case "class effect.ShadowEffect" :
                         ((ShadowEffect) Effects.get(i)).update();
                         break;
+                    case "class effect.SuperSeiya" :
+                        ((SuperSeiya) Effects.get(i)).update();
                         // can add more Effect class
 
                 }
@@ -102,6 +104,8 @@ public class BaseEffect extends Effect {
                     case "class effect.ShadowEffect" :
                         ((ShadowEffect) Effects.get(i)).draw(gc);
                         break;
+                    case "class effect.SuperSeiya" :
+                        ((SuperSeiya) Effects.get(i)).draw(gc);
                         // can add more Effect class
                 }
             }
