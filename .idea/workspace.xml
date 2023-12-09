@@ -5,25 +5,54 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72d6a0c5-5d8e-4596-8aa8-7f1363aef7c6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/res/player/boy_down_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/boy_left_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/boy_right_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/boy_up_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/effect/pixil-frame-0 (1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/effect/pixil-frame-0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/effect/shadow_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/effect/shadow_1_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/effect/shadow_1_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/effect/shadow_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/effect/shadow_2_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/effect/shadow_2_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/effect/spawn_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/effect/spawn_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/boss_down_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/boss_down_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/boss_down_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/boss_left_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/boss_left_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/boss_left_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/boss_right_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/boss_right_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/boss_right_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/boss_up_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/boss_up_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/boss_up_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/monster_down_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/monster_down_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/monster_down_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/monster_left_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/monster_left_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/monster_left_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/monster_right_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/monster_right_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/monster_right_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/monster_up_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/monster_up_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/monster/monster_up_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/effect/BaseEffect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/effect/ShadowEffect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/effect/spawnEffect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entity/Boss.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/player/boy_down_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/player/boy_down_1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/player/boy_down_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/player/boy_down_2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/player/boy_left_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/player/boy_left_1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/player/boy_left_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/player/boy_left_2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/player/boy_right_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/player/boy_right_1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/player/boy_right_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/player/boy_right_2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/player/boy_up_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/player/boy_up_1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/player/boy_up_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/player/boy_up_2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Inventory/InventoryBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Inventory/InventoryBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item/BaseItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/BaseItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item/Coffee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/CoffeePotion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Item/Staff.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Item/Sword.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Item/Weapon.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/effect/Effect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/Effect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/effect/diedEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/diedEffect.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Monster.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +62,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -56,7 +85,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/ChenS/IdeaProjects/2110215--zipdrop/res/player",
+    "last_opened_file_path": "C:/Users/ChenS/IdeaProjects/2110215--zipdrop/res/monster",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15527344",
     "project.structure.side.proportion": "0.2"
@@ -64,11 +93,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ChenS\IdeaProjects\2110215--zipdrop\res\monster" />
+      <recent name="C:\Users\ChenS\IdeaProjects\2110215--zipdrop\res\effect" />
       <recent name="C:\Users\ChenS\IdeaProjects\2110215--zipdrop\res\player" />
       <recent name="C:\Users\ChenS\IdeaProjects\2110215--zipdrop\res" />
       <recent name="C:\Users\ChenS\IdeaProjects\2110215--zipdrop\src\main" />
-      <recent name="C:\Users\ChenS\IdeaProjects\2110215--zipdrop\src\scenes" />
-      <recent name="C:\Users\ChenS\IdeaProjects\2110215--zipdrop\res\item" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="Inventory" />

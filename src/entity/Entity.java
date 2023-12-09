@@ -1,5 +1,6 @@
 package entity;
 
+import effect.ShadowEffect;
 import javafx.scene.image.Image;
 
 import java.awt.image.BufferedImage;
@@ -19,6 +20,10 @@ public abstract class Entity {
     public int spriteNum = 1;
 
     private boolean isAttack;
+
+    private ShadowEffect shadowEffect;
+
+    private Object EntityClass;
 
     public double getX() {
         return x;
@@ -178,5 +183,21 @@ public abstract class Entity {
 
     public void setAttack(boolean attack) {
         isAttack = attack;
+    }
+
+    public ShadowEffect getShadowEffect() {
+        return shadowEffect;
+    }
+
+    public void setShadowEffect(ShadowEffect shadowEffect) {
+        this.shadowEffect = shadowEffect;
+    }
+
+    public void setEntityClass(Object entityClass) {
+        EntityClass = entityClass;
+    }
+
+    public Object getEntityClass() {
+        return EntityClass;
     }
 }

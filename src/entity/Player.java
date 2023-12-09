@@ -1,12 +1,16 @@
 package entity;
 
 import Inventory.InventoryBar;
+import effect.ShadowEffect;
+import effect.diedEffect;
+import effect.spawnEffect;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import main.KeyHandler;
 import object.AttackObj;
 
+import static main.GamePanel.Effects;
 import static main.GamePanel.monsters;
 
 public class Player extends Entity implements EntityFunction {
@@ -26,6 +30,13 @@ public class Player extends Entity implements EntityFunction {
     private Image HPB;
     private Image manaB;
     private Image expB;
+
+    private boolean isSpawned;
+
+    private int point;
+    private int monsterDied;
+    private int waitForStart;
+
     AttackObj attackObj;
 
     InventoryBar inventoryBar;
@@ -40,8 +51,8 @@ public class Player extends Entity implements EntityFunction {
 
     public void setDefaultValues() {
 
-        setX(100);
-        setY(100);
+        setX(400);
+        setY(0);
         setSpeed(1);
         setMaxHP(100);
         setHP(50);
@@ -52,6 +63,12 @@ public class Player extends Entity implements EntityFunction {
         setMaxSleepiness(10000);
         setSleepiness(0);
         setSleepCounter(0);
+        setPoint(0);
+        setMonsterDied(0);
+        setSpawned(false);
+        setWaitForStart(150);
+        setEntityClass(Player.class);
+
 
         setDirection("down");
         loadpic();
@@ -66,7 +83,28 @@ public class Player extends Entity implements EntityFunction {
 
 
 
+
+
     }
+
+    public void spawn(){
+        if(getWaitForStart() > 10){
+            setY(0);
+        }else{
+            setWaitForStart(-1);
+        }
+        if(getY() < 300){
+            setY(getY()+10);
+        }else{
+            setSpawned(true);
+            Effects.add(new spawnEffect(this));
+            setShadowEffect(new ShadowEffect(this));
+            Effects.add(getShadowEffect());
+
+        }
+
+    }
+
 
     public void loadpic(){
 
@@ -97,36 +135,43 @@ public class Player extends Entity implements EntityFunction {
         //}
 
 
-
-        if(KeyHandler.getKeyPressed(KeyCode.K)){
-            attack();
+        if(!isSpawned()){
+            spawn();
         }else{
-            getAttackObj().setVisible(false);
-        }
-        updateAttackObj();
+            if(KeyHandler.getKeyPressed(KeyCode.K)){
+                attack();
+            }else{
+                getAttackObj().setVisible(false);
+            }
+            updateAttackObj();
 
-        inventoryBar.update(this);
+            inventoryBar.update(this);
 
 
 
-        // update
-        if (KeyHandler.getKeyPressed(KeyCode.W)){
-            setY(getY()-getSpeed());
-            setDirection("up");
+            // update
+            if (KeyHandler.getKeyPressed(KeyCode.W)){
+                setY(getY()-getSpeed());
+                setDirection("up");
+            }
+            if (KeyHandler.getKeyPressed(KeyCode.A)){
+                setX(getX()-getSpeed());
+                setDirection("left");
+            }
+            if (KeyHandler.getKeyPressed(KeyCode.S)){
+                setY(getY()+getSpeed());
+                setDirection("down");
+            }
+            if (KeyHandler.getKeyPressed(KeyCode.D)){
+                setX(getX()+getSpeed());
+                setDirection("right");
+            }
+            setAttack(KeyHandler.getKeyPressed(KeyCode.K));
         }
-        if (KeyHandler.getKeyPressed(KeyCode.A)){
-            setX(getX()-getSpeed());
-            setDirection("left");
-        }
-        if (KeyHandler.getKeyPressed(KeyCode.S)){
-            setY(getY()+getSpeed());
-            setDirection("down");
-        }
-        if (KeyHandler.getKeyPressed(KeyCode.D)){
-            setX(getX()+getSpeed());
-            setDirection("right");
-        }
-        setAttack(KeyHandler.getKeyPressed(KeyCode.K));
+
+
+
+
 
         spriteCounter++;
         if(spriteCounter > 20) {
@@ -140,6 +185,10 @@ public class Player extends Entity implements EntityFunction {
             }
             spriteCounter = 0;
         }
+        if(!isSpawned()){
+            setWaitForStart(getWaitForStart()-1);
+        }
+
 
         setSleepCounter(getSleepCounter()+1);
 
@@ -211,10 +260,12 @@ public class Player extends Entity implements EntityFunction {
                 }
                 break;
         }
+        if(getWaitForStart()<10){
+            gc.drawImage(getCurrentImage(),getX(),getY());
+            drawHp(gc);
+            drawMana(gc);
+        }
 
-        gc.drawImage(getCurrentImage(),getX(),getY());
-        drawHp(gc);
-        drawMana(gc);
         drawExp(gc);
         drawSleepiness(gc);
         getAttackObj().draw(gc);
@@ -412,5 +463,37 @@ public class Player extends Entity implements EntityFunction {
 
     public InventoryBar getInventoryBar() {
         return inventoryBar;
+    }
+
+    public void setMonsterDied(int monsterDied) {
+        this.monsterDied = monsterDied;
+    }
+
+    public int getMonsterDied() {
+        return monsterDied;
+    }
+
+    public void setPoint(int point) {
+        this.point = point;
+    }
+
+    public int getPoint() {
+        return point;
+    }
+
+    public boolean isSpawned() {
+        return isSpawned;
+    }
+
+    public void setSpawned(boolean spawned) {
+        isSpawned = spawned;
+    }
+
+    public int getWaitForStart() {
+        return waitForStart;
+    }
+
+    public void setWaitForStart(int waitForStart) {
+        this.waitForStart = waitForStart;
     }
 }

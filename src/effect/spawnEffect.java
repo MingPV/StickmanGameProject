@@ -5,41 +5,45 @@ import entity.Player;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
-import static main.GamePanel.*;
+import static main.GamePanel.Effects;
 
-public class diedEffect extends BaseEffect implements EffectFunction {
+public class spawnEffect extends BaseEffect implements EffectFunction {
 
 
+    Player player;
     Monster monster;
 
     int count = 0;
 
+    public spawnEffect(Player player){
 
-    public diedEffect(Monster monster,Player player){
-        super(monster, player);
-        setEffectClass(diedEffect.class);
+        super(player);
+        setEffectClass(spawnEffect.class);
+        // for spawn player
+
+    }
+    public spawnEffect(Monster monster){
+
+        super(monster);
+        setEffectClass(spawnEffect.class);
+        // for spawn player
+
+    }
+
+    public spawnEffect(Player player, Monster monster){
+
+        super(monster,player);
+        setEffectClass(spawnEffect.class);
 
     }
 
     public void loadpic(){
-        setUp1(new Image("file:res/player/boy_up_1.png"));
-        setUp2(new Image("file:res/player/boy_up_2.png"));
-        setDown1(new Image("file:res/player/boy_down_1.png"));
-        setDown2(new Image("file:res/player/boy_down_2.png"));
-        // change died effect here
-
-        setLeft1(new Image("file:res/player/boy_left_1.png"));
-        setLeft2(new Image("file:res/player/boy_left_2.png"));
-        setRight1(new Image("file:res/player/boy_right_1.png"));
-        setRight2(new Image("file:res/player/boy_right_2.png"));
 
         setEffect1(new Image("file:res/effect/spawn_1.png"));
         setEffect2(new Image("file:res/effect/spawn_2.png"));
-        //setEffect3();
-        //setEffect4();
+
 
     }
 
@@ -47,7 +51,7 @@ public class diedEffect extends BaseEffect implements EffectFunction {
         // update
 
         spriteCounter++;
-        if(spriteCounter > 5) {
+        if(spriteCounter > 10) {
             if(spriteNum == 1) {
                 spriteNum = 2;
                 //System.out.println(spriteNum);
@@ -60,10 +64,9 @@ public class diedEffect extends BaseEffect implements EffectFunction {
             count++;
         }
 
-
-        if(count < 3){
+        if(count < 1){
             setPhase("phaseA");
-        }else if(count < 5){
+        }else if(count < 2){
             setPhase("phaseB");
         }else{
             setPhase("phaseDelete");
@@ -72,7 +75,6 @@ public class diedEffect extends BaseEffect implements EffectFunction {
         if(Objects.equals(getPhase(), "phaseB")){
             setY(getY()-5);
         }
-
         if(Objects.equals(getPhase(), "phaseDelete")){
             delete();
         }
@@ -101,11 +103,11 @@ public class diedEffect extends BaseEffect implements EffectFunction {
                 break;
             case "phaseB":
                 if(spriteNum == 1) {
-                    setCurrentImage(getUp1());
+                    setCurrentImage(getEffect1());
 
                 }
                 if(spriteNum == 2) {
-                    setCurrentImage(getUp2());
+                    setCurrentImage(getEffect2());
 
                 }
                 break;
@@ -132,9 +134,6 @@ public class diedEffect extends BaseEffect implements EffectFunction {
 
     @Override
     public boolean isVisible() {
-        return true;
+        return false;
     }
-
-
-
 }
