@@ -26,7 +26,7 @@ public class CoffeePotion extends Potion {
     @Override
     public void use(Player player) {
         if(player != null){
-            player.setHP(player.getSleepiness()-10);
+            player.setSleepiness(player.getSleepiness()-100);
             deleteItem(player);
         }
     }

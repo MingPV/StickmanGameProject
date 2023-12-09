@@ -5,16 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72d6a0c5-5d8e-4596-8aa8-7f1363aef7c6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/res/item/CoffeePotion.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/ProfileBox.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/ProfileBox_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/ProfileImage_1_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/profile/ProfileBox.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/HPB_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/ManaB_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/player/SleepB.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Inventory/InventoryBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Inventory/InventoryBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Item/CoffeePotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/CoffeePotion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Item/RedPotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/RedPotion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

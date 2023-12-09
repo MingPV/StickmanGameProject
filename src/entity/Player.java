@@ -29,8 +29,11 @@ public class Player extends Entity implements EntityFunction {
     private double maxSleepiness;
     private int sleepCounter;
     private Image HPB;
+    private Image HPB2;
     private Image manaB;
+    private Image manaB2;
     private Image expB;
+    private Image sleepB;
 
     private boolean isSpawned;
 
@@ -58,8 +61,8 @@ public class Player extends Entity implements EntityFunction {
         setX(400);
         setY(0);
         setSpeed(1);
-        setMaxHP(100);
-        setHP(50);
+        setMaxHP(1000);
+        setHP(700);
         setMaxExp(100);
         setExp(0);
         setMaxMana(100);
@@ -128,9 +131,13 @@ public class Player extends Entity implements EntityFunction {
         setRight3(new Image("file:res/player/boy_right_3.png"));
 
         setHPB(new Image("file:res/player/hpdemo.png"));
+        setHPB2(new Image("file:res/player/HPB_2.png"));
 
         setManaB(new Image("file:res/player/manademo.png"));
         setExpB(new Image("file:res/player/expdemo.png"));
+
+        setManaB2(new Image("file:res/player/ManaB_2.png"));
+        setSleepB(new Image("file:res/player/SleepB.png"));
 
     }
 
@@ -269,16 +276,17 @@ public class Player extends Entity implements EntityFunction {
                 }
                 break;
         }
+
+        profileBox.draw(gc);
+        drawExp(gc);
+        drawSleepiness(gc);
+        getAttackObj().draw(gc);
+
         if(getWaitForStart()<10){
             gc.drawImage(getCurrentImage(),getX(),getY());
             drawHp(gc);
             drawMana(gc);
         }
-
-        drawExp(gc);
-        drawSleepiness(gc);
-        getAttackObj().draw(gc);
-        profileBox.draw(gc);
 
 
     }
@@ -290,6 +298,11 @@ public class Player extends Entity implements EntityFunction {
             gc.drawImage(getHPB(),getX()-6+i,getY()-7);
 
         }
+        double dot2 = getMaxHP()/112;
+        int dots2 = (int)(getHP()/dot2);
+        for(int i=0;i<dots2-1;i++){
+            gc.drawImage(getHPB2(),165+i,29);
+        }
     }
 
     public void drawMana(GraphicsContext gc){
@@ -298,6 +311,11 @@ public class Player extends Entity implements EntityFunction {
         for(int i=0;i<dots;i++){
             gc.drawImage(getManaB(),getX()-6+i,getY()-4.5);
 
+        }
+        double dot2 = getMaxMana()/112;
+        int dots2 = (int)(getMana()/dot2);
+        for(int i=0;i<dots2-1;i++){
+            gc.drawImage(getManaB2(),165+i,47);
         }
     }
     public void drawExp(GraphicsContext gc){
@@ -312,6 +330,11 @@ public class Player extends Entity implements EntityFunction {
         int dots = (int)(getSleepiness()/dot);
         for(int i=0;i<dots;i++){
             gc.drawImage(getManaB(),i,580);
+        }
+        double dot2 = getMaxSleepiness()/207;
+        int dots2 = (int)(getSleepiness()/dot2);
+        for(int i=0;i<dots2-1;i++){
+            gc.drawImage(getSleepB(),34+i,97);
         }
     }
 
@@ -512,5 +535,29 @@ public class Player extends Entity implements EntityFunction {
     }
     public ProfileBox getProfileBox() {
         return profileBox;
+    }
+
+    public Image getHPB2() {
+        return HPB2;
+    }
+
+    public void setHPB2(Image HPB2) {
+        this.HPB2 = HPB2;
+    }
+
+    public Image getManaB2() {
+        return manaB2;
+    }
+
+    public Image getSleepB() {
+        return sleepB;
+    }
+
+    public void setSleepB(Image sleepB) {
+        this.sleepB = sleepB;
+    }
+
+    public void setManaB2(Image manaB2) {
+        this.manaB2 = manaB2;
     }
 }
