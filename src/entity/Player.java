@@ -71,8 +71,8 @@ public class Player extends Entity implements EntityFunction {
         setHP(700);
         setMaxExp(100);
         setExp(0);
-        setMaxMana(100);
-        setMana(20);
+        setMaxMana(1000);
+        setMana(800);
         setMaxSleepiness(10000);
         setSleepiness(0);
         setSleepCounter(0);
@@ -248,8 +248,8 @@ public class Player extends Entity implements EntityFunction {
             setWaitForStart(getWaitForStart()-1);
         }
 
-
-        setSleepCounter(getSleepCounter()+1);
+        setMana(getMana()+0.1);
+        setSleepCounter(getSleepCounter()+5);
 
         if(getSleepCounter() == 20){
             setSleepCounter(0);

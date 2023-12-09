@@ -5,59 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72d6a0c5-5d8e-4596-8aa8-7f1363aef7c6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/res/effect/SuperSeiya_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/effect/SuperSeiya_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/object/MagicAttack_down_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/object/MagicAttack_down_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/object/MagicAttack_left_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/object/MagicAttack_left_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/object/MagicAttack_right_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/object/MagicAttack_right_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/object/MagicAttack_up_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/object/MagicAttack_up_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/object/SwordAttack_down_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/object/SwordAttack_down_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/object/SwordAttack_left_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/object/SwordAttack_left_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/object/SwordAttack_right_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/object/SwordAttack_right_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/object/SwordAttack_up_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/object/SwordAttack_up_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/ProfileBox_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/boy2_down_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/boy2_down_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/boy2_down_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/boy2_left_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/boy2_left_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/boy2_left_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/boy2_right_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/boy2_right_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/boy2_right_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/boy2_up_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/boy2_up_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/player/boy2_up_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/prop/ChristmasTree.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/prop/Gift.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/prop/Gift2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/prop/ProfileBox_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/prop/Snowman.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/effect/SuperSeiya.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/BaseProp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/ChristmasTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/Gift.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/Gift2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/Prop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/PropFunction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/Snowman.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/effect/pixil-frame-0 (1).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/effect/pixil-frame-0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/effect/BaseEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/BaseEffect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Item/BluePotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/BluePotion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Item/CoffeePotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/CoffeePotion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/effect/SuperSeiya.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/SuperSeiya.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/AttackObj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/AttackObj.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/profile/ProfileBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/profile/ProfileBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/SelectedScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/SelectedScene.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

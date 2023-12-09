@@ -47,6 +47,12 @@ public class SuperSeiya extends BaseEffect implements EffectFunction{
         setX(player.getX());
         setY(player.getY());
 
+        if(getPlayer().getMana()<1){
+            delete();
+        }
+
+        getPlayer().setMana(getPlayer().getMana()-1);
+
 
     }
 
