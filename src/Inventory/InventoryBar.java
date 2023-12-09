@@ -5,7 +5,6 @@ import Item.BluePotion;
 import Item.Potion;
 import Item.RedPotion;
 import entity.Player;
-import font.Number;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
@@ -13,8 +12,6 @@ import main.GamePanel;
 import main.KeyHandler;
 
 import java.util.ArrayList;
-
-import static main.GamePanel.itemOnFloors;
 
 
 public class InventoryBar {

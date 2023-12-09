@@ -1,14 +1,11 @@
 package entity;
 
 import Inventory.InventoryBar;
-import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
-import main.GamePanel;
 import main.KeyHandler;
 import object.AttackObj;
-import scenes.GameScene;
 
 import static main.GamePanel.monsters;
 
