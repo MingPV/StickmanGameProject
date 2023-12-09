@@ -1,6 +1,7 @@
 package entity;
 
 import Item.BluePotion;
+import Item.CoffeePotion;
 import Item.Potion;
 import Item.RedPotion;
 import effect.diedEffect;
@@ -184,7 +185,7 @@ public class Monster extends Entity implements EntityFunction {
 
     public void delete(){
         diedEffects.add(new diedEffect(this));
-        itemOnFloors.add(new Potion(this,player));
+        itemOnFloors.add(new CoffeePotion(this,player));
         itemOnFloors.add(new RedPotion(this,player));
         itemOnFloors.add(new BluePotion(this,player));
         monsters.add(new Monster(player));

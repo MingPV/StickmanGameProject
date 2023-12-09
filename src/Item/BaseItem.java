@@ -73,6 +73,9 @@ public class BaseItem extends BaseForItem {
                     case "class Item.RedPotion" :
                         ((RedPotion) itemOnFloors.get(i)).update(player);
                         break;
+                    case "class Item.CoffeePotion" :
+                        ((CoffeePotion) itemOnFloors.get(i)).update(player);
+                        break;
                 }
 
 
@@ -91,6 +94,9 @@ public class BaseItem extends BaseForItem {
                         break;
                     case "class Item.RedPotion" :
                         ((RedPotion) itemOnFloors.get(i)).draw(gc);
+                        break;
+                    case "class Item.CoffeePotion" :
+                        ((CoffeePotion) itemOnFloors.get(i)).draw(gc);
                         break;
                 }
             }

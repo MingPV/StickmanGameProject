@@ -20,6 +20,9 @@ public class Player extends Entity implements EntityFunction {
     private double maxMana;
     private double exp;
     private double maxExp;
+    private double sleepiness;
+    private double maxSleepiness;
+    private int sleepCounter;
     private Image HPB;
     private Image manaB;
     private Image expB;
@@ -46,6 +49,9 @@ public class Player extends Entity implements EntityFunction {
         setExp(0);
         setMaxMana(100);
         setMana(20);
+        setMaxSleepiness(10000);
+        setSleepiness(0);
+        setSleepCounter(0);
 
         setDirection("down");
         loadpic();
@@ -66,12 +72,16 @@ public class Player extends Entity implements EntityFunction {
 
         setUp1(new Image("file:res/player/boy_up_1.png"));
         setUp2(new Image("file:res/player/boy_up_2.png"));
+        setUp3(new Image("file:res/player/boy_up_3.png"));
         setDown1(new Image("file:res/player/boy_down_1.png"));
         setDown2(new Image("file:res/player/boy_down_2.png"));
+        setDown3(new Image("file:res/player/boy_down_3.png"));
         setLeft1(new Image("file:res/player/boy_left_1.png"));
         setLeft2(new Image("file:res/player/boy_left_2.png"));
+        setLeft3(new Image("file:res/player/boy_left_3.png"));
         setRight1(new Image("file:res/player/boy_right_1.png"));
         setRight2(new Image("file:res/player/boy_right_2.png"));
+        setRight3(new Image("file:res/player/boy_right_3.png"));
 
         setHPB(new Image("file:res/player/hpdemo.png"));
 
@@ -116,6 +126,7 @@ public class Player extends Entity implements EntityFunction {
             setX(getX()+getSpeed());
             setDirection("right");
         }
+        setAttack(KeyHandler.getKeyPressed(KeyCode.K));
 
         spriteCounter++;
         if(spriteCounter > 20) {
@@ -129,6 +140,14 @@ public class Player extends Entity implements EntityFunction {
             }
             spriteCounter = 0;
         }
+
+        setSleepCounter(getSleepCounter()+1);
+
+        if(getSleepCounter() == 20){
+            setSleepCounter(0);
+            setSleepiness(getSleepiness()+1);
+        }
+
 
 
 
@@ -146,7 +165,11 @@ public class Player extends Entity implements EntityFunction {
                     //System.out.println(spriteNum);
                 }
                 if(spriteNum == 2) {
-                    setCurrentImage(getUp2());
+                    if(isAttack()){
+                        setCurrentImage(getUp3());
+                    }else{
+                        setCurrentImage(getUp2());
+                    }
                     //System.out.println(spriteNum);
                 }
                 break;
@@ -155,7 +178,11 @@ public class Player extends Entity implements EntityFunction {
                     setCurrentImage(getDown1());
                 }
                 if(spriteNum == 2) {
-                    setCurrentImage(getDown2());
+                    if(isAttack()){
+                        setCurrentImage(getDown3());
+                    }else{
+                        setCurrentImage(getDown2());
+                    }
                 }
                 break;
             case "right":
@@ -163,7 +190,11 @@ public class Player extends Entity implements EntityFunction {
                     setCurrentImage(getRight1());
                 }
                 if(spriteNum == 2) {
-                    setCurrentImage(getRight2());
+                    if(isAttack()){
+                        setCurrentImage(getRight3());
+                    }else{
+                        setCurrentImage(getRight2());
+                    }
                 }
                 break;
             case "left":
@@ -172,7 +203,11 @@ public class Player extends Entity implements EntityFunction {
                     );
                 }
                 if(spriteNum == 2) {
-                    setCurrentImage(getLeft2());
+                    if(isAttack()){
+                        setCurrentImage(getLeft3());
+                    }else{
+                        setCurrentImage(getLeft2());
+                    }
                 }
                 break;
         }
@@ -181,6 +216,7 @@ public class Player extends Entity implements EntityFunction {
         drawHp(gc);
         drawMana(gc);
         drawExp(gc);
+        drawSleepiness(gc);
         getAttackObj().draw(gc);
 
 
@@ -208,6 +244,13 @@ public class Player extends Entity implements EntityFunction {
         int dots = (int)(getExp()/dot);
         for(int i=0;i<dots;i++){
             gc.drawImage(getExpB(),i,595);
+        }
+    }
+    public void drawSleepiness(GraphicsContext gc){
+        double dot = getMaxSleepiness()/800;
+        int dots = (int)(getSleepiness()/dot);
+        for(int i=0;i<dots;i++){
+            gc.drawImage(getManaB(),i,580);
         }
     }
 
@@ -312,6 +355,34 @@ public class Player extends Entity implements EntityFunction {
 
     public Image getManaB() {
         return manaB;
+    }
+
+    public double getMaxSleepiness() {
+        return maxSleepiness;
+    }
+
+    public double getSleepiness() {
+        return sleepiness;
+    }
+
+    public void setSleepiness(double sleepiness) {
+        if(sleepiness >= getMaxSleepiness()){
+            System.out.print("Game Over by sleeping");
+            sleepiness = getMaxSleepiness();
+        }
+        this.sleepiness = sleepiness;
+    }
+
+    public void setMaxSleepiness(double maxSleepiness) {
+        this.maxSleepiness = maxSleepiness;
+    }
+
+    public int getSleepCounter() {
+        return sleepCounter;
+    }
+
+    public void setSleepCounter(int sleepCounter) {
+        this.sleepCounter = sleepCounter;
     }
 
     public void setX(double playerX) {

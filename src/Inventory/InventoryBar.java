@@ -1,9 +1,6 @@
 package Inventory;
 
-import Item.BaseItem;
-import Item.BluePotion;
-import Item.Potion;
-import Item.RedPotion;
+import Item.*;
 import entity.Player;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -82,6 +79,9 @@ public class InventoryBar {
                         case "class Item.RedPotion":
                             ((RedPotion) itemA).use(player);
                             break;
+                        case "class Item.CoffeePotion":
+                            ((CoffeePotion) itemA).use(player);
+                            break;
                     }
                 }
                 pressed = true;
@@ -109,6 +109,9 @@ public class InventoryBar {
                             break;
                         case "class Item.RedPotion":
                             ((RedPotion) items.get(i)).update(player);
+                            break;
+                        case "class Item.CoffeePotion":
+                            ((CoffeePotion) items.get(i)).update(player);
                             break;
                     }
                 }
