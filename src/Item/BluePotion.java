@@ -23,7 +23,7 @@ public class BluePotion extends Potion {
     @Override
     public void use(Player player) {
         if(player != null){
-            player.setMana(player.getMana()+10);
+            player.setMana(player.getMana()+150);
             deleteItem(player);
         }
     }

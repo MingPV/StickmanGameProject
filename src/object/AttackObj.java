@@ -3,10 +3,12 @@ package object;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
-import main.KeyHandler;
 
 import entity.Player;
+
+import java.util.Objects;
+
+import static scenes.SelectedScene.selectedCharacter;
 
 
 public class AttackObj extends basicAttack implements basicAttackFunction {
@@ -39,14 +41,27 @@ public class AttackObj extends basicAttack implements basicAttackFunction {
     }
 
     public void loadpic(){
-        setUp1(new Image("file:res/object/atkup_1.png"));
-        setUp2(new Image("file:res/object/atkup_2.png"));
-        setDown1(new Image("file:res/object/atkdown_1.png"));
-        setDown2(new Image("file:res/object/atkdown_2.png"));
-        setLeft1(new Image("file:res/object/atkleft_1.png"));
-        setLeft2(new Image("file:res/object/atkleft_2.png"));
-        setRight1(new Image("file:res/object/atkright_1.png"));
-        setRight2(new Image("file:res/object/atkright_2.png"));
+
+
+        if(Objects.equals(selectedCharacter, "1")){
+            setUp1(new Image("file:res/object/SwordAttack_up_1.png"));
+            setUp2(new Image("file:res/object/SwordAttack_up_2.png"));
+            setDown1(new Image("file:res/object/SwordAttack_down_1.png"));
+            setDown2(new Image("file:res/object/SwordAttack_down_2.png"));
+            setLeft1(new Image("file:res/object/SwordAttack_left_1.png"));
+            setLeft2(new Image("file:res/object/SwordAttack_left_2.png"));
+            setRight1(new Image("file:res/object/SwordAttack_right_1.png"));
+            setRight2(new Image("file:res/object/SwordAttack_right_2.png"));
+        }else if (Objects.equals(selectedCharacter, "2")){
+            setUp1(new Image("file:res/object/MagicAttack_up_1.png"));
+            setUp2(new Image("file:res/object/MagicAttack_up_2.png"));
+            setDown1(new Image("file:res/object/MagicAttack_down_1.png"));
+            setDown2(new Image("file:res/object/MagicAttack_down_2.png"));
+            setLeft1(new Image("file:res/object/MagicAttack_left_1.png"));
+            setLeft2(new Image("file:res/object/MagicAttack_left_2.png"));
+            setRight1(new Image("file:res/object/MagicAttack_right_1.png"));
+            setRight2(new Image("file:res/object/MagicAttack_right_2.png"));
+        }
 
     }
 
@@ -82,65 +97,132 @@ public class AttackObj extends basicAttack implements basicAttackFunction {
             return;
         }
 
-        switch(getDirection()) {
-            case "up":
-                if(spriteNum == 1) {
-                    playerimage = getUp1();
-                    setY(getY()- (double) getRange() /2-5);
-                    //System.out.println(spriteNum);
-                    //fix
-                    setX(getX()-7);
-                }
-                if(spriteNum == 2) {
-                    setY(getY()-getRange()-5);
-                    playerimage = getUp2();
-                    //System.out.println(spriteNum);
-                    //fix
-                    setX(getX()-7);
-                }
-                break;
-            case "down":
-                if(spriteNum == 1) {
-                    playerimage = getDown1();
-                    setY(getY()+ (double) getRange() /2-8);
-                    //fix
-                    setX(getX()-7);
-                }
-                if(spriteNum == 2) {
-                    setY(getY()+getRange()-8);
-                    playerimage = getDown2();
-                    //fix
-                    setX(getX()-7);
-                }
-                break;
-            case "right":
-                if(spriteNum == 1) {
-                    playerimage = getRight1();
-                    setX(getX()+ (double) getRange() /2);
-                    //fix
-                    setY(getY()-7);
-                }
-                if(spriteNum == 2) {
-                    setX(getX()+getRange());
-                    playerimage = getRight2();
-                    //fix
-                    setY(getY()-7);
-                }
-                break;
-            case "left":
-                if(spriteNum == 1) {
-                    playerimage = getLeft1();
-                    setX(getX()- (double) getRange() /2-10);
-                    //fix
-                    setY(getY()-7);
-                }
-                if(spriteNum == 2) {
-                    setX(getX()-getRange()-10);
-                    playerimage = getLeft2();
-                    //fix
-                    setY(getY()-7);
-                }
-                break;
+        if(Objects.equals(selectedCharacter, "1")){
+            switch(getDirection()) {
+                case "up":
+                    if(spriteNum == 1) {
+                        playerimage = getUp1();
+                        setY(getY()- (double) getRange() /2-7);
+                        //for mage now
+                        //System.out.println(spriteNum);
+                        //fix
+                        setX(getX()-10);
+                    }
+                    if(spriteNum == 2) {
+                        setY(getY()-getRange()-7);
+                        playerimage = getUp2();
+                        //for mage now
+                        //System.out.println(spriteNum);
+                        //fix
+                        setX(getX()-10);
+                    }
+                    break;
+                case "down":
+                    if(spriteNum == 1) {
+                        playerimage = getDown1();
+                        setY(getY()+ (double) getRange() /2-8);
+                        //fix
+                        setX(getX()-7);
+                    }
+                    if(spriteNum == 2) {
+                        setY(getY()+getRange()-8);
+                        playerimage = getDown2();
+                        //fix
+                        setX(getX()-7);
+                    }
+                    break;
+                case "right":
+                    if(spriteNum == 1) {
+                        playerimage = getRight1();
+                        setX(getX()+ (double) getRange() /2);
+                        //fix
+                        setY(getY()-7);
+                    }
+                    if(spriteNum == 2) {
+                        setX(getX()+getRange());
+                        playerimage = getRight2();
+                        //fix
+                        setY(getY()-7);
+                    }
+                    break;
+                case "left":
+                    if(spriteNum == 1) {
+                        playerimage = getLeft1();
+                        setX(getX()- (double) getRange() /2-10);
+                        //fix
+                        setY(getY()-7);
+                    }
+                    if(spriteNum == 2) {
+                        setX(getX()-getRange()-10);
+                        playerimage = getLeft2();
+                        //fix
+                        setY(getY()-7);
+                    }
+                    break;
+            }
+        }else if(Objects.equals(selectedCharacter, "2")){
+            switch(getDirection()) {
+                case "up":
+                    if(spriteNum == 1) {
+                        playerimage = getUp1();
+                        setY(getY()- (double) getRange() /2-15);
+                        //for mage now
+                        //System.out.println(spriteNum);
+                        //fix
+                        setX(getX()-15);
+                    }
+                    if(spriteNum == 2) {
+                        setY(getY()-getRange()-15);
+                        playerimage = getUp2();
+                        //for mage now
+                        //System.out.println(spriteNum);
+                        //fix
+                        setX(getX()-15);
+                    }
+                    break;
+                case "down":
+                    if(spriteNum == 1) {
+                        playerimage = getDown1();
+                        setY(getY()+ (double) getRange() /2-8);
+                        //fix
+                        setX(getX()-7);
+                    }
+                    if(spriteNum == 2) {
+                        setY(getY()+getRange()-8);
+                        playerimage = getDown2();
+                        //fix
+                        setX(getX()-7);
+                    }
+                    break;
+                case "right":
+                    if(spriteNum == 1) {
+                        playerimage = getRight1();
+                        setX(getX()+ (double) getRange() /2);
+                        //fix
+                        setY(getY()-7);
+                    }
+                    if(spriteNum == 2) {
+                        setX(getX()+getRange());
+                        playerimage = getRight2();
+                        //fix
+                        setY(getY()-7);
+                    }
+                    break;
+                case "left":
+                    if(spriteNum == 1) {
+                        playerimage = getLeft1();
+                        setX(getX()- (double) getRange() /2-10);
+                        //fix
+                        setY(getY()-7);
+                    }
+                    if(spriteNum == 2) {
+                        setX(getX()-getRange()-10);
+                        playerimage = getLeft2();
+                        //fix
+                        setY(getY()-7);
+                    }
+                    break;
+            }
         }
 
 

@@ -1,11 +1,7 @@
 package Inventory;
 
-import Item.BaseItem;
-import Item.BluePotion;
-import Item.Potion;
-import Item.RedPotion;
+import Item.*;
 import entity.Player;
-import font.Number;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
@@ -13,8 +9,7 @@ import main.GamePanel;
 import main.KeyHandler;
 
 import java.util.ArrayList;
-
-import static main.GamePanel.itemOnFloors;
+import java.util.Objects;
 
 
 public class InventoryBar {
@@ -85,6 +80,9 @@ public class InventoryBar {
                         case "class Item.RedPotion":
                             ((RedPotion) itemA).use(player);
                             break;
+                        case "class Item.CoffeePotion":
+                            ((CoffeePotion) itemA).use(player);
+                            break;
                     }
                 }
                 pressed = true;
@@ -113,6 +111,9 @@ public class InventoryBar {
                         case "class Item.RedPotion":
                             ((RedPotion) items.get(i)).update(player);
                             break;
+                        case "class Item.CoffeePotion":
+                            ((CoffeePotion) items.get(i)).update(player);
+                            break;
                     }
                 }
             }
@@ -121,7 +122,12 @@ public class InventoryBar {
         if(!items.isEmpty()){
             for(int i=0;i<items.size();i++){
                 System.out.println(items.get(i));
-                gc.drawImage(items.get(i).getItemImage(),120+i*60,543);
+                if(Objects.equals(String.valueOf(items.get(i).getClass()), "class Item.CoffeePotion")){
+                    gc.drawImage(items.get(i).getItemImage(),112+i*60,531);
+                }else{
+                    gc.drawImage(items.get(i).getItemImage(),120+i*60,543);
+                }
+
                 if(GamePanel.number != null){
                     gc.drawImage(GamePanel.number.getNumberImage(items.get(i).getAmount()),137+i*60,550 );
                 }

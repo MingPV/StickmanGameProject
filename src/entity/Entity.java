@@ -1,5 +1,6 @@
 package entity;
 
+import effect.ShadowEffect;
 import javafx.scene.image.Image;
 
 import java.awt.image.BufferedImage;
@@ -10,13 +11,19 @@ public abstract class Entity {
     private double speed;
 
     //public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
-    private Image up1, up2, down1, down2, left1, left2, right1, right2;
+    private Image up1, up2, down1, down2, left1, left2, right1, right2,up3,down3,left3,right3;
 
     private Image currentImage;
     private String direction;
 
     public int spriteCounter = 0;
     public int spriteNum = 1;
+
+    private boolean isAttack;
+
+    private ShadowEffect shadowEffect;
+
+    private Object EntityClass;
 
     public double getX() {
         return x;
@@ -136,5 +143,61 @@ public abstract class Entity {
 
     public void setCurrentImage(Image currentImage) {
         this.currentImage = currentImage;
+    }
+
+    public void setDown3(Image down3) {
+        this.down3 = down3;
+    }
+
+    public void setLeft3(Image left3) {
+        this.left3 = left3;
+    }
+
+    public void setRight3(Image right3) {
+        this.right3 = right3;
+    }
+
+    public void setUp3(Image up3) {
+        this.up3 = up3;
+    }
+
+    public Image getDown3() {
+        return down3;
+    }
+
+    public Image getLeft3() {
+        return left3;
+    }
+
+    public Image getRight3() {
+        return right3;
+    }
+
+    public Image getUp3() {
+        return up3;
+    }
+
+    public boolean isAttack() {
+        return isAttack;
+    }
+
+    public void setAttack(boolean attack) {
+        isAttack = attack;
+    }
+
+    public ShadowEffect getShadowEffect() {
+        return shadowEffect;
+    }
+
+    public void setShadowEffect(ShadowEffect shadowEffect) {
+        this.shadowEffect = shadowEffect;
+    }
+
+    public void setEntityClass(Object entityClass) {
+        EntityClass = entityClass;
+    }
+
+    public Object getEntityClass() {
+        return EntityClass;
     }
 }

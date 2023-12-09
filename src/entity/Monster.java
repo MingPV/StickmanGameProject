@@ -1,9 +1,12 @@
 package entity;
 
 import Item.BluePotion;
+import Item.CoffeePotion;
 import Item.Potion;
 import Item.RedPotion;
+import effect.ShadowEffect;
 import effect.diedEffect;
+import effect.spawnEffect;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
@@ -45,18 +48,25 @@ public class Monster extends Entity implements EntityFunction {
         setDirection("down");
         setAngry(false);
         loadpic();
+        setShadowEffect(new ShadowEffect(this));
+        Effects.add(getShadowEffect());
+        setEntityClass(Monster.class);
 
     }
 
     public void loadpic(){
-        setUp1(new Image("file:res/player/boy_up_1.png"));
-        setUp2(new Image("file:res/player/boy_up_2.png"));
-        setDown1(new Image("file:res/player/boy_down_1.png"));
-        setDown2(new Image("file:res/player/boy_down_2.png"));
-        setLeft1(new Image("file:res/player/boy_left_1.png"));
-        setLeft2(new Image("file:res/player/boy_left_2.png"));
-        setRight1(new Image("file:res/player/boy_right_1.png"));
-        setRight2(new Image("file:res/player/boy_right_2.png"));
+        setUp1(new Image("file:res/monster/monster_up_1.png"));
+        setUp2(new Image("file:res/monster/monster_up_2.png"));
+        setUp3(new Image("file:res/monster/monster_up_3.png"));
+        setDown1(new Image("file:res/monster/monster_down_1.png"));
+        setDown2(new Image("file:res/monster/monster_down_2.png"));
+        setDown3(new Image("file:res/monster/monster_down_3.png"));
+        setLeft1(new Image("file:res/monster/monster_left_1.png"));
+        setLeft2(new Image("file:res/monster/monster_left_2.png"));
+        setLeft3(new Image("file:res/monster/monster_left_3.png"));
+        setRight1(new Image("file:res/monster/monster_right_1.png"));
+        setRight2(new Image("file:res/monster/monster_right_2.png"));
+        setRight3(new Image("file:res/monster/monster_right_3.png"));
 
         setHPB(new Image("file:res/player/hpdemored.png"));
 
@@ -77,42 +87,48 @@ public class Monster extends Entity implements EntityFunction {
 
             setAngry(true);
 
-            if (player.getY()<getY()){
-                setY(getY()-getSpeed());
-                setDirection("up");
-            }
-            if (player.getX()<getX()){
-                setX(getX()-getSpeed());
-                setDirection("left");
-            }
-            if (player.getY()>getY()){
-                setY(getY()+getSpeed());
-                setDirection("down");
-            }
-            if (player.getX()>getX()){
-                setX(getX()+getSpeed());
-                setDirection("right");
-            }
-            if(Objects.equals(player.getDirection(), "right")){
-                if(getX() >= player.getAttackObj().getX() && getX() <= player.getAttackObj().getX()+ player.getAttackObj().getRange() && getY() >= player.getAttackObj().getY() && getY()<= player.getAttackObj().getY()+player.getAttackObj().getSizeY()/2 && player.getAttackObj().isVisible()){
-                    setHP(getHP()-player.getAttackObj().getDamage());
+            if(player.getWaitForStart()<10){
+                if (player.getY()<getY()){
+                    setY(getY()-getSpeed());
+                    setDirection("up");
                 }
-            }else if(Objects.equals(player.getDirection(), "left")){
-                if(getX() <= player.getAttackObj().getX() && getX() >= player.getAttackObj().getX()- player.getAttackObj().getRange() && getY() >= player.getAttackObj().getY() && getY()<= player.getAttackObj().getY()+player.getAttackObj().getSizeY()/2 && player.getAttackObj().isVisible()){
-                    setHP(getHP()-player.getAttackObj().getDamage());
+                if (player.getX()<getX()){
+                    setX(getX()-getSpeed());
+                    setDirection("left");
                 }
-            }else if(Objects.equals(player.getDirection(), "down")){
-                if(getX() <= player.getX()+10 && getX()>=player.getX()-10 && getY()>= player.getY() && getY()<= player.getY()+player.getAttackObj().getRange() && player.getAttackObj().isVisible()){
-                    setHP(getHP()-player.getAttackObj().getDamage());
+                if (player.getY()>getY()){
+                    setY(getY()+getSpeed());
+                    setDirection("down");
                 }
-            }else if(Objects.equals(player.getDirection(), "up")){
-                if(getX() <= player.getX()+20 && getX()>=player.getX()-20 && getY()<= player.getY() && getY()>= player.getY()-player.getAttackObj().getRange() && player.getAttackObj().isVisible()){
-                    setHP(getHP()-player.getAttackObj().getDamage());
+                if (player.getX()>getX()){
+                    setX(getX()+getSpeed());
+                    setDirection("right");
+                }
+                if(Objects.equals(player.getDirection(), "right")){
+                    if(getX() >= player.getAttackObj().getX() && getX() <= player.getAttackObj().getX()+ player.getAttackObj().getRange() && getY() >= player.getAttackObj().getY() && getY()<= player.getAttackObj().getY()+player.getAttackObj().getSizeY()/2 && player.getAttackObj().isVisible()){
+                        setHP(getHP()-player.getAttackObj().getDamage());
+                    }
+                }else if(Objects.equals(player.getDirection(), "left")){
+                    if(getX() <= player.getAttackObj().getX() && getX() >= player.getAttackObj().getX()- player.getAttackObj().getRange() && getY() >= player.getAttackObj().getY() && getY()<= player.getAttackObj().getY()+player.getAttackObj().getSizeY()/2 && player.getAttackObj().isVisible()){
+                        setHP(getHP()-player.getAttackObj().getDamage());
+                    }
+                }else if(Objects.equals(player.getDirection(), "down")){
+                    if(getX() <= player.getX()+10 && getX()>=player.getX()-10 && getY()>= player.getY() && getY()<= player.getY()+player.getAttackObj().getRange() && player.getAttackObj().isVisible()){
+                        setHP(getHP()-player.getAttackObj().getDamage());
+                    }
+                }else if(Objects.equals(player.getDirection(), "up")){
+                    if(getX() <= player.getX()+20 && getX()>=player.getX()-20 && getY()<= player.getY() && getY()>= player.getY()-player.getAttackObj().getRange() && player.getAttackObj().isVisible()){
+                        setHP(getHP()-player.getAttackObj().getDamage());
+                    }
                 }
             }
         }else{
             setAngry(false);
         }
+        if(!isAngry()){
+            spriteNum = 1;
+        }
+
 
         if(isAngry){
             spriteCounter++;
@@ -122,8 +138,10 @@ public class Monster extends Entity implements EntityFunction {
                     //System.out.println(spriteNum);
                 }
                 else if(spriteNum == 2) {
-                    spriteNum = 1;
+                    spriteNum = 3;
                     //System.out.println(spriteNum);
+                }else if(spriteNum == 3){
+                    spriteNum = 1;
                 }
                 spriteCounter = 0;
             }
@@ -149,6 +167,9 @@ public class Monster extends Entity implements EntityFunction {
                     setCurrentImage(getUp2());
                     //System.out.println(spriteNum);
                 }
+                if(spriteNum == 3){
+                    setCurrentImage(getUp3());
+                }
                 break;
             case "down":
                 if(spriteNum == 1) {
@@ -157,6 +178,9 @@ public class Monster extends Entity implements EntityFunction {
                 if(spriteNum == 2) {
                     setCurrentImage(getDown2());
                 }
+                if(spriteNum == 3){
+                    setCurrentImage(getDown3());
+                }
                 break;
             case "right":
                 if(spriteNum == 1) {
@@ -164,6 +188,9 @@ public class Monster extends Entity implements EntityFunction {
                 }
                 if(spriteNum == 2) {
                     setCurrentImage(getRight2());
+                }
+                if(spriteNum == 3){
+                    setCurrentImage(getRight3());
                 }
                 break;
             case "left":
@@ -174,6 +201,9 @@ public class Monster extends Entity implements EntityFunction {
                 if(spriteNum == 2) {
                     setCurrentImage(getLeft2());
                 }
+                if(spriteNum == 3){
+                    setCurrentImage(getLeft3());
+                }
                 break;
         }
 
@@ -183,27 +213,50 @@ public class Monster extends Entity implements EntityFunction {
     }
 
     public void delete(){
-        diedEffects.add(new diedEffect(this));
-        itemOnFloors.add(new Potion(this,player));
+        Effects.add(new diedEffect(this,player));
+        itemOnFloors.add(new CoffeePotion(this,player));
         itemOnFloors.add(new RedPotion(this,player));
         itemOnFloors.add(new BluePotion(this,player));
         monsters.add(new Monster(player));
         monsters.add(new Monster(player));
+        if(player.getMonsterDied() == 5){
+            player.setMonsterDied(0);
+            monsters.add(new Boss(player));
+        }
+        Effects.remove(getShadowEffect());
         monsters.remove(this);
+        player.setPoint(player.getPoint()+15);
+        player.setMonsterDied(player.getMonsterDied()+1);
     }
 
     public void updateAll(ArrayList<Monster> monsters){
         if(!monsters.isEmpty()){
             for (int i=0;i<monsters.size();i++) {
-                monsters.get(i).update(player);
+                switch (String.valueOf(monsters.get(i).getEntityClass())){
+                    case "class entity.Monster" :
+                        monsters.get(i).update(player);
+                        break;
+                    case "class entity.Boss" :
+                        monsters.get(i).update(player);
+                        break;
+                }
+
             }
         }
     }
 
     public void drawAll(ArrayList<Monster> monsters, GraphicsContext gc){
         if(!monsters.isEmpty()){
-            for (Monster monster : monsters) {
-                monster.draw(gc);
+            for (int i=0;i<monsters.size();i++) {
+                switch (String.valueOf(monsters.get(i).getEntityClass())){
+                    case "class entity.Monster" :
+                        ((Monster) monsters.get(i)).draw(gc);
+                        break;
+                    case "class entity.Boss" :
+                        ((Boss) monsters.get(i)).draw(gc);
+                        break;
+                }
+
             }
         }
     }
