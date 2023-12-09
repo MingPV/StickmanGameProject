@@ -4,36 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72d6a0c5-5d8e-4596-8aa8-7f1363aef7c6" name="Changes" comment="">
-<<<<<<< HEAD
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-||||||| 84ba862
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-=======
-      <change afterPath="$PROJECT_DIR$/res/item/BluePotion.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/item/PurplePotion.png" afterDir="false" />
->>>>>>> a5af8699b9248a6bde3284e128ded0726a31656d
+    <list default="true" id="4a6ea827-776f-4653-82c8-70f9dbbb1c5a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/res/element/itty-bitty-8-bit-kevin-macleod-main-version-03-13-7983.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/MusicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MusicController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/GameScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/StartScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/StartScene.java" afterDir="false" />
-||||||| 84ba862
-      <change beforePath="$PROJECT_DIR$/src/main/MusicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MusicController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/StartScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/StartScene.java" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/src/Inventory/InventoryBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Inventory/InventoryBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item/BaseForItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/BaseForItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item/BaseItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/BaseItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item/BluePotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/BluePotion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item/Coffee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/Coffee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item/Potion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/Potion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item/RedPotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/RedPotion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Monster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/AttackObj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/AttackObj.java" afterDir="false" />
->>>>>>> a5af8699b9248a6bde3284e128ded0726a31656d
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,23 +34,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-<<<<<<< HEAD
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "84ba862c",
-    "project.structure.last.edited": "Global Libraries",
-||||||| 84ba862
-    "git-widget-placeholder": "257c65a1",
-    "project.structure.last.edited": "Modules",
-=======
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/ChenS/IdeaProjects/2110215--zipdrop/res/item",
-    "project.structure.last.edited": "Modules",
->>>>>>> a5af8699b9248a6bde3284e128ded0726a31656d
-    "project.structure.proportion": "0.15527344",
-    "project.structure.side.proportion": "0.2"
+    "git-widget-placeholder": "0247a96e",
+    "last_opened_file_path": "C:/Users/Tanyapat/Desktop/2110215--zipdrop"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -90,25 +47,6 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="Inventory" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-21" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="main.Main" />
-      <module name="2110215--zipdrop" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Users\ChenS\javafx-sdk-21.0.1\lib --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.media " />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <module name="2110215--zipdrop" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Users\ChenS\javafx-sdk-21.0.1\lib --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.media " />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
