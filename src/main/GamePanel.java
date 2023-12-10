@@ -9,6 +9,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import Background.Background;
+import scenes.GameScene;
 
 import java.util.ArrayList;
 
@@ -62,23 +63,27 @@ public class GamePanel extends Canvas {
     public void update() throws InterruptedException {
         // update
 
-        player.update();
-        monster.updateAll(monsters);
-        Effect.updateAll(player);
-        baseItemOnFloor.updateAll(player);
-        baseProp.updateAll();
+        if(player != null){
+            player.update();
+            monster.updateAll(monsters);
+            Effect.updateAll(player);
+            baseItemOnFloor.updateAll(player);
+            baseProp.updateAll();
+        }
 
     }
 
     public void paintComponent(){
 
-        background.draw(gc);
-        baseItemOnFloor.drawAll(gc);
-        Effect.drawAll(gc);
-        monster.drawAll(monsters,gc);
-        player.draw(gc);
-        player.getInventoryBar().draw(gc);
-        baseProp.drawAll(gc);
+        if(player != null){
+            background.draw(gc);
+            baseItemOnFloor.drawAll(gc);
+            Effect.drawAll(gc);
+            monster.drawAll(monsters,gc);
+            player.draw(gc);
+            player.getInventoryBar().draw(gc);
+            baseProp.drawAll(gc);
+        }
 
     }
 
@@ -93,6 +98,14 @@ public class GamePanel extends Canvas {
         Props.add(new Gift2(765,570));
         Props.add(new Snowman(670,502));
 
+    }
+
+    public void setAllDefaultValues(){
+        player = null;
+        monsters.clear();
+        Effects.clear();
+        itemOnFloors.clear();
+        Props.clear();
     }
 
 
