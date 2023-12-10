@@ -64,9 +64,9 @@ public class BaseEffect extends Effect {
 
     public void loadpic(){
 
-        setEffect1(new Image("file:res/effect/spawn_1.png"));
-        setEffect1(new Image("file:res/effect/spawn_2.png"));
-
+        //default image
+        setEffect1(new Image(String.valueOf(ClassLoader.getSystemResource("effect/spawn_1.png"))));
+        setEffect1(new Image(String.valueOf(ClassLoader.getSystemResource("effect/spawn_2.png"))));
 
     }
 

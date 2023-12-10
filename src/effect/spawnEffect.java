@@ -21,6 +21,7 @@ public class spawnEffect extends BaseEffect implements EffectFunction {
 
         super(player);
         setEffectClass(spawnEffect.class);
+        setX(getX()-15);
         // for spawn player
 
     }
@@ -36,13 +37,13 @@ public class spawnEffect extends BaseEffect implements EffectFunction {
 
         super(monster,player);
         setEffectClass(spawnEffect.class);
-
+        // for spawn player or monster but have more effects to another
     }
 
     public void loadpic(){
 
-        setEffect1(new Image("file:res/effect/spawn_1.png"));
-        setEffect2(new Image("file:res/effect/spawn_2.png"));
+        setEffect1(new Image(String.valueOf(ClassLoader.getSystemResource("effect/spawn_1.png"))));
+        setEffect2(new Image(String.valueOf(ClassLoader.getSystemResource("effect/spawn_2.png"))));
 
 
     }
@@ -66,15 +67,11 @@ public class spawnEffect extends BaseEffect implements EffectFunction {
 
         if(count < 1){
             setPhase("phaseA");
-        }else if(count < 2){
-            setPhase("phaseB");
-        }else{
+            setY(getY()-2);
+        }else if(count < 3){
             setPhase("phaseDelete");
         }
 
-        if(Objects.equals(getPhase(), "phaseB")){
-            setY(getY()-5);
-        }
         if(Objects.equals(getPhase(), "phaseDelete")){
             delete();
         }
@@ -101,16 +98,6 @@ public class spawnEffect extends BaseEffect implements EffectFunction {
 
                 }
                 break;
-            case "phaseB":
-                if(spriteNum == 1) {
-                    setCurrentImage(getEffect1());
-
-                }
-                if(spriteNum == 2) {
-                    setCurrentImage(getEffect2());
-
-                }
-                break;
             case "phaseDelete":
                 delete = true;
                 break;
@@ -127,13 +114,5 @@ public class spawnEffect extends BaseEffect implements EffectFunction {
         Effects.remove(this);
     }
 
-    @Override
-    public boolean isDestroyed() {
-        return false;
-    }
 
-    @Override
-    public boolean isVisible() {
-        return false;
-    }
 }

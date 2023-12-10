@@ -23,44 +23,40 @@ public class AttackObj extends basicAttack implements basicAttackFunction {
     public void setDefaultValues(Player player) {
 
         setBaseRange(15);
-
         setX(player.getX());
         setY(player.getY());
         setVisible(false);
         setPlayer(player);
-
         setSpeed(1);
-        setDamage(0.5);
+        setDamage(1);
         setRange(60);
         setDirection(player.getDirection());
         loadpic();
         setSizeX(32);
         setSizeY(32);
 
-
     }
 
     public void loadpic(){
 
-
         if(Objects.equals(selectedCharacter, "1")){
-            setUp1(new Image("file:res/object/SwordAttack_up_1.png"));
-            setUp2(new Image("file:res/object/SwordAttack_up_2.png"));
-            setDown1(new Image("file:res/object/SwordAttack_down_1.png"));
-            setDown2(new Image("file:res/object/SwordAttack_down_2.png"));
-            setLeft1(new Image("file:res/object/SwordAttack_left_1.png"));
-            setLeft2(new Image("file:res/object/SwordAttack_left_2.png"));
-            setRight1(new Image("file:res/object/SwordAttack_right_1.png"));
-            setRight2(new Image("file:res/object/SwordAttack_right_2.png"));
+            setUp1(new Image(String.valueOf(ClassLoader.getSystemResource("object/SwordAttack_up_1.png"))));
+            setUp2(new Image(String.valueOf(ClassLoader.getSystemResource("object/SwordAttack_up_2.png"))));
+            setDown1(new Image(String.valueOf(ClassLoader.getSystemResource("object/SwordAttack_down_1.png"))));
+            setDown2(new Image(String.valueOf(ClassLoader.getSystemResource("object/SwordAttack_down_2.png"))));
+            setLeft1(new Image(String.valueOf(ClassLoader.getSystemResource("object/SwordAttack_left_1.png"))));
+            setLeft2(new Image(String.valueOf(ClassLoader.getSystemResource("object/SwordAttack_left_2.png"))));
+            setRight1(new Image(String.valueOf(ClassLoader.getSystemResource("object/SwordAttack_right_1.png"))));
+            setRight2(new Image(String.valueOf(ClassLoader.getSystemResource("object/SwordAttack_right_2.png"))));
         }else if (Objects.equals(selectedCharacter, "2")){
-            setUp1(new Image("file:res/object/MagicAttack_up_1.png"));
-            setUp2(new Image("file:res/object/MagicAttack_up_2.png"));
-            setDown1(new Image("file:res/object/MagicAttack_down_1.png"));
-            setDown2(new Image("file:res/object/MagicAttack_down_2.png"));
-            setLeft1(new Image("file:res/object/MagicAttack_left_1.png"));
-            setLeft2(new Image("file:res/object/MagicAttack_left_2.png"));
-            setRight1(new Image("file:res/object/MagicAttack_right_1.png"));
-            setRight2(new Image("file:res/object/MagicAttack_right_2.png"));
+            setUp1(new Image(String.valueOf(ClassLoader.getSystemResource("object/MagicAttack_up_1.png"))));
+            setUp2(new Image(String.valueOf(ClassLoader.getSystemResource("object/MagicAttack_up_2.png"))));
+            setDown1(new Image(String.valueOf(ClassLoader.getSystemResource("object/MagicAttack_down_1.png"))));
+            setDown2(new Image(String.valueOf(ClassLoader.getSystemResource("object/MagicAttack_down_2.png"))));
+            setLeft1(new Image(String.valueOf(ClassLoader.getSystemResource("object/MagicAttack_left_1.png"))));
+            setLeft2(new Image(String.valueOf(ClassLoader.getSystemResource("object/MagicAttack_left_2.png"))));
+            setRight1(new Image(String.valueOf(ClassLoader.getSystemResource("object/MagicAttack_right_1.png"))));
+            setRight2(new Image(String.valueOf(ClassLoader.getSystemResource("object/MagicAttack_right_2.png"))));
         }
 
     }
@@ -84,6 +80,11 @@ public class AttackObj extends basicAttack implements basicAttackFunction {
         setX(getPlayer().getX());
         setY(getPlayer().getY());
         setDirection(getPlayer().getDirection());
+        if(getPlayer().isSuperSaiyan()){
+            setDamage(10);
+        }else{
+            setDamage(1);
+        }
 
     }
 
@@ -106,7 +107,7 @@ public class AttackObj extends basicAttack implements basicAttackFunction {
                         //for mage now
                         //System.out.println(spriteNum);
                         //fix
-                        setX(getX()-10);
+                        setX(getX());
                     }
                     if(spriteNum == 2) {
                         setY(getY()-getRange()-7);
@@ -114,7 +115,7 @@ public class AttackObj extends basicAttack implements basicAttackFunction {
                         //for mage now
                         //System.out.println(spriteNum);
                         //fix
-                        setX(getX()-10);
+                        setX(getX());
                     }
                     break;
                 case "down":
@@ -122,13 +123,13 @@ public class AttackObj extends basicAttack implements basicAttackFunction {
                         playerimage = getDown1();
                         setY(getY()+ (double) getRange() /2-8);
                         //fix
-                        setX(getX()-7);
+                        setX(getX());
                     }
                     if(spriteNum == 2) {
                         setY(getY()+getRange()-8);
                         playerimage = getDown2();
                         //fix
-                        setX(getX()-7);
+                        setX(getX());
                     }
                     break;
                 case "right":
@@ -136,13 +137,13 @@ public class AttackObj extends basicAttack implements basicAttackFunction {
                         playerimage = getRight1();
                         setX(getX()+ (double) getRange() /2);
                         //fix
-                        setY(getY()-7);
+                        setY(getY());
                     }
                     if(spriteNum == 2) {
                         setX(getX()+getRange());
                         playerimage = getRight2();
                         //fix
-                        setY(getY()-7);
+                        setY(getY());
                     }
                     break;
                 case "left":
@@ -150,13 +151,13 @@ public class AttackObj extends basicAttack implements basicAttackFunction {
                         playerimage = getLeft1();
                         setX(getX()- (double) getRange() /2-10);
                         //fix
-                        setY(getY()-7);
+                        setY(getY());
                     }
                     if(spriteNum == 2) {
                         setX(getX()-getRange()-10);
                         playerimage = getLeft2();
                         //fix
-                        setY(getY()-7);
+                        setY(getY());
                     }
                     break;
             }
@@ -166,16 +167,12 @@ public class AttackObj extends basicAttack implements basicAttackFunction {
                     if(spriteNum == 1) {
                         playerimage = getUp1();
                         setY(getY()- (double) getRange() /2-15);
-                        //for mage now
-                        //System.out.println(spriteNum);
                         //fix
                         setX(getX()-15);
                     }
                     if(spriteNum == 2) {
                         setY(getY()-getRange()-15);
                         playerimage = getUp2();
-                        //for mage now
-                        //System.out.println(spriteNum);
                         //fix
                         setX(getX()-15);
                     }
@@ -199,32 +196,31 @@ public class AttackObj extends basicAttack implements basicAttackFunction {
                         playerimage = getRight1();
                         setX(getX()+ (double) getRange() /2);
                         //fix
-                        setY(getY()-7);
+                        setY(getY()-20);
                     }
                     if(spriteNum == 2) {
                         setX(getX()+getRange());
                         playerimage = getRight2();
                         //fix
-                        setY(getY()-7);
+                        setY(getY()-20);
                     }
                     break;
                 case "left":
                     if(spriteNum == 1) {
                         playerimage = getLeft1();
-                        setX(getX()- (double) getRange() /2-10);
+                        setX(getX()- (double) getRange() /2-27);
                         //fix
-                        setY(getY()-7);
+                        setY(getY()-20);
                     }
                     if(spriteNum == 2) {
-                        setX(getX()-getRange()-10);
+                        setX(getX()-getRange()-27);
                         playerimage = getLeft2();
                         //fix
-                        setY(getY()-7);
+                        setY(getY()-20);
                     }
                     break;
             }
         }
-
 
         gc.drawImage(playerimage,getX(),getY());
         setDefaultValues(getPlayer());

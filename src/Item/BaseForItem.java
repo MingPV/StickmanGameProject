@@ -65,7 +65,6 @@ public abstract class BaseForItem {
     public boolean isUsed() {
         return isUsed;
     }
-
     public void setUsed(boolean used) {
         isUsed = used;
     }
@@ -104,10 +103,6 @@ public abstract class BaseForItem {
 
     public void setSlot(int slot) {
         this.slot = slot;
-    }
-
-    public int getSlot() {
-        return slot;
     }
 
     public int getPrepareDelete() {

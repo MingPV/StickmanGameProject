@@ -36,7 +36,6 @@ public class ProfileBox {
             setProfileBoxURL("player/ProfileBox_2.png");
         }
 
-
         setProfileImage(new Image(String.valueOf(ClassLoader.getSystemResource(getProfileImageURL()))));
         setProfileBoxImage(new Image(String.valueOf(ClassLoader.getSystemResource(getProfileBoxURL()))));
         setPlayer(player);
@@ -50,8 +49,11 @@ public class ProfileBox {
     }
 
     public void update(Player player){
+
         setPlayer(player);
-        // add more
+        player.setCanWalkLeft(!(player.getY() < 118) || (player.getX() != 300 && player.getX() != 299  && player.getX() != 298  && player.getX() != 297 && player.getX() != 296));
+        player.setCanWalkUp(!(player.getX() <= 300) || (player.getY() != 117 && player.getY() != 116 && player.getY() != 115 && player.getY() != 114 && player.getY() != 113));
+
     }
 
     public Player getPlayer() {

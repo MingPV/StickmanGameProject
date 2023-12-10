@@ -15,15 +15,11 @@ import java.util.Objects;
 public class InventoryBar {
 
     private ArrayList<BaseItem> items;
-
     private Player player;
-
     private Image InventoryB;
     private Image SelectedSlotImage;
     public static int selectedSlot;
     private boolean pressed;
-    private int spriteCounter;
-    private int spriteNum;
     private String ImageURL;
     private String SelectedImageURL;
 
@@ -35,7 +31,6 @@ public class InventoryBar {
 
         setImageURL("player/InventoryB.png");
         setSelectedImageURL("player/SelectedSlot.png");
-
 
         setInventoryB(new Image(String.valueOf(ClassLoader.getSystemResource(getImageURL()))));
         setSelectedSlotImage(new Image(getSelectedImageURL()));
@@ -52,7 +47,6 @@ public class InventoryBar {
         gc.drawImage(InventoryB,0,500);
         gc.drawImage(SelectedSlotImage, selectedSlot *60,500);
         drawItemInInventory(gc);
-
     }
 
     public void update(Player player){
@@ -83,6 +77,8 @@ public class InventoryBar {
                         case "class Item.CoffeePotion":
                             ((CoffeePotion) itemA).use(player);
                             break;
+                        case "class Item.DragonBallBeans":
+                            ((DragonBallBeans)itemA).use(player);
                     }
                 }
                 pressed = true;
@@ -92,8 +88,8 @@ public class InventoryBar {
                 pressed = false;
             }
         }
-
         updateInventory();
+        setBarrier(player);
 
     }
 
@@ -114,6 +110,8 @@ public class InventoryBar {
                         case "class Item.CoffeePotion":
                             ((CoffeePotion) items.get(i)).update(player);
                             break;
+                        case "class Item.DragonBallBeans":
+                            ((DragonBallBeans)items.get(i)).update(player);
                     }
                 }
             }
@@ -124,6 +122,8 @@ public class InventoryBar {
                 System.out.println(items.get(i));
                 if(Objects.equals(String.valueOf(items.get(i).getClass()), "class Item.CoffeePotion")){
                     gc.drawImage(items.get(i).getItemImage(),112+i*60,531);
+                }else if(Objects.equals(String.valueOf(items.get(i).getClass()), "class Item.DragonBallBeans")){
+                    gc.drawImage(items.get(i).getItemImage(),112+i*60,532);
                 }else{
                     gc.drawImage(items.get(i).getItemImage(),120+i*60,543);
                 }
@@ -135,21 +135,12 @@ public class InventoryBar {
         }
     }
 
-
-    public ArrayList<BaseItem> getItems() {
-        return items;
-    }
-
-    public Image getInventoryB() {
-        return InventoryB;
-    }
-
-    public int getSelectedSlot() {
-        return selectedSlot;
-    }
-
-    public void setSelectedSlotImage(Image selectedSlotImage) {
-        SelectedSlotImage = selectedSlotImage;
+    public void setBarrier(Player player){
+        if(player.getY()==490){
+            player.setCanWalkDown(false);
+        }else {
+            player.setCanWalkDown(true);
+        }
     }
 
     public void setSelectedSlot(int selectedSlot) {
@@ -162,42 +153,39 @@ public class InventoryBar {
         this.selectedSlot = selectedSlot;
     }
 
+    public ArrayList<BaseItem> getItems() {
+        return items;
+    }
+    public int getSelectedSlot() {
+        return selectedSlot;
+    }
+    public void setSelectedSlotImage(Image selectedSlotImage) {
+        SelectedSlotImage = selectedSlotImage;
+    }
     public void setInventoryB(Image inventoryB) {
         InventoryB = inventoryB;
     }
-
     public void setItems(ArrayList<BaseItem> items) {
         this.items = items;
     }
-
     public void setPressed(boolean pressed) {
         this.pressed = pressed;
     }
-
-    public Image getSelectedSlotImage() {
-        return SelectedSlotImage;
-    }
-
     public Player getPlayer() {
         return player;
     }
-
     public void setPlayer(Player player) {
         this.player = player;
     }
-
     public String getImageURL() {
         return ImageURL;
     }
-
     public void setImageURL(String imageURL) {
         ImageURL = imageURL;
     }
-
     public String getSelectedImageURL() {
         return SelectedImageURL;
     }
-
     public void setSelectedImageURL(String selectedImageURL) {
         SelectedImageURL = selectedImageURL;
     }

@@ -23,7 +23,7 @@ public class BaseProp extends Prop{
         setPropClass(BaseProp.class);
         setX(x);
         setY(y);
-        setPropImage(new Image("file:res/prop/ChristmasTree.png"));
+        setPropImage(new Image(String.valueOf(ClassLoader.getSystemResource("prop/ChristmasTree.png"))));
 
     }
 
@@ -44,8 +44,6 @@ public class BaseProp extends Prop{
                         ((Snowman) Props.get(i)).update();
                         break;
                 }
-
-
             }
         }
     }

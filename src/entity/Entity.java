@@ -3,7 +3,6 @@ package entity;
 import effect.ShadowEffect;
 import javafx.scene.image.Image;
 
-import java.awt.image.BufferedImage;
 
 public abstract class Entity {
 
@@ -24,6 +23,11 @@ public abstract class Entity {
     private ShadowEffect shadowEffect;
 
     private Object EntityClass;
+
+    private boolean CanWalkUP;
+    private boolean canWalkLeft;
+    private boolean canWalkDown;
+    private boolean canWalkRight;
 
     public double getX() {
         return x;
@@ -50,10 +54,22 @@ public abstract class Entity {
     }
 
     public void setX(double x) {
+        if(x<0){
+            x=0;
+        }
+        if(x>800){
+            x=800;
+        }
         this.x = x;
     }
 
     public void setY(double y) {
+        if(y<0){
+            y=0;
+        }
+        if(y>600){
+            y=600;
+        }
         this.y = y;
     }
 
@@ -199,5 +215,37 @@ public abstract class Entity {
 
     public Object getEntityClass() {
         return EntityClass;
+    }
+
+    public void setCanWalkDown(boolean canWalkDown) {
+        this.canWalkDown = canWalkDown;
+    }
+
+    public void setCanWalkLeft(boolean canWalkLeft) {
+        this.canWalkLeft = canWalkLeft;
+    }
+
+    public void setCanWalkRight(boolean canWalkRight) {
+        this.canWalkRight = canWalkRight;
+    }
+
+    public void setCanWalkUp(boolean canWalkUP) {
+        CanWalkUP = canWalkUP;
+    }
+
+    public boolean isCanWalkDown() {
+        return canWalkDown;
+    }
+
+    public boolean isCanWalkLeft() {
+        return canWalkLeft;
+    }
+
+    public boolean isCanWalkRight() {
+        return canWalkRight;
+    }
+
+    public boolean isCanWalkUP() {
+        return CanWalkUP;
     }
 }

@@ -12,14 +12,14 @@ public class Potion extends BaseItem implements BaseFunction{
 
     public Potion(int slotNumber){
         super(slotNumber);
-        setItemImage(new Image("file:res/item/PurplePotion.png"));
+        setItemImage(new Image(String.valueOf(ClassLoader.getSystemResource("item/PurplePotion.png"))));
         setDropRange(1);
 
     }
 
     public Potion(Monster monster, Player player){
         super(monster,player);
-        setItemImage(new Image("file:res/item/PurplePotion.png"));
+        setItemImage(new Image(String.valueOf(ClassLoader.getSystemResource("item/PurplePotion.png"))));
         setDropRange(1);
     }
 
@@ -42,7 +42,7 @@ public class Potion extends BaseItem implements BaseFunction{
             setY(getY()+0.8);
         }else if(spriteNum == 3){
             if(player != null){
-                if(pow(player.getX()-getX(),2) <= 45 && pow(player.getY()-getY(),2) <= 45 ){
+                if(pow(player.getX()-getX(),2) <= 60 && pow(player.getY()+15-getY(),2) <= 500 ){
                     additem(player);
                 }
             }
@@ -65,7 +65,6 @@ public class Potion extends BaseItem implements BaseFunction{
                 setDeleteCounter(0);
             }
         }
-
         autoDelete();
 
     }
@@ -105,7 +104,7 @@ public class Potion extends BaseItem implements BaseFunction{
 
     @Override
     public void deleteItem(Player player) {
-        for(int i=0;i<10;i++){
+        for(int i=0;i<player.getInventoryBar().getItems().size();i++){
             if(player.getInventoryBar().getItems().get(i).getAmount()!=0){
                 if(player.getInventoryBar().getItems().get(i).getClass() == getItemClass()){
                     player.getInventoryBar().getItems().get(i).setAmount(player.getInventoryBar().getItems().get(i).getAmount()-1);
@@ -124,7 +123,6 @@ public class Potion extends BaseItem implements BaseFunction{
         if(spriteCounter == 1200){
             setPrepareDelete(1);
         }
-
         if(spriteCounter > 1700){
             itemOnFloors.remove(this);
         }

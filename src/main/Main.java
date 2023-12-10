@@ -14,7 +14,6 @@ import java.io.File;
 public class Main extends Application {
     private Stage stage;
 
-
     public static void main(String[] args) {
         System.out.println("Hello and welcome!");
         launch(args);

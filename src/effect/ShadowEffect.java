@@ -24,11 +24,10 @@ public class ShadowEffect extends BaseEffect implements EffectFunction {
 
     public void loadpic(){
 
-        setEffect1(new Image("file:res/effect/shadow_1_1.png"));
-        setEffect2(new Image("file:res/effect/shadow_1_2.png"));
-        setEffect3(new Image("file:res/effect/shadow_2_1.png"));
-        setEffect4(new Image("file:res/effect/shadow_2_2.png"));
-
+        setEffect1(new Image(String.valueOf(ClassLoader.getSystemResource("effect/shadow_1_1.png"))));
+        setEffect2(new Image(String.valueOf(ClassLoader.getSystemResource("effect/shadow_1_2.png"))));
+        setEffect3(new Image(String.valueOf(ClassLoader.getSystemResource("effect/shadow_2_1.png"))));
+        setEffect4(new Image(String.valueOf(ClassLoader.getSystemResource("effect/shadow_2_2.png"))));
 
     }
 
@@ -63,7 +62,6 @@ public class ShadowEffect extends BaseEffect implements EffectFunction {
             }
         }
 
-
         if(Objects.equals(getOwner(), "player")){
             setX(player.getX()-17);
             setY(player.getY()-22);
@@ -72,14 +70,11 @@ public class ShadowEffect extends BaseEffect implements EffectFunction {
             setY(monster.getY()-22);
         }
 
-
         if(Objects.equals(getPhase(), "phaseDelete")){
             delete();
         }
 
     }
-
-
 
     @Override
     public void draw(GraphicsContext gc) {
@@ -118,13 +113,4 @@ public class ShadowEffect extends BaseEffect implements EffectFunction {
         Effects.remove(this);
     }
 
-    @Override
-    public boolean isDestroyed() {
-        return false;
-    }
-
-    @Override
-    public boolean isVisible() {
-        return false;
-    }
 }

@@ -2,11 +2,9 @@ package entity;
 
 import Item.BluePotion;
 import Item.CoffeePotion;
-import Item.Potion;
 import Item.RedPotion;
 import effect.ShadowEffect;
 import effect.diedEffect;
-import effect.spawnEffect;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
@@ -23,11 +21,12 @@ public class Monster extends Entity implements EntityFunction {
     private double HP;
     private double maxHP;
     private Image HPB;
-
+    private double damage;
     private boolean isAngry;
+    private boolean canWalk = true;
 
     public Monster(){
-        // just for calling updateAll and drawAll //
+        // for spawn monster //
     }
 
     public Monster(Player player){
@@ -40,13 +39,17 @@ public class Monster extends Entity implements EntityFunction {
 
         setPlayer(player);
 
-        setX(Math.floor(Math.random() *(800)));
-        setY(Math.floor(Math.random() *(600)));
+        setXY(Math.floor(Math.random() *(800)),Math.floor(Math.random() *(600)));
         setSpeed(0.3);
-        setMaxHP(100);
-        setHP(100);
+        setMaxHP(200+player.getLevel()*30);
+        setHP(getMaxHP());
+        setDamage(2+player.getLevel()*0.2);
         setDirection("down");
         setAngry(false);
+        setCanWalkDown(true);
+        setCanWalkUp(true);
+        setCanWalkLeft(true);
+        setCanWalkRight(true);
         loadpic();
         setShadowEffect(new ShadowEffect(this));
         Effects.add(getShadowEffect());
@@ -55,20 +58,20 @@ public class Monster extends Entity implements EntityFunction {
     }
 
     public void loadpic(){
-        setUp1(new Image("file:res/monster/monster_up_1.png"));
-        setUp2(new Image("file:res/monster/monster_up_2.png"));
-        setUp3(new Image("file:res/monster/monster_up_3.png"));
-        setDown1(new Image("file:res/monster/monster_down_1.png"));
-        setDown2(new Image("file:res/monster/monster_down_2.png"));
-        setDown3(new Image("file:res/monster/monster_down_3.png"));
-        setLeft1(new Image("file:res/monster/monster_left_1.png"));
-        setLeft2(new Image("file:res/monster/monster_left_2.png"));
-        setLeft3(new Image("file:res/monster/monster_left_3.png"));
-        setRight1(new Image("file:res/monster/monster_right_1.png"));
-        setRight2(new Image("file:res/monster/monster_right_2.png"));
-        setRight3(new Image("file:res/monster/monster_right_3.png"));
+        setUp1(new Image(String.valueOf(ClassLoader.getSystemResource("monster/monster_up_1.png"))));
+        setUp2(new Image(String.valueOf(ClassLoader.getSystemResource("monster/monster_up_2.png"))));
+        setUp3(new Image(String.valueOf(ClassLoader.getSystemResource("monster/monster_up_3.png"))));
+        setDown1(new Image(String.valueOf(ClassLoader.getSystemResource("monster/monster_down_1.png"))));
+        setDown2(new Image(String.valueOf(ClassLoader.getSystemResource("monster/monster_down_2.png"))));
+        setDown3(new Image(String.valueOf(ClassLoader.getSystemResource("monster/monster_down_3.png"))));
+        setLeft1(new Image(String.valueOf(ClassLoader.getSystemResource("monster/monster_left_1.png"))));
+        setLeft2(new Image(String.valueOf(ClassLoader.getSystemResource("monster/monster_left_2.png"))));
+        setLeft3(new Image(String.valueOf(ClassLoader.getSystemResource("monster/monster_left_3.png"))));
+        setRight1(new Image(String.valueOf(ClassLoader.getSystemResource("monster/monster_right_1.png"))));
+        setRight2(new Image(String.valueOf(ClassLoader.getSystemResource("monster/monster_right_2.png"))));
+        setRight3(new Image(String.valueOf(ClassLoader.getSystemResource("monster/monster_right_3.png"))));
 
-        setHPB(new Image("file:res/player/hpdemored.png"));
+        setHPB(new Image(String.valueOf(ClassLoader.getSystemResource("player/hpdemored.png"))));
 
     }
 
@@ -77,58 +80,15 @@ public class Monster extends Entity implements EntityFunction {
 
         setPlayer(player);
 
+        //if monster died player get EXP
         if(getHP() <= 0){
-
             delete();
             player.setExp(player.getExp()+15);
-
-        }
-        if(pow((player.getX()-getX()),2) + pow(player.getY()-getY(),2) < 70000){
-
-            setAngry(true);
-
-            if(player.getWaitForStart()<10){
-                if (player.getY()<getY()){
-                    setY(getY()-getSpeed());
-                    setDirection("up");
-                }
-                if (player.getX()<getX()){
-                    setX(getX()-getSpeed());
-                    setDirection("left");
-                }
-                if (player.getY()>getY()){
-                    setY(getY()+getSpeed());
-                    setDirection("down");
-                }
-                if (player.getX()>getX()){
-                    setX(getX()+getSpeed());
-                    setDirection("right");
-                }
-                if(Objects.equals(player.getDirection(), "right")){
-                    if(getX() >= player.getAttackObj().getX() && getX() <= player.getAttackObj().getX()+ player.getAttackObj().getRange() && getY() >= player.getAttackObj().getY() && getY()<= player.getAttackObj().getY()+player.getAttackObj().getSizeY()/2 && player.getAttackObj().isVisible()){
-                        setHP(getHP()-player.getAttackObj().getDamage());
-                    }
-                }else if(Objects.equals(player.getDirection(), "left")){
-                    if(getX() <= player.getAttackObj().getX() && getX() >= player.getAttackObj().getX()- player.getAttackObj().getRange() && getY() >= player.getAttackObj().getY() && getY()<= player.getAttackObj().getY()+player.getAttackObj().getSizeY()/2 && player.getAttackObj().isVisible()){
-                        setHP(getHP()-player.getAttackObj().getDamage());
-                    }
-                }else if(Objects.equals(player.getDirection(), "down")){
-                    if(getX() <= player.getX()+10 && getX()>=player.getX()-10 && getY()>= player.getY() && getY()<= player.getY()+player.getAttackObj().getRange() && player.getAttackObj().isVisible()){
-                        setHP(getHP()-player.getAttackObj().getDamage());
-                    }
-                }else if(Objects.equals(player.getDirection(), "up")){
-                    if(getX() <= player.getX()+20 && getX()>=player.getX()-20 && getY()<= player.getY() && getY()>= player.getY()-player.getAttackObj().getRange() && player.getAttackObj().isVisible()){
-                        setHP(getHP()-player.getAttackObj().getDamage());
-                    }
-                }
-            }
-        }else{
-            setAngry(false);
-        }
-        if(!isAngry()){
-            spriteNum = 1;
         }
 
+        //set default canWalk
+        setCanWalk(true);
+        MonsterWalkUpdate();
 
         if(isAngry){
             spriteCounter++;
@@ -146,65 +106,85 @@ public class Monster extends Entity implements EntityFunction {
                 spriteCounter = 0;
             }
         }
-
-
-        //System.out.println(getHP());
-
     }
 
+    public void Walk(){
+        if (player.getY()<getY()){
+            setY(getY()-getSpeed());
+            setDirection("up");
+        }
+        if (player.getX()<getX()){
+            setX(getX()-getSpeed());
+            setDirection("left");
+        }
+        if (player.getY()>getY() ){
+            setY(getY()+getSpeed());
+            setDirection("down");
+        }
+        if (player.getX()>getX()){
+            setX(getX()+getSpeed());
+            setDirection("right");
+        }
+    }
 
+    public void Attack(){
+        if(Objects.equals(player.getDirection(), "right")){
+            if(getX() >= player.getAttackObj().getX() && getX() <= player.getAttackObj().getX()+ player.getAttackObj().getRange() && getY() >= player.getAttackObj().getY() && getY()<= player.getAttackObj().getY()+player.getAttackObj().getSizeY()/2 && player.getAttackObj().isVisible()){
+                setHP(getHP()-player.getAttackObj().getDamage());
+            }
+        }else if(Objects.equals(player.getDirection(), "left")){
+            if(getX() <= player.getAttackObj().getX() && getX() >= player.getAttackObj().getX()- player.getAttackObj().getRange() && getY() >= player.getAttackObj().getY() && getY()<= player.getAttackObj().getY()+player.getAttackObj().getSizeY()/2 && player.getAttackObj().isVisible()){
+                setHP(getHP()-player.getAttackObj().getDamage());
+            }
+        }else if(Objects.equals(player.getDirection(), "down")){
+            if(getX() <= player.getX()+10 && getX()>=player.getX()-10 && getY()>= player.getY() && getY()<= player.getY()+player.getAttackObj().getRange() && player.getAttackObj().isVisible()){
+                setHP(getHP()-player.getAttackObj().getDamage());
+            }
+        }else if(Objects.equals(player.getDirection(), "up")){
+            if(getX() <= player.getX()+20 && getX()>=player.getX()-20 && getY()<= player.getY() && getY()>= player.getY()-player.getAttackObj().getRange() && player.getAttackObj().isVisible()){
+                setHP(getHP()-player.getAttackObj().getDamage());
+            }
+        }
+    }
+
+    public void AttackMorePower(){
+        if(getX()< player.getX()){
+            if(player.getAttackObj().isVisible() && Objects.equals(player.getDirection(), "left")){
+                setHP(getHP()-player.getAttackObj().getDamage());
+            }
+        }
+        if(getX()> player.getX()){
+            if(player.getAttackObj().isVisible() && Objects.equals(player.getDirection(), "right")){
+                setHP(getHP()-player.getAttackObj().getDamage());
+            }
+        }
+        if(getY()< player.getY()){
+            if(player.getAttackObj().isVisible() && Objects.equals(player.getDirection(), "up")){
+                setHP(getHP()-player.getAttackObj().getDamage());
+            }
+        }
+        if(getY()> player.getY()){
+            if(player.getAttackObj().isVisible() && Objects.equals(player.getDirection(), "down")){
+                setHP(getHP()-player.getAttackObj().getDamage());
+            }
+        }
+    }
 
     @Override
     public void draw(GraphicsContext gc) {
 
         switch(getDirection()) {
             case "up":
-                if(spriteNum == 1) {
-                    setCurrentImage(getUp1());
-                    //System.out.println(spriteNum);
-                }
-                if(spriteNum == 2) {
-                    setCurrentImage(getUp2());
-                    //System.out.println(spriteNum);
-                }
-                if(spriteNum == 3){
-                    setCurrentImage(getUp3());
-                }
+                SetImageForDrawUp();
                 break;
             case "down":
-                if(spriteNum == 1) {
-                    setCurrentImage(getDown1());
-                }
-                if(spriteNum == 2) {
-                    setCurrentImage(getDown2());
-                }
-                if(spriteNum == 3){
-                    setCurrentImage(getDown3());
-                }
+                SetImageForDrawDown();
                 break;
             case "right":
-                if(spriteNum == 1) {
-                    setCurrentImage(getRight1());
-                }
-                if(spriteNum == 2) {
-                    setCurrentImage(getRight2());
-                }
-                if(spriteNum == 3){
-                    setCurrentImage(getRight3());
-                }
+                SetImageForDrawRight();
                 break;
             case "left":
-                if(spriteNum == 1) {
-                    setCurrentImage(getLeft1()
-                    );
-                }
-                if(spriteNum == 2) {
-                    setCurrentImage(getLeft2());
-                }
-                if(spriteNum == 3){
-                    setCurrentImage(getLeft3());
-                }
-                break;
+                SetImageForDrawLeft();
         }
 
         gc.drawImage(getCurrentImage(),getX(),getY());
@@ -212,14 +192,69 @@ public class Monster extends Entity implements EntityFunction {
 
     }
 
+    public void SetImageForDrawLeft(){
+        if(spriteNum == 1) {
+            setCurrentImage(getLeft1());
+        }
+        if(spriteNum == 2) {
+            setCurrentImage(getLeft2());
+        }
+        if(spriteNum == 3){
+            setCurrentImage(getLeft3());
+        }
+    }
+    public void SetImageForDrawRight(){
+        if(spriteNum == 1) {
+            setCurrentImage(getRight1());
+        }
+        if(spriteNum == 2) {
+            setCurrentImage(getRight2());
+        }
+        if(spriteNum == 3){
+            setCurrentImage(getRight3());
+        }
+    }
+    public void SetImageForDrawDown(){
+        if(spriteNum == 1) {
+            setCurrentImage(getDown1());
+        }
+        if(spriteNum == 2) {
+            setCurrentImage(getDown2());
+        }
+        if(spriteNum == 3){
+            setCurrentImage(getDown3());
+        }
+    }
+    public void SetImageForDrawUp(){
+        if(spriteNum == 1) {
+            setCurrentImage(getUp1());
+        }
+        if(spriteNum == 2) {
+            setCurrentImage(getUp2());
+        }
+        if(spriteNum == 3){
+            setCurrentImage(getUp3());
+        }
+    }
+
     public void delete(){
         Effects.add(new diedEffect(this,player));
-        itemOnFloors.add(new CoffeePotion(this,player));
-        itemOnFloors.add(new RedPotion(this,player));
-        itemOnFloors.add(new BluePotion(this,player));
+        switch (spriteNum){
+            case 1:
+                itemOnFloors.add(new CoffeePotion(this,player));
+                break;
+            case 2:
+                itemOnFloors.add(new RedPotion(this,player));
+                break;
+            case 3:
+                itemOnFloors.add(new BluePotion(this,player));
+                break;
+        }
+        if(spriteNum == 1){
+            monsters.add(new Monster(player));  // random generate 2 monsters if 1 monster died
+        }
         monsters.add(new Monster(player));
-        monsters.add(new Monster(player));
-        if(player.getMonsterDied() == 5){
+        if(player.getMonsterDied() == 10){
             player.setMonsterDied(0);
             monsters.add(new Boss(player));
         }
@@ -240,7 +275,6 @@ public class Monster extends Entity implements EntityFunction {
                         monsters.get(i).update(player);
                         break;
                 }
-
             }
         }
     }
@@ -256,51 +290,54 @@ public class Monster extends Entity implements EntityFunction {
                         ((Boss) monsters.get(i)).draw(gc);
                         break;
                 }
-
             }
         }
     }
 
-    @Override
-    public boolean isDestroyed() {
-        return false;
+    public void setXY(double x,double y){
+        while(x<330&&y<130){
+            x = Math.floor(Math.random() *(800));
+            y = Math.floor(Math.random() *(600));
+        }
+        if(x>770){
+            x=770;
+        }
+        if(x<30){
+            x=30;
+        }
+        if(y<20){
+            y=20;
+        }
+        if(y>480){
+            y=480;
+        }
+        setX(x);
+        setY(y);
     }
 
-    @Override
-    public boolean isVisible() {
-        return true;
-    }
+    public void MonsterWalkUpdate(){
+        if(pow((player.getX()-getX()),2) + pow(player.getY()-getY(),2) < 800){
+            player.setHP(player.getHP()-getDamage());
+            setCanWalk(false);
+        }
 
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
+        if(pow((player.getX()-getX()),2) + pow(player.getY()-getY(),2) < 70000){
 
-    public Image getHPB() {
-        return HPB;
-    }
-
-    public void setHPB(Image HPB) {
-        this.HPB = HPB;
-    }
-
-    public double getMaxHP() {
-        return maxHP;
-    }
-
-    public void setMaxHP(double maxHP) {
-        this.maxHP = maxHP;
-    }
-
-    public boolean isAngry() {
-        return isAngry;
-    }
-
-    public void setAngry(boolean angry) {
-        isAngry = angry;
-    }
-
-    public double getHP() {
-        return HP;
+            setAngry(true);
+            if(player.getWaitForStart()<10){
+                if(isCanWalk()){
+                    Walk();
+                    Attack();
+                }else {
+                    AttackMorePower();
+                }
+            }
+        }else{
+            setAngry(false);
+        }
+        if(!isAngry()){
+            spriteNum = 1;
+        }
     }
 
     public void setHP(double HP) {
@@ -314,7 +351,45 @@ public class Monster extends Entity implements EntityFunction {
         double dot = getMaxHP()/32;
         int dots = (int)(getHP()/dot);
         for(int i=0;i<dots;i++){
-            gc.drawImage(getHPB(),getX()-6+i,getY()-5);
+            gc.drawImage(getHPB(),getX()+i,getY()-5);
         }
+    }
+
+    // getter setter for Monster
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+    public Image getHPB() {
+        return HPB;
+    }
+    public void setHPB(Image HPB) {
+        this.HPB = HPB;
+    }
+    public double getMaxHP() {
+        return maxHP;
+    }
+    public void setMaxHP(double maxHP) {
+        this.maxHP = maxHP;
+    }
+    public boolean isAngry() {
+        return isAngry;
+    }
+    public void setAngry(boolean angry) {
+        isAngry = angry;
+    }
+    public double getHP() {
+        return HP;
+    }
+    public void setDamage(double damage) {
+        this.damage = damage;
+    }
+    public double getDamage() {
+        return damage;
+    }
+    public boolean isCanWalk() {
+        return canWalk;
+    }
+    public void setCanWalk(boolean canWalk) {
+        this.canWalk = canWalk;
     }
 }

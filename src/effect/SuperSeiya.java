@@ -17,9 +17,8 @@ public class SuperSeiya extends BaseEffect implements EffectFunction{
 
     public void loadpic(){
 
-        setEffect1(new Image("file:res/effect/SuperSeiya_1.png"));
-        setEffect2(new Image("file:res/effect/SuperSeiya_2.png"));
-
+        setEffect1(new Image(String.valueOf(ClassLoader.getSystemResource("effect/SuperSeiya_1.png"))));
+        setEffect2(new Image(String.valueOf(ClassLoader.getSystemResource("effect/SuperSeiya_2.png"))));
 
     }
 
@@ -39,7 +38,6 @@ public class SuperSeiya extends BaseEffect implements EffectFunction{
             spriteCounter = 0;
         }
 
-
         if(Objects.equals(getPhase(), "phaseDelete")){
             delete();
         }
@@ -51,7 +49,7 @@ public class SuperSeiya extends BaseEffect implements EffectFunction{
             delete();
         }
 
-        getPlayer().setMana(getPlayer().getMana()-1);
+        getPlayer().setMana(getPlayer().getMana()-3);
 
 
     }
@@ -84,13 +82,4 @@ public class SuperSeiya extends BaseEffect implements EffectFunction{
         Effects.remove(this);
     }
 
-    @Override
-    public boolean isDestroyed() {
-        return false;
-    }
-
-    @Override
-    public boolean isVisible() {
-        return false;
-    }
 }

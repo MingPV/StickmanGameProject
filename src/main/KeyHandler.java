@@ -8,8 +8,6 @@ import java.util.ArrayList;
 public class KeyHandler {
 
     private static ArrayList<KeyCode> keyPressed = new ArrayList<>();
-
-    public boolean upPressed, downPressed, leftPressed, rightPressed;
     public static boolean getKeyPressed(KeyCode keycode) {
         return keyPressed.contains(keycode);
     }

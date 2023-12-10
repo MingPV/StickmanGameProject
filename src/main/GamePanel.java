@@ -1,24 +1,20 @@
 package main;
 
-import Item.BaseForItem;
 import Item.BaseItem;
 import effect.BaseEffect;
-import effect.Effect;
-import effect.diedEffect;
 import entity.*;
 import font.Number;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
-import tile.Background;
+import Background.Background;
 
 import java.util.ArrayList;
 
 
 public class GamePanel extends Canvas {
 
-    KeyHandler keyH = new KeyHandler();
     Player player = new Player();
     Monster monster = new Monster(player);
     public static Number number = new Number();
@@ -30,6 +26,7 @@ public class GamePanel extends Canvas {
     public static ArrayList<BaseItem> itemOnFloors = new ArrayList<BaseItem>();
     public static ArrayList<BaseProp> Props = new ArrayList<BaseProp>();
 
+    public static boolean GameOver = false;
 
     Background background = new Background();
 
@@ -42,9 +39,8 @@ public class GamePanel extends Canvas {
 
 
         gc.setFill(Color.BLACK);
-        //gc.fillRect(0,0,width, height);
 
-        //fix some shadow
+        //fix shadow
         Effects.remove(monster.getShadowEffect());
         setAllProp();
 
@@ -75,21 +71,27 @@ public class GamePanel extends Canvas {
     }
 
     public void paintComponent(){
+
         background.draw(gc);
         baseItemOnFloor.drawAll(gc);
-        player.draw(gc);
-        monster.drawAll(monsters,gc);
         Effect.drawAll(gc);
+        monster.drawAll(monsters,gc);
+        player.draw(gc);
         player.getInventoryBar().draw(gc);
         baseProp.drawAll(gc);
 
     }
 
     public void setAllProp(){
-        Props.add(new ChristmasTree(400,300));
-        Props.add(new Gift(450,300));
-        Props.add(new Gift2(500,300));
-        Props.add(new Snowman(550,300));
+        Props.add(new ChristmasTree(-55,450));
+        Props.add(new ChristmasTree(-70,300));
+        Props.add(new ChristmasTree(-80,120));
+        Props.add(new Gift(25,575));
+        Props.add(new Gift2(5,570));
+        Props.add(new ChristmasTree(700,450));
+        Props.add(new Gift(780,574));
+        Props.add(new Gift2(765,570));
+        Props.add(new Snowman(670,502));
 
     }
 

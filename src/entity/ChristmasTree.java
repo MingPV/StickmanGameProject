@@ -5,10 +5,10 @@ import javafx.scene.image.Image;
 
 public class ChristmasTree extends BaseProp implements PropFunction{
     public ChristmasTree(int x, int y) {
-        super(x, y);
 
+        super(x, y);
         setPropClass(ChristmasTree.class);
-        setPropImage(new Image("file:res/prop/ChristmasTree.png"));
+        setPropImage(new Image(String.valueOf(ClassLoader.getSystemResource("prop/ChristmasTree.png")),150,150,false,false));
 
     }
 
@@ -19,16 +19,6 @@ public class ChristmasTree extends BaseProp implements PropFunction{
     @Override
     public void draw(GraphicsContext gc) {
         gc.drawImage(getPropImage(),getX(),getY());
-
     }
 
-    @Override
-    public boolean isDestroyed() {
-        return false;
-    }
-
-    @Override
-    public boolean isVisible() {
-        return false;
-    }
 }

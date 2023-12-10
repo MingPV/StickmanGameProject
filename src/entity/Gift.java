@@ -7,7 +7,7 @@ public class Gift extends BaseProp implements PropFunction {
     public Gift(int x, int y) {
         super(x, y);
         setPropClass(Gift.class);
-        setPropImage(new Image("file:res/prop/Gift.png"));
+        setPropImage(new Image(String.valueOf(ClassLoader.getSystemResource("prop/Gift.png"))));
     }
 
     public void update(){
@@ -19,13 +19,4 @@ public class Gift extends BaseProp implements PropFunction {
         gc.drawImage(getPropImage(),getX(),getY());
     }
 
-    @Override
-    public boolean isDestroyed() {
-        return false;
-    }
-
-    @Override
-    public boolean isVisible() {
-        return false;
-    }
 }

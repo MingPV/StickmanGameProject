@@ -31,7 +31,7 @@ public class MusicController {
     public static void showMusicControllerPopup(Button button) {
 
         Popup popup = new Popup();
-        popup.setAutoHide(false);
+        popup.setAutoHide(true);
 
         Slider volumeSlider = new Slider(0, 100, mediaPlayer.getVolume() * 100);
         volumeSlider.setShowTickLabels(false);
