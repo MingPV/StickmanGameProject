@@ -3,7 +3,7 @@ package entity;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-import static main.GamePanel.Props;
+import static main.GamePanel.props;
 
 public class BaseProp extends Prop {
 
@@ -23,20 +23,20 @@ public class BaseProp extends Prop {
     }
 
     public void updateAll() {
-        if (!Props.isEmpty()) {
-            for (int i = 0; i < Props.size(); i++) {
-                switch (String.valueOf(Props.get(i).getClass())) {
+        if (!props.isEmpty()) {
+            for (int i = 0; i < props.size(); i++) {
+                switch (String.valueOf(props.get(i).getClass())) {
                     case "class entity.ChristmasTree":
-                        ((ChristmasTree) Props.get(i)).update();
+                        ((ChristmasTree) props.get(i)).update();
                         break;
                     case "class entity.Gift":
-                        ((Gift) Props.get(i)).update();
+                        ((Gift) props.get(i)).update();
                         break;
                     case "class entity.Gift2":
-                        ((Gift2) Props.get(i)).update();
+                        ((Gift2) props.get(i)).update();
                         break;
                     case "class entity.Snowman":
-                        ((Snowman) Props.get(i)).update();
+                        ((Snowman) props.get(i)).update();
                         break;
                 }
             }
@@ -44,20 +44,20 @@ public class BaseProp extends Prop {
     }
 
     public void drawAll(GraphicsContext gc) {
-        if (!Props.isEmpty()) {
-            for (int i = 0; i < Props.size(); i++) {
-                switch (String.valueOf(Props.get(i).getClass())) {
+        if (!props.isEmpty()) {
+            for (int i = 0; i < props.size(); i++) {
+                switch (String.valueOf(props.get(i).getClass())) {
                     case "class entity.ChristmasTree":
-                        ((ChristmasTree) Props.get(i)).draw(gc);
+                        ((ChristmasTree) props.get(i)).draw(gc);
                         break;
                     case "class entity.Gift":
-                        ((Gift) Props.get(i)).draw(gc);
+                        ((Gift) props.get(i)).draw(gc);
                         break;
                     case "class entity.Gift2":
-                        ((Gift2) Props.get(i)).draw(gc);
+                        ((Gift2) props.get(i)).draw(gc);
                         break;
                     case "class entity.Snowman":
-                        ((Snowman) Props.get(i)).draw(gc);
+                        ((Snowman) props.get(i)).draw(gc);
                         break;
                 }
             }

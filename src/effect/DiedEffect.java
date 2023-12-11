@@ -7,12 +7,12 @@ import javafx.scene.image.Image;
 
 import java.util.Objects;
 
-import static main.GamePanel.Effects;
+import static main.GamePanel.effects;
 
-public class DiedEffect extends BaseEffect implements EffectFunction {
+public class DiedEffect extends BaseEffect implements EffectFunctionable {
 
 
-    Monster monster;
+    public Monster monster;
 
     int count = 0;
 
@@ -103,7 +103,7 @@ public class DiedEffect extends BaseEffect implements EffectFunction {
     }
 
     public void delete() {
-        Effects.remove(this);
+        effects.remove(this);
     }
 
 

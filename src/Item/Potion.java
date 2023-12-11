@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
 import static java.lang.Math.pow;
 import static main.GamePanel.itemOnFloors;
 
-public class Potion extends BaseItem implements ItemFunction {
+public class Potion extends BaseItem implements ItemFunctionable {
 
     public Potion(int slotNumber) {
         super(slotNumber);
@@ -43,7 +43,7 @@ public class Potion extends BaseItem implements ItemFunction {
         } else if (spriteNum == 3) {
             if (player != null) {
                 if (pow(player.getX() - getX(), 2) <= 60 && pow(player.getY() + 15 - getY(), 2) <= 500) {
-                    additem(player);
+                    addItem(player);
                 }
             }
         }
@@ -77,7 +77,7 @@ public class Potion extends BaseItem implements ItemFunction {
     }
 
     @Override
-    public void additem(Player player) {
+    public void addItem(Player player) {
 
         for (int i = 0; i < player.getInventoryBar().getItems().size(); i++) {
             if (player.getInventoryBar().getItems().get(i).getClass() == getItemClass()) {

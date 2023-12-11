@@ -3,7 +3,7 @@ package entity;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class Gift2 extends BaseProp implements PropFunction {
+public class Gift2 extends BaseProp implements PropFunctionable {
     public Gift2(int x, int y) {
         super(x, y);
         setPropClass(Gift2.class);

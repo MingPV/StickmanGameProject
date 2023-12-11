@@ -17,11 +17,11 @@ public class InventoryBar {
     public static int selectedSlot;
     private ArrayList<BaseItem> items;
     private Player player;
-    private Image InventoryB;
-    private Image SelectedSlotImage;
+    private Image inventoryB;
+    private Image selectedSlotImage;
     private boolean pressed;
-    private String ImageURL;
-    private String SelectedImageURL;
+    private String imageURL;
+    private String selectedImageURL;
 
     public InventoryBar() {
         setDefaultValues();
@@ -44,8 +44,8 @@ public class InventoryBar {
 
 
     public void draw(GraphicsContext gc) {
-        gc.drawImage(InventoryB, 0, 500);
-        gc.drawImage(SelectedSlotImage, selectedSlot * 60, 500);
+        gc.drawImage(inventoryB, 0, 500);
+        gc.drawImage(selectedSlotImage, selectedSlot * 60, 500);
         drawItemInInventory(gc);
     }
 
@@ -165,11 +165,11 @@ public class InventoryBar {
     }
 
     public void setSelectedSlotImage(Image selectedSlotImage) {
-        SelectedSlotImage = selectedSlotImage;
+        this.selectedSlotImage = selectedSlotImage;
     }
 
     public void setInventoryB(Image inventoryB) {
-        InventoryB = inventoryB;
+        this.inventoryB = inventoryB;
     }
 
     public void setPressed(boolean pressed) {
@@ -185,18 +185,18 @@ public class InventoryBar {
     }
 
     public String getImageURL() {
-        return ImageURL;
+        return imageURL;
     }
 
     public void setImageURL(String imageURL) {
-        ImageURL = imageURL;
+        this.imageURL = imageURL;
     }
 
     public String getSelectedImageURL() {
-        return SelectedImageURL;
+        return selectedImageURL;
     }
 
     public void setSelectedImageURL(String selectedImageURL) {
-        SelectedImageURL = selectedImageURL;
+        this.selectedImageURL = selectedImageURL;
     }
 }

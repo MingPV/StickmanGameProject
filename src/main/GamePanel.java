@@ -1,6 +1,6 @@
 package main;
 
-import Background.Background;
+import background.Background;
 import Item.BaseItem;
 import effect.BaseEffect;
 import entity.*;
@@ -17,18 +17,18 @@ public class GamePanel extends Canvas {
 
     public static Number number = new Number();
     public static ArrayList<Monster> monsters = new ArrayList<>();
-    public static ArrayList<BaseEffect> Effects = new ArrayList<>();
+    public static ArrayList<BaseEffect> effects = new ArrayList<>();
     public static ArrayList<BaseItem> itemOnFloors = new ArrayList<>();
-    public static ArrayList<BaseProp> Props = new ArrayList<>();
-    public static boolean GameOver = false;
-    Player player = new Player();
-    Monster monster = new Monster(player);
-    BaseEffect Effect = new BaseEffect(monster, player);
-    BaseItem baseItemOnFloor = new BaseItem(monster, player);
-    BaseProp baseProp = new BaseProp(0, 0);
-    Background background = new Background();
+    public static ArrayList<BaseProp> props = new ArrayList<>();
+    public static boolean isGameOver = false;
+    public Player player = new Player();
+    public Monster monster = new Monster(player);
+    public BaseEffect effect = new BaseEffect(monster, player);
+    public BaseItem baseItemOnFloor = new BaseItem(monster, player);
+    public BaseProp baseProp = new BaseProp(0, 0);
+    public Background background = new Background();
 
-    GraphicsContext gc = this.getGraphicsContext2D();
+    public GraphicsContext gc = this.getGraphicsContext2D();
 
     public GamePanel(double width, double height) {
         super(width, height);
@@ -39,7 +39,7 @@ public class GamePanel extends Canvas {
         gc.setFill(Color.BLACK);
 
         //fix shadow
-        Effects.remove(monster.getShadowEffect());
+        effects.remove(monster.getShadowEffect());
         setAllProp();
 
     }
@@ -58,7 +58,7 @@ public class GamePanel extends Canvas {
         if (player != null) {
             player.update();
             monster.updateAll(monsters);
-            Effect.updateAll(player);
+            effect.updateAll(player);
             baseItemOnFloor.updateAll(player);
             baseProp.updateAll();
         }
@@ -70,7 +70,7 @@ public class GamePanel extends Canvas {
         if (player != null) {
             background.draw(gc);
             baseItemOnFloor.drawAll(gc);
-            Effect.drawAll(gc);
+            effect.drawAll(gc);
             monster.drawAll(monsters, gc);
             player.draw(gc);
             player.getInventoryBar().draw(gc);
@@ -80,24 +80,24 @@ public class GamePanel extends Canvas {
     }
 
     public void setAllProp() {
-        Props.add(new ChristmasTree(-55, 450));
-        Props.add(new ChristmasTree(-70, 300));
-        Props.add(new ChristmasTree(-80, 120));
-        Props.add(new Gift(25, 575));
-        Props.add(new Gift2(5, 570));
-        Props.add(new ChristmasTree(700, 450));
-        Props.add(new Gift(780, 574));
-        Props.add(new Gift2(765, 570));
-        Props.add(new Snowman(670, 502));
+        props.add(new ChristmasTree(-55, 450));
+        props.add(new ChristmasTree(-70, 300));
+        props.add(new ChristmasTree(-80, 120));
+        props.add(new Gift(25, 575));
+        props.add(new Gift2(5, 570));
+        props.add(new ChristmasTree(700, 450));
+        props.add(new Gift(780, 574));
+        props.add(new Gift2(765, 570));
+        props.add(new Snowman(670, 502));
 
     }
 
     public void setAllDefaultValues() {
         player = null;
         monsters.clear();
-        Effects.clear();
+        effects.clear();
         itemOnFloors.clear();
-        Props.clear();
+        props.clear();
     }
 
 

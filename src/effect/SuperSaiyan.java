@@ -6,9 +6,9 @@ import javafx.scene.image.Image;
 
 import java.util.Objects;
 
-import static main.GamePanel.Effects;
+import static main.GamePanel.effects;
 
-public class SuperSaiyan extends BaseEffect implements EffectFunction {
+public class SuperSaiyan extends BaseEffect implements EffectFunctionable {
     public SuperSaiyan(Player player) {
         super(player);
         setEffectClass(SuperSaiyan.class);
@@ -78,7 +78,7 @@ public class SuperSaiyan extends BaseEffect implements EffectFunction {
     }
 
     public void delete() {
-        Effects.remove(this);
+        effects.remove(this);
     }
 
 }

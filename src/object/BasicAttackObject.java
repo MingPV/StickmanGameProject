@@ -10,7 +10,7 @@ import java.util.Objects;
 import static scenes.SelectedScene.selectedCharacter;
 
 
-public class BasicAttackObject extends AttackObject implements AttackObjectFunction {
+public class BasicAttackObject extends AttackObject implements AttackObjectFunctionable {
 
 
     public BasicAttackObject(Player player) {

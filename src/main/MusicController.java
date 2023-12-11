@@ -21,7 +21,9 @@ public class MusicController {
     private static MediaPlayer mediaPlayer;
 
     public static void playMusic() {
-        Media backgroundMusic = new Media(new File(MUSIC_FILE_PATH).toURI().toString());
+
+        Media backgroundMusic=new Media(ClassLoader.getSystemResource("element/soundtrack.mp3").toString());
+
 
         mediaPlayer = new MediaPlayer(backgroundMusic);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
@@ -58,8 +60,8 @@ public class MusicController {
     }
 
     private static Button createSoundButton() {
-        Image soundOpen = new Image("file:res/element/sound.png");
-        Image soundClose = new Image("file:res/element/close_Volume.png");
+        Image soundOpen = new Image("element/sound.png");
+        Image soundClose = new Image("element/close_Volume.png");
 
         ImageView soundLoud = new ImageView(soundOpen);
         soundLoud.setFitWidth(20);
@@ -82,7 +84,7 @@ public class MusicController {
         popupSetting.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
         popupSetting.setAlignment(Pos.CENTER_LEFT);
         popupSetting.setStyle("-fx-background-color: transparent;" +
-                "-fx-background-image: url(file:res/element/volumeSetting.png);" +
+                "-fx-background-image: url(element/volumeSetting.png);" +
                 "-fx-background-size: cover;" + "-fx-background-size: contain;" + "-fx-background-repeat: no-repeat;");
         popupSetting.setMaxHeight(40);
     }

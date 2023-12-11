@@ -1,75 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="72d6a0c5-5d8e-4596-8aa8-7f1363aef7c6" name="Changes" comment="">
+    <list default="true" id="3bba2e9f-5c1b-4db9-b360-3be0cd240e52" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/2110215__zipdrop.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/2110215__zipdrop1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/StartScene.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/element/soundtrack.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/res/element/soundtrack.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2110215--zipdrop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/2110215--zipdrop.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoffeeSlayer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CoffeeSlayer.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newgamedemo0.iml" beforeDir="false" afterPath="$PROJECT_DIR$/newgamedemo0.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Background/Background.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Background/Background.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Inventory/InventoryBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Inventory/InventoryBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item/BaseForItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item/BaseFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/ItemFunction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Item/BaseItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/BaseItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Item/BluePotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/BluePotion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Item/CoffeePotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/CoffeePotion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Item/DragonBallBeans.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/DragonBallBeans.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Item/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Item/ItemFunction.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Item/Potion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/Potion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Item/RedPotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/RedPotion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/effect/BaseEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/BaseEffect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/effect/DiedEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/DiedEffect.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/effect/Effect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/Effect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/effect/EffectFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/EffectFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/effect/EffectFunction.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/effect/ShadowEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/ShadowEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/effect/SuperSeiya.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/SuperSaiyan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/effect/diedEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/DiedEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/effect/spawnEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/SpawnEffect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/effect/SpawnEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/SpawnEffect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/effect/SuperSaiyan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/SuperSaiyan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/BaseProp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/BaseProp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Boss.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/ChristmasTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/ChristmasTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/EntityFunction.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Gift.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Gift.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Gift2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Gift2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Monster.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Prop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Prop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/PropFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/PropFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/PropFunction.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Snowman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Snowman.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/font/Number.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/font/Number.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/MusicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MusicController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/AttackObj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/BasicAttackObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/basicAttack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/AttackObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/basicAttackFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/AttackObjectFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/AttackObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/AttackObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/AttackObjectFunction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/BasicAttackObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/BasicAttackObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/profile/ProfileBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/profile/ProfileBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scenes/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/GameScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scenes/SelectedScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/SelectedScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scenes/StartScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/StartScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/umltest2.puml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Enum" />
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 0
-}</component>
-  <component name="ProjectId" id="2ZE030Y6uc0Zd7BPdsjEf5nRiw5" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2ZPK7GJeqsdnQN7o1gWv8Vtttjc" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -80,39 +81,23 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/ChenS/IdeaProjects/Lab5_2110215_2023_1_6530249621_Pavee",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15527344",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\ChenS\IdeaProjects\2110215--zipdrop\res\monster" />
-      <recent name="C:\Users\ChenS\IdeaProjects\2110215--zipdrop\res\item" />
-      <recent name="C:\Users\ChenS\IdeaProjects\2110215--zipdrop\res\effect" />
-      <recent name="C:\Users\ChenS\IdeaProjects\2110215--zipdrop\res\prop" />
-      <recent name="C:\Users\ChenS\IdeaProjects\2110215--zipdrop\res\player" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="Inventory" />
-    </key>
-  </component>
   <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-21" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.Main" />
       <module name="2110215--zipdrop" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Users\ChenS\javafx-sdk-21.0.1\lib --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.media " />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\ChenS\javafx-sdk-21.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.media" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <module name="2110215--zipdrop" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Users\ChenS\javafx-sdk-21.0.1\lib --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.media " />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\ChenS\javafx-sdk-21.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.media" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -121,11 +106,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="72d6a0c5-5d8e-4596-8aa8-7f1363aef7c6" name="Changes" comment="" />
-      <created>1701971728545</created>
+      <changelist id="3bba2e9f-5c1b-4db9-b360-3be0cd240e52" name="Changes" comment="" />
+      <created>1702318105596</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1701971728545</updated>
+      <updated>1702318105596</updated>
     </task>
     <servers />
   </component>

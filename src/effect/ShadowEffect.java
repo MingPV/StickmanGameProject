@@ -7,9 +7,9 @@ import javafx.scene.image.Image;
 
 import java.util.Objects;
 
-import static main.GamePanel.Effects;
+import static main.GamePanel.effects;
 
-public class ShadowEffect extends BaseEffect implements EffectFunction {
+public class ShadowEffect extends BaseEffect implements EffectFunctionable {
 
     public ShadowEffect(Player player) {
         super(player);
@@ -110,7 +110,7 @@ public class ShadowEffect extends BaseEffect implements EffectFunction {
     }
 
     public void delete() {
-        Effects.remove(this);
+        effects.remove(this);
     }
 
 }

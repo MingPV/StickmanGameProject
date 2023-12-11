@@ -17,14 +17,14 @@ import java.util.Objects;
 import static main.GamePanel.*;
 import static scenes.SelectedScene.selectedCharacter;
 
-public class Player extends Entity implements EntityFunction {
+public class Player extends Entity implements EntityFunctionable {
 
-    BasicAttackObject attackObj;
-    InventoryBar inventoryBar;
+    private BasicAttackObject attackObj;
+    private InventoryBar inventoryBar;
     private double playerX;
     private double playerY;
     private int level;
-    private double HP;
+    private double hp;
     private double maxHP;
     private double mana;
     private double maxMana;
@@ -60,12 +60,12 @@ public class Player extends Entity implements EntityFunction {
 
         if (Objects.equals(selectedCharacter, "1")) {
             setMaxHP(4000);
-            setHP(4000);
+            setHp(4000);
             setMaxMana(4000);
             setMana(4000);
         } else if (Objects.equals(selectedCharacter, "2")) {
             setMaxHP(3000);
-            setHP(3000);
+            setHp(3000);
             setMaxMana(5000);
             setMana(5000);
         }
@@ -116,9 +116,9 @@ public class Player extends Entity implements EntityFunction {
             setY(getY() + 10);
         } else {
             setSpawned(true);
-            Effects.add(new SpawnEffect(this));
+            effects.add(new SpawnEffect(this));
             setShadowEffect(new ShadowEffect(this));
-            Effects.add(getShadowEffect());
+            effects.add(getShadowEffect());
         }
     }
 
@@ -197,10 +197,10 @@ public class Player extends Entity implements EntityFunction {
         profileBox.update(this);
 
         //Game over or not
-        if (getHP() <= 0 || getSleepiness() >= getMaxSleepiness()) {
-            GameOver = true;
+        if (getHp() <= 0 || getSleepiness() >= getMaxSleepiness()) {
+            isGameOver = true;
         }
-        if (GameOver) {
+        if (isGameOver) {
             System.out.println(" Game Over !!");
         }
 
@@ -260,13 +260,13 @@ public class Player extends Entity implements EntityFunction {
 
     public void drawHp(GraphicsContext gc) {
         double dot = getMaxHP() / 32;
-        int dots = (int) (getHP() / dot);
+        int dots = (int) (getHp() / dot);
         for (int i = 0; i < dots; i++) {
             gc.drawImage(getHPB(), getX() + i, getY() - 7);
 
         }
         double dot2 = getMaxHP() / 112;
-        int dots2 = (int) (getHP() / dot2);
+        int dots2 = (int) (getHp() / dot2);
         for (int i = 0; i < dots2 - 1; i++) {
             gc.drawImage(getHPB2(), 165 + i, 29);
         }
@@ -306,7 +306,7 @@ public class Player extends Entity implements EntityFunction {
         if (!isPressedV() && !isSuperSaiyan()) {
             if (KeyHandler.getKeyPressed(KeyCode.V)) {
                 setSuperSaiyan(new SuperSaiyan(this));
-                Effects.add(getSuperSeiya());
+                effects.add(getSuperSeiya());
                 setSuperSeiya(true);
                 setPressedV(true);
                 setSpeed(getSpeed() + 1);
@@ -314,7 +314,7 @@ public class Player extends Entity implements EntityFunction {
             }
         } else if (!isPressedV() && isSuperSaiyan()) {
             if (KeyHandler.getKeyPressed(KeyCode.V)) {
-                Effects.remove(getSuperSeiya());
+                effects.remove(getSuperSeiya());
                 setSuperSeiya(false);
                 setPressedV(true);
                 setSpeed(getSpeed() - 1);
@@ -335,7 +335,7 @@ public class Player extends Entity implements EntityFunction {
             setWaitForStart(getWaitForStart() - 1);
         }
 
-        setHP(getHP() + 0.2);
+        setHp(getHp() + 0.2);
         setMana(getMana() + 0.2);
         setSleepCounter(getSleepCounter() + 2);
 
@@ -431,18 +431,18 @@ public class Player extends Entity implements EntityFunction {
         this.playerY = playerY;
     }
 
-    public double getHP() {
-        return HP;
+    public double getHp() {
+        return hp;
     }
 
-    public void setHP(double HP) {
-        if (HP > getMaxHP()) {
-            HP = getMaxHP();
+    public void setHp(double hp) {
+        if (hp > getMaxHP()) {
+            hp = getMaxHP();
         }
-        if (getHP() < 0) {
-            HP = 0;
+        if (getHp() < 0) {
+            hp = 0;
         }
-        this.HP = HP;
+        this.hp = hp;
     }
 
     public double getMaxHP() {
@@ -473,7 +473,7 @@ public class Player extends Entity implements EntityFunction {
             setMaxExp(getMaxExp() + 40); // add MaxEXP+40
             setMaxHP(getMaxHP() + 0.1 * (getMaxHP())); // add MaxHP+10%
             setMaxMana(getMaxMana() + 0.1 * (getMaxMana())); // add MaxMana+10%
-            setHP(getMaxHP()); // Re HP
+            setHp(getMaxHP()); // Re HP
             setMana(getMaxMana()); // Re Mana
             getAttackObj().setDamage(getAttackObj().getDamage() + getAttackObj().getDamage() * 0.3); // add damage+30%
             setLevel(getLevel() + 1);

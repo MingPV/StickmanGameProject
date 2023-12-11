@@ -35,8 +35,8 @@ public class GameScene extends Scene {
             public void handle(long l) {
                 try {
                     gamePanel.update();
-                    if (GamePanel.GameOver) {
-                        GamePanel.GameOver = false;
+                    if (GamePanel.isGameOver) {
+                        GamePanel.isGameOver = false;
                         System.out.println("Game Over. Showing Retry Pane.");
                         retryPane.setVisible(true);
                         gamePanel.setAllDefaultValues();
@@ -71,13 +71,13 @@ public class GameScene extends Scene {
         retryButton.setFont(Font.font("Courier New", FontWeight.BOLD, 25));
         retryButton.setPrefSize(250, 80);
         retryButton.setStyle("-fx-background-color: transparent;" +
-                "-fx-background-image: url(file:res/element/player.png);" +
+                "-fx-background-image: url(res/element/player.png);" +
                 "-fx-background-size: cover;" +
                 "-fx-background-repeat: no-repeat;" +
                 "-fx-background-size: contain;");
 
         retryButton.setOnAction(event -> {
-            GamePanel.GameOver = false;
+            GamePanel.isGameOver = false;
             stage.setScene(new StartScene(stage));
         });
 

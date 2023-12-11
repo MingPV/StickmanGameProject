@@ -14,11 +14,11 @@ import java.util.Objects;
 import static java.lang.Math.pow;
 import static main.GamePanel.*;
 
-public class Monster extends Entity implements EntityFunction {
+public class Monster extends Entity implements EntityFunctionable {
 
-    Player player;
+    public Player player;
 
-    private double HP;
+    private double hp;
     private double maxHP;
     private Image HPB;
     private double damage;
@@ -42,7 +42,7 @@ public class Monster extends Entity implements EntityFunction {
         setXY(Math.floor(Math.random() * (800)), Math.floor(Math.random() * (600)));
         setSpeed(0.3);
         setMaxHP(200 + player.getLevel() * 30);
-        setHP(getMaxHP());
+        setHp(getMaxHP());
         setDamage(2 + player.getLevel() * 0.2);
         setDirection("down");
         setAngry(false);
@@ -52,7 +52,7 @@ public class Monster extends Entity implements EntityFunction {
         setCanWalkRight(true);
         loadpic();
         setShadowEffect(new ShadowEffect(this));
-        Effects.add(getShadowEffect());
+        effects.add(getShadowEffect());
         setEntityClass(Monster.class);
 
     }
@@ -81,7 +81,7 @@ public class Monster extends Entity implements EntityFunction {
         setPlayer(player);
 
         //if monster died player get EXP
-        if (getHP() <= 0) {
+        if (getHp() <= 0) {
             delete();
             player.setExp(player.getExp() + 15);
         }
@@ -107,7 +107,7 @@ public class Monster extends Entity implements EntityFunction {
         }
     }
 
-    public void Walk() {
+    public void walk() {
         if (player.getY() < getY()) {
             setY(getY() - getSpeed());
             setDirection("up");
@@ -129,42 +129,42 @@ public class Monster extends Entity implements EntityFunction {
     public void getAttacked() {
         if (Objects.equals(player.getDirection(), "right")) {
             if (getX() >= player.getAttackObj().getX() && getX() <= player.getAttackObj().getX() + player.getAttackObj().getRange() && getY() >= player.getAttackObj().getY() && getY() <= player.getAttackObj().getY() + player.getAttackObj().getSizeY() / 2 && player.getAttackObj().isVisible()) {
-                setHP(getHP() - player.getAttackObj().getDamage());
+                setHp(getHp() - player.getAttackObj().getDamage());
             }
         } else if (Objects.equals(player.getDirection(), "left")) {
             if (getX() <= player.getAttackObj().getX() && getX() >= player.getAttackObj().getX() - player.getAttackObj().getRange() && getY() >= player.getAttackObj().getY() && getY() <= player.getAttackObj().getY() + player.getAttackObj().getSizeY() / 2 && player.getAttackObj().isVisible()) {
-                setHP(getHP() - player.getAttackObj().getDamage());
+                setHp(getHp() - player.getAttackObj().getDamage());
             }
         } else if (Objects.equals(player.getDirection(), "down")) {
             if (getX() <= player.getX() + 10 && getX() >= player.getX() - 10 && getY() >= player.getY() && getY() <= player.getY() + player.getAttackObj().getRange() && player.getAttackObj().isVisible()) {
-                setHP(getHP() - player.getAttackObj().getDamage());
+                setHp(getHp() - player.getAttackObj().getDamage());
             }
         } else if (Objects.equals(player.getDirection(), "up")) {
             if (getX() <= player.getX() + 20 && getX() >= player.getX() - 20 && getY() <= player.getY() && getY() >= player.getY() - player.getAttackObj().getRange() && player.getAttackObj().isVisible()) {
-                setHP(getHP() - player.getAttackObj().getDamage());
+                setHp(getHp() - player.getAttackObj().getDamage());
             }
         }
     }
 
-    public void AttackMorePower() {
+    public void getCloseAttack() {
         if (getX() < player.getX()) {
             if (player.getAttackObj().isVisible() && Objects.equals(player.getDirection(), "left")) {
-                setHP(getHP() - player.getAttackObj().getDamage());
+                setHp(getHp() - player.getAttackObj().getDamage());
             }
         }
         if (getX() > player.getX()) {
             if (player.getAttackObj().isVisible() && Objects.equals(player.getDirection(), "right")) {
-                setHP(getHP() - player.getAttackObj().getDamage());
+                setHp(getHp() - player.getAttackObj().getDamage());
             }
         }
         if (getY() < player.getY()) {
             if (player.getAttackObj().isVisible() && Objects.equals(player.getDirection(), "up")) {
-                setHP(getHP() - player.getAttackObj().getDamage());
+                setHp(getHp() - player.getAttackObj().getDamage());
             }
         }
         if (getY() > player.getY()) {
             if (player.getAttackObj().isVisible() && Objects.equals(player.getDirection(), "down")) {
-                setHP(getHP() - player.getAttackObj().getDamage());
+                setHp(getHp() - player.getAttackObj().getDamage());
             }
         }
     }
@@ -240,7 +240,7 @@ public class Monster extends Entity implements EntityFunction {
     }
 
     public void delete() {
-        Effects.add(new DiedEffect(this, player));
+        effects.add(new DiedEffect(this, player));
         switch (spriteNum) {
             case 1:
                 itemOnFloors.add(new CoffeePotion(this, player));
@@ -260,7 +260,7 @@ public class Monster extends Entity implements EntityFunction {
             player.setMonsterDied(0);
             monsters.add(new Boss(player));
         }
-        Effects.remove(getShadowEffect());
+        effects.remove(getShadowEffect());
         monsters.remove(this);
         player.setPoint(player.getPoint() + 15);
         player.setMonsterDied(player.getMonsterDied() + 1);
@@ -319,7 +319,7 @@ public class Monster extends Entity implements EntityFunction {
 
     public void monsterWalkUpdate() {
         if (pow((player.getX() - getX()), 2) + pow(player.getY() - getY(), 2) < 800) {
-            player.setHP(player.getHP() - getDamage());
+            player.setHp(player.getHp() - getDamage());
             setCanWalk(false);
         }
 
@@ -328,10 +328,10 @@ public class Monster extends Entity implements EntityFunction {
             setAngry(true);
             if (player.getWaitForStart() < 10) {
                 if (isCanWalk()) {
-                    Walk();
+                    walk();
                     getAttacked();
                 } else {
-                    AttackMorePower();
+                    getCloseAttack();
                 }
             }
         } else {
@@ -344,7 +344,7 @@ public class Monster extends Entity implements EntityFunction {
 
     public void drawHp(GraphicsContext gc) {
         double dot = getMaxHP() / 32;
-        int dots = (int) (getHP() / dot);
+        int dots = (int) (getHp() / dot);
         for (int i = 0; i < dots; i++) {
             gc.drawImage(getHPB(), getX() + i, getY() - 5);
         }
@@ -379,15 +379,15 @@ public class Monster extends Entity implements EntityFunction {
         isAngry = angry;
     }
 
-    public double getHP() {
-        return HP;
+    public double getHp() {
+        return hp;
     }
 
-    public void setHP(double HP) {
-        if (getHP() > getMaxHP()) {
-            HP = getMaxHP();
+    public void setHp(double hp) {
+        if (getHp() > getMaxHP()) {
+            hp = getMaxHP();
         }
-        this.HP = HP;
+        this.hp = hp;
     }
 
     public double getDamage() {

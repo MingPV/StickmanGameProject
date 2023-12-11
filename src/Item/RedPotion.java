@@ -26,7 +26,7 @@ public class RedPotion extends Potion {
     @Override
     public void use(Player player) {
         if (player != null) {
-            player.setHP(player.getHP() + 600);
+            player.setHp(player.getHp() + 600);
             deleteItem(player);
         }
     }

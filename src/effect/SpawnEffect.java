@@ -7,13 +7,13 @@ import javafx.scene.image.Image;
 
 import java.util.Objects;
 
-import static main.GamePanel.Effects;
+import static main.GamePanel.effects;
 
-public class SpawnEffect extends BaseEffect implements EffectFunction {
+public class SpawnEffect extends BaseEffect implements EffectFunctionable {
 
 
-    Player player;
-    Monster monster;
+    public Player player;
+    public Monster monster;
 
     int count = 0;
 
@@ -110,7 +110,7 @@ public class SpawnEffect extends BaseEffect implements EffectFunction {
     }
 
     public void delete() {
-        Effects.remove(this);
+        effects.remove(this);
     }
 
 

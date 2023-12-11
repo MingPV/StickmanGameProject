@@ -17,9 +17,9 @@ public abstract class Entity {
 
     private ShadowEffect shadowEffect;
 
-    private Object EntityClass;
+    private Object entityClass;
 
-    private boolean CanWalkUP;
+    private boolean canWalkUP;
     private boolean canWalkLeft;
     private boolean canWalkDown;
     private boolean canWalkRight;
@@ -205,15 +205,15 @@ public abstract class Entity {
     }
 
     public Object getEntityClass() {
-        return EntityClass;
+        return entityClass;
     }
 
     public void setEntityClass(Object entityClass) {
-        EntityClass = entityClass;
+        this.entityClass = entityClass;
     }
 
     public void setCanWalkUp(boolean canWalkUP) {
-        CanWalkUP = canWalkUP;
+        this.canWalkUP = canWalkUP;
     }
 
     public boolean isCanWalkDown() {
@@ -241,6 +241,6 @@ public abstract class Entity {
     }
 
     public boolean isCanWalkUP() {
-        return CanWalkUP;
+        return canWalkUP;
     }
 }

@@ -3,7 +3,7 @@ package entity;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class Snowman extends BaseProp implements PropFunction {
+public class Snowman extends BaseProp implements PropFunctionable {
     public Snowman(int x, int y) {
 
         super(x, y);

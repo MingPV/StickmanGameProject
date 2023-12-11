@@ -23,7 +23,7 @@ public class StartScene extends Scene {
         VBox root = new VBox(20);
 
         //Start Button
-        Button btnStart = createButton("PLAY GAME", "file:res/element/longBox.png");
+        Button btnStart = createButton("PLAY GAME", "element/longBox.png");
         btnStart.setFont(new Font(30));
         btnStart.setPrefSize(540, 60);
         btnStart.setOnAction(event -> {
@@ -34,7 +34,7 @@ public class StartScene extends Scene {
         HBox menu = new HBox(10);
         menu.setAlignment(Pos.TOP_CENTER);
         //setting
-        Button btnSetting = createButton("SETTING", "file:res/element/shortBox.png");
+        Button btnSetting = createButton("SETTING", "element/shortBox.png");
         HBox control = MusicController.createMusicControllerPopup();
         btnSetting.setOnAction(event -> {
             control.setVisible(!control.isVisible());
@@ -42,11 +42,11 @@ public class StartScene extends Scene {
         //how to play
         VBox rules = createRules();
         rules.setVisible(false);
-        Button btnHowToPlay = createButton("HOW TO PLAY", "file:res/element/shortBox.png");
+        Button btnHowToPlay = createButton("HOW TO PLAY", "element/shortBox.png");
         btnHowToPlay.setOnAction(event -> rules.setVisible(!rules.isVisible()));
 
         //exit
-        Button btnExit = createButton("EXIT", "file:res/element/shortBox.png");
+        Button btnExit = createButton("EXIT", "element/shortBox.png");
         btnExit.setOnMouseClicked(event -> {
             stage.close();
         });
@@ -60,7 +60,7 @@ public class StartScene extends Scene {
         root.setAlignment(Pos.CENTER);
         root.setPadding(new Insets(200, 0, 0, 0));
         root.setStyle("-fx-background-color: transparent;" +
-                "-fx-background-image: url(file:res/element/background.gif);" +
+                "-fx-background-image: url(element/background.gif);" +
                 "-fx-background-size: cover;");
         root.getChildren().addAll(btnStart, menu, detail);
 
@@ -105,7 +105,7 @@ public class StartScene extends Scene {
         rules.setVisible(false);
         rules.setPadding(new Insets(10, 0, 20, 10));
         rules.setStyle("-fx-background-color: transparent;" +
-                "-fx-background-image: url(file:res/element/ruleBox.png);" +
+                "-fx-background-image: url(element/ruleBox.png);" +
                 "-fx-background-size: cover;" + "-fx-background-size: contain;" + "-fx-background-repeat: no-repeat;");
 
         return rules;

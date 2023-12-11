@@ -8,10 +8,10 @@ public abstract class Prop {
     public int spriteCounter = 0;
     public int spriteNum = 1;
     private double x, y;
-    private Image PropImage;
+    private Image propImage;
     private ShadowEffect shadowEffect;
 
-    private Object PropClass;
+    private Object propClass;
 
     public ShadowEffect getShadowEffect() {
         return shadowEffect;
@@ -22,19 +22,19 @@ public abstract class Prop {
     }
 
     public Object getPropClass() {
-        return PropClass;
+        return propClass;
     }
 
     public void setPropClass(Object propClass) {
-        PropClass = propClass;
+        this.propClass = propClass;
     }
 
     public Image getPropImage() {
-        return PropImage;
+        return propImage;
     }
 
     public void setPropImage(Image propImage) {
-        PropImage = propImage;
+        this.propImage = propImage;
     }
 
     public double getX() {

@@ -32,13 +32,13 @@ public class Boss extends Monster {
 
         setSpeed(0.4);
         setMaxHP(350 + player.getLevel() * 40);
-        setHP(getMaxHP());
+        setHp(getMaxHP());
         setDamage(2 + player.getLevel() * 0.2);
         setDirection("down");
         setAngry(false);
         loadpic();
         setShadowEffect(new ShadowEffect(this));
-        Effects.add(getShadowEffect());
+        effects.add(getShadowEffect());
 
     }
 
@@ -65,7 +65,7 @@ public class Boss extends Monster {
 
         setPlayer(player);
 
-        if (getHP() <= 0) {
+        if (getHp() <= 0) {
 
             delete();
             player.setExp(player.getExp() + 30);
@@ -75,7 +75,7 @@ public class Boss extends Monster {
         boolean canWalk = true;
 
         if (pow((player.getX() - getX()), 2) + pow(player.getY() - getY(), 2) < 4000) {
-            player.setHP(player.getHP() - getDamage());
+            player.setHp(player.getHp() - getDamage());
             canWalk = false;
         }
 
@@ -140,19 +140,19 @@ public class Boss extends Monster {
     public void getAttacked(){
         if (Objects.equals(player.getDirection(), "right")) {
             if (getX() >= player.getAttackObj().getX() && getX() <= player.getAttackObj().getX() + player.getAttackObj().getRange() && getY() >= player.getAttackObj().getY() && getY() <= player.getAttackObj().getY() + player.getAttackObj().getSizeY() / 2 && player.getAttackObj().isVisible()) {
-                setHP(getHP() - player.getAttackObj().getDamage());
+                setHp(getHp() - player.getAttackObj().getDamage());
             }
         } else if (Objects.equals(player.getDirection(), "left")) {
             if (getX() <= player.getAttackObj().getX() && getX() >= player.getAttackObj().getX() - player.getAttackObj().getRange() && getY() >= player.getAttackObj().getY() && getY() <= player.getAttackObj().getY() + player.getAttackObj().getSizeY() / 2 && player.getAttackObj().isVisible()) {
-                setHP(getHP() - player.getAttackObj().getDamage());
+                setHp(getHp() - player.getAttackObj().getDamage());
             }
         } else if (Objects.equals(player.getDirection(), "down")) {
             if (getX() <= player.getX() + 10 && getX() >= player.getX() - 10 && getY() >= player.getY() && getY() <= player.getY() + player.getAttackObj().getRange() && player.getAttackObj().isVisible()) {
-                setHP(getHP() - player.getAttackObj().getDamage());
+                setHp(getHp() - player.getAttackObj().getDamage());
             }
         } else if (Objects.equals(player.getDirection(), "up")) {
             if (getX() <= player.getX() + 20 && getX() >= player.getX() - 20 && getY() <= player.getY() && getY() >= player.getY() - player.getAttackObj().getRange() && player.getAttackObj().isVisible()) {
-                setHP(getHP() - player.getAttackObj().getDamage());
+                setHp(getHp() - player.getAttackObj().getDamage());
             }
         }
     }
@@ -160,22 +160,22 @@ public class Boss extends Monster {
     public void getCloseAttacked(){
         if (getX() < player.getX()) {
             if (player.getAttackObj().isVisible() && Objects.equals(player.getDirection(), "left")) {
-                setHP(getHP() - player.getAttackObj().getDamage());
+                setHp(getHp() - player.getAttackObj().getDamage());
             }
         }
         if (getX() > player.getX()) {
             if (player.getAttackObj().isVisible() && Objects.equals(player.getDirection(), "right")) {
-                setHP(getHP() - player.getAttackObj().getDamage());
+                setHp(getHp() - player.getAttackObj().getDamage());
             }
         }
         if (getY() < player.getY()) {
             if (player.getAttackObj().isVisible() && Objects.equals(player.getDirection(), "up")) {
-                setHP(getHP() - player.getAttackObj().getDamage());
+                setHp(getHp() - player.getAttackObj().getDamage());
             }
         }
         if (getY() > player.getY()) {
             if (player.getAttackObj().isVisible() && Objects.equals(player.getDirection(), "down")) {
-                setHP(getHP() - player.getAttackObj().getDamage());
+                setHp(getHp() - player.getAttackObj().getDamage());
             }
         }
     }
@@ -239,13 +239,13 @@ public class Boss extends Monster {
     }
 
     public void delete() {
-        Effects.add(new DiedEffect(this, player));
+        effects.add(new DiedEffect(this, player));
         itemOnFloors.add(new DragonBallBeans(this, player));
         if (player.getMonsterDied() == 5) {
             player.setMonsterDied(0);
             monsters.add(new Boss(player));
         }
-        Effects.remove(getShadowEffect());
+        effects.remove(getShadowEffect());
         monsters.remove(this);
         player.setPoint(player.getPoint() + 40);
         player.setMonsterDied(player.getMonsterDied() + 1);

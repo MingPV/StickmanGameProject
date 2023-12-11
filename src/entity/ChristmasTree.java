@@ -3,7 +3,7 @@ package entity;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class ChristmasTree extends BaseProp implements PropFunction {
+public class ChristmasTree extends BaseProp implements PropFunctionable {
     public ChristmasTree(int x, int y) {
 
         super(x, y);

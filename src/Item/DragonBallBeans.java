@@ -23,7 +23,7 @@ public class DragonBallBeans extends RedPotion {
 
     public void use(Player player) {
         if (player != null) {
-            player.setHP(player.getMaxHP());
+            player.setHp(player.getMaxHP());
             deleteItem(player);
         }
     }

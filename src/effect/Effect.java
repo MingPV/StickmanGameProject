@@ -8,10 +8,9 @@ public abstract class Effect {
 
     public int spriteCounter = 0;
     public int spriteNum = 1;
-    Monster monster;
-    Player player;
+    public Monster monster;
+    public Player player;
     private double x, y;
-    private double speed;
     private String owner;
     private Image up1, up2;
     private Image effect1, effect2, effect3, effect4;
