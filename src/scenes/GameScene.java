@@ -8,9 +8,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import main.GamePanel;
-import javafx.scene.text.Text;
 
 public class GameScene extends Scene {
 
@@ -80,7 +80,6 @@ public class GameScene extends Scene {
             GamePanel.GameOver = false;
             stage.setScene(new StartScene(stage));
         });
-
 
 
         return retryButton;

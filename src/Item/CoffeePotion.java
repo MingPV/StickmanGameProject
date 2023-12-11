@@ -5,7 +5,7 @@ import entity.Player;
 import javafx.scene.image.Image;
 
 public class CoffeePotion extends Potion {
-    public CoffeePotion(int slotNumber){
+    public CoffeePotion(int slotNumber) {
         super(slotNumber);
         setItemImage(new Image(String.valueOf(ClassLoader.getSystemResource("item/CoffeePotion.png"))));
         setItemClass(CoffeePotion.class);
@@ -25,8 +25,8 @@ public class CoffeePotion extends Potion {
 
     @Override
     public void use(Player player) {
-        if(player != null){
-            player.setSleepiness(player.getSleepiness()-800);
+        if (player != null) {
+            player.setSleepiness(player.getSleepiness() - 800);
             deleteItem(player);
         }
     }

@@ -9,60 +9,61 @@ import static main.GamePanel.Effects;
 
 public class BaseEffect extends Effect {
 
-    public BaseEffect(Player player){
-        setDefalutValues(player);
-    }
-    public BaseEffect(Monster monster){
-        setDefalutValues(monster);
+    public BaseEffect(Player player) {
+        setDefaultValues(player);
     }
 
-
-    public BaseEffect(Monster monster, Player player){
-        setDefalutValues(monster,player);
+    public BaseEffect(Monster monster) {
+        setDefaultValues(monster);
     }
 
-    public void setDefalutValues(Monster monster){
+
+    public BaseEffect(Monster monster, Player player) {
+        setDefaultValues(monster, player);
+    }
+
+    public void setDefaultValues(Monster monster) {
 
         setMonster(monster);
         setX(monster.getX());
         setY(monster.getY());
         setOwner("monster");
         setEffectClass(BaseEffect.class);
-        loadpic();
+        loadPicture();
 
         setSpriteNum(1);
         setSpriteCounter(0);
 
     }
 
-    public void setDefalutValues(Player player){
+    public void setDefaultValues(Player player) {
 
         setPlayer(player);
         setOwner("player");
         setX(player.getX());
         setY(player.getY());
         setEffectClass(BaseEffect.class);
-        loadpic();
+        loadPicture();
 
         setSpriteNum(1);
         setSpriteCounter(0);
 
     }
 
-    public void setDefalutValues(Monster monster,Player player){
+    public void setDefaultValues(Monster monster, Player player) {
 
         setPlayer(player);
         setX(monster.getX());
         setY(monster.getY());
         setEffectClass(BaseEffect.class);
-        loadpic();
+        loadPicture();
 
         setSpriteNum(1);
         setSpriteCounter(0);
 
     }
 
-    public void loadpic(){
+    public void loadPicture() {
 
         //default image
         setEffect1(new Image(String.valueOf(ClassLoader.getSystemResource("effect/spawn_1.png"))));
@@ -74,17 +75,17 @@ public class BaseEffect extends Effect {
         if(!Effects.isEmpty()){
             for(int i=0;i<Effects.size();i++){
                 switch (String.valueOf(Effects.get(i).getClass())){
-                    case "class effect.diedEffect" :
-                        ((diedEffect) Effects.get(i)).update();
+                    case "class effect.DiedEffect" :
+                        ((DiedEffect) Effects.get(i)).update();
                         break;
-                    case "class effect.spawnEffect" :
-                        ((spawnEffect) Effects.get(i)).update();
+                    case "class effect.SpawnEffect" :
+                        ((SpawnEffect) Effects.get(i)).update();
                         break;
                     case "class effect.ShadowEffect" :
                         ((ShadowEffect) Effects.get(i)).update();
                         break;
-                    case "class effect.SuperSeiya" :
-                        ((SuperSeiya) Effects.get(i)).update();
+                    case "class effect.SuperSaiyan" :
+                        ((SuperSaiyan) Effects.get(i)).update();
                         // can add more Effect class
 
                 }
@@ -95,21 +96,22 @@ public class BaseEffect extends Effect {
         if(!Effects.isEmpty()){
             for(int i=0;i<Effects.size();i++){
                 switch (String.valueOf(Effects.get(i).getClass())){
-                    case "class effect.diedEffect" :
-                        ((diedEffect) Effects.get(i)).draw(gc);
+                    case "class effect.DiedEffect" :
+                        ((DiedEffect) Effects.get(i)).draw(gc);
                         break;
-                    case "class effect.spawnEffect" :
-                        ((spawnEffect) Effects.get(i)).draw(gc);
+                    case "class effect.SpawnEffect" :
+                        ((SpawnEffect) Effects.get(i)).draw(gc);
                         break;
                     case "class effect.ShadowEffect" :
                         ((ShadowEffect) Effects.get(i)).draw(gc);
                         break;
-                    case "class effect.SuperSeiya" :
-                        ((SuperSeiya) Effects.get(i)).draw(gc);
+                    case "class effect.SuperSaiyan" :
+                        ((SuperSaiyan) Effects.get(i)).draw(gc);
                         // can add more Effect class
                 }
             }
         }
     }
+
 
 }

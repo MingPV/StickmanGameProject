@@ -8,7 +8,7 @@ public class Number {
 
     public Image number0 = new Image(String.valueOf(ClassLoader.getSystemResource("number/0.png")));
     public Image number1 = new Image(String.valueOf(ClassLoader.getSystemResource("number/1.png")));
-    public Image number2  = new Image(String.valueOf(ClassLoader.getSystemResource("number/2.png")));
+    public Image number2 = new Image(String.valueOf(ClassLoader.getSystemResource("number/2.png")));
     public Image number3 = new Image(String.valueOf(ClassLoader.getSystemResource("number/3.png")));
     public Image number4 = new Image(String.valueOf(ClassLoader.getSystemResource("number/4.png")));
     public Image number5 = new Image(String.valueOf(ClassLoader.getSystemResource("number/5.png")));
@@ -20,7 +20,7 @@ public class Number {
     public ArrayList<Image> numbers;
 
 
-    public Number(){
+    public Number() {
 
         numbers = new ArrayList<Image>();
 
@@ -37,14 +37,12 @@ public class Number {
 
     }
 
-    public Image getNumberImage(int number){
-        if(number > 9){
+    public Image getNumberImage(int number) {
+        if (number > 9) {
             number = 9;
         }
         return numbers.get(number);
     }
-
-
 
 
 }

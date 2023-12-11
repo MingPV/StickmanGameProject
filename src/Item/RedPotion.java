@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 
 public class RedPotion extends Potion {
 
-    public RedPotion(int slotNumber){
+    public RedPotion(int slotNumber) {
         super(slotNumber);
         setItemImage(new Image(String.valueOf(ClassLoader.getSystemResource("item/RedPotion.png"))));
         setItemClass(RedPotion.class);
@@ -14,6 +14,7 @@ public class RedPotion extends Potion {
         setDropRange(2);
 
     }
+
     public RedPotion(Monster monster, Player player) {
         super(monster, player);
         setItemImage(new Image(String.valueOf(ClassLoader.getSystemResource("item/RedPotion.png"))));
@@ -24,8 +25,8 @@ public class RedPotion extends Potion {
 
     @Override
     public void use(Player player) {
-        if(player != null){
-            player.setHP(player.getHP()+600);
+        if (player != null) {
+            player.setHP(player.getHP() + 600);
             deleteItem(player);
         }
     }

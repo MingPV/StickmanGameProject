@@ -6,10 +6,44 @@
   <component name="ChangeListManager">
     <list default="true" id="72d6a0c5-5d8e-4596-8aa8-7f1363aef7c6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/element/soundtrack.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/res/element/soundtrack.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Background/Background.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Background/Background.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Inventory/InventoryBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Inventory/InventoryBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Item/BaseForItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Item/BaseFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/ItemFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Item/BaseItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/BaseItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Item/BluePotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/BluePotion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Item/CoffeePotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/CoffeePotion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Item/DragonBallBeans.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/DragonBallBeans.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Item/Potion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/Potion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Item/RedPotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/RedPotion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/effect/BaseEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/BaseEffect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/effect/Effect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/Effect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/effect/EffectFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/EffectFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/effect/ShadowEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/ShadowEffect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/effect/SuperSeiya.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/SuperSaiyan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/effect/diedEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/DiedEffect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/effect/spawnEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/SpawnEffect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/BaseProp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/BaseProp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Boss.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/ChristmasTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/ChristmasTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Gift.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Gift.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Gift2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Gift2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Prop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Prop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/PropFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/PropFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Snowman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Snowman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/font/Number.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/font/Number.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/MusicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MusicController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/AttackObj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/AttackObj.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/AttackObj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/BasicAttackObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/basicAttack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/AttackObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/basicAttackFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/AttackObjectFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/profile/ProfileBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/profile/ProfileBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scenes/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/GameScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scenes/SelectedScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/SelectedScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scenes/StartScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/StartScene.java" afterDir="false" />
@@ -46,7 +80,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/ChenS/IdeaProjects/2110215--zipdrop",
+    "last_opened_file_path": "C:/Users/ChenS/IdeaProjects/Lab5_2110215_2023_1_6530249621_Pavee",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15527344",
     "project.structure.side.proportion": "0.2",

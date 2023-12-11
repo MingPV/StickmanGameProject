@@ -10,13 +10,13 @@ public class Gift extends BaseProp implements PropFunction {
         setPropImage(new Image(String.valueOf(ClassLoader.getSystemResource("prop/Gift.png"))));
     }
 
-    public void update(){
+    public void update() {
         // if you want to update something
     }
 
     @Override
     public void draw(GraphicsContext gc) {
-        gc.drawImage(getPropImage(),getX(),getY());
+        gc.drawImage(getPropImage(), getX(), getY());
     }
 
 }

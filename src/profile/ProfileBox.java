@@ -1,13 +1,10 @@
 package profile;
 
-import Item.*;
 import entity.Player;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
-import main.KeyHandler;
 
-import java.util.ArrayList;
+import java.util.Objects;
 
 import static scenes.SelectedScene.selectedCharacter;
 
@@ -23,16 +20,16 @@ public class ProfileBox {
     private String profileImageURL;
     private String profileBoxURL;
 
-    public ProfileBox(){
+    public ProfileBox() {
         setDefaultValues();
     }
 
-    public void setDefaultValues(){
+    public void setDefaultValues() {
 
         setProfileImageURL("player/ProfileImage_1_1.png");
-        if(selectedCharacter == "1"){
+        if (Objects.equals(selectedCharacter, "1")) {
             setProfileBoxURL("player/ProfileBox_1.png");
-        }else if(selectedCharacter == "2"){
+        } else if (Objects.equals(selectedCharacter, "2")) {
             setProfileBoxURL("player/ProfileBox_2.png");
         }
 
@@ -43,16 +40,24 @@ public class ProfileBox {
     }
 
 
-    public void draw(GraphicsContext gc){
-        gc.drawImage(getProfileBoxImage(),0,0);
-        gc.drawImage(getProfileImage(),0,0);
+    public void draw(GraphicsContext gc) {
+        gc.drawImage(getProfileBoxImage(), 0, 0);
+        gc.drawImage(getProfileImage(), 0, 0);
     }
 
-    public void update(Player player){
+    public void update(Player player) {
 
         setPlayer(player);
-        player.setCanWalkLeft(!(player.getY() < 118) || (player.getX() != 300 && player.getX() != 299  && player.getX() != 298  && player.getX() != 297 && player.getX() != 296));
-        player.setCanWalkUp(!(player.getX() <= 300) || (player.getY() != 117 && player.getY() != 116 && player.getY() != 115 && player.getY() != 114 && player.getY() != 113));
+        player.setCanWalkLeft(!(player.getY() < 118) || (player.getX() != 300
+                                                        && player.getX() != 299
+                                                        && player.getX() != 298
+                                                        && player.getX() != 297
+                                                        && player.getX() != 296));
+        player.setCanWalkUp(!(player.getX() <= 300) || (player.getY() != 117
+                                                        && player.getY() != 116
+                                                        && player.getY() != 115
+                                                        && player.getY() != 114
+                                                        && player.getY() != 113));
 
     }
 
@@ -60,52 +65,52 @@ public class ProfileBox {
         return player;
     }
 
-    public int getSpriteCounter() {
-        return spriteCounter;
-    }
-
-    public int getSpriteNum() {
-        return spriteNum;
-    }
-
-    public String getProfileImageURL() {
-        return profileImageURL;
-    }
-
-    public Image getProfileImage() {
-        return profileImage;
-    }
-
     public void setPlayer(Player player) {
         this.player = player;
     }
 
-    public void setSpriteNum(int spriteNum) {
-        this.spriteNum = spriteNum;
+    public int getSpriteCounter() {
+        return spriteCounter;
     }
 
     public void setSpriteCounter(int spriteCounter) {
         this.spriteCounter = spriteCounter;
     }
 
-    public void setProfileImage(Image profileImage) {
-        this.profileImage = profileImage;
+    public int getSpriteNum() {
+        return spriteNum;
+    }
+
+    public void setSpriteNum(int spriteNum) {
+        this.spriteNum = spriteNum;
+    }
+
+    public String getProfileImageURL() {
+        return profileImageURL;
     }
 
     public void setProfileImageURL(String profileImageURL) {
         this.profileImageURL = profileImageURL;
     }
 
+    public Image getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(Image profileImage) {
+        this.profileImage = profileImage;
+    }
+
     public Image getProfileBoxImage() {
         return profileBoxImage;
     }
 
-    public String getProfileBoxURL() {
-        return profileBoxURL;
-    }
-
     public void setProfileBoxImage(Image profileBoxImage) {
         this.profileBoxImage = profileBoxImage;
+    }
+
+    public String getProfileBoxURL() {
+        return profileBoxURL;
     }
 
     public void setProfileBoxURL(String profileBoxURL) {

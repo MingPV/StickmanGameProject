@@ -1,6 +1,5 @@
 package Item;
 
-import com.sun.jdi.Value;
 import entity.Monster;
 import entity.Player;
 import javafx.scene.canvas.GraphicsContext;
@@ -8,18 +7,18 @@ import javafx.scene.image.Image;
 
 import static main.GamePanel.itemOnFloors;
 
-public class BaseItem extends BaseForItem {
+public class BaseItem extends Item {
 
-    public  BaseItem(int slotNumber){
-        setDefalutValues(slotNumber);
+    public BaseItem(int slotNumber) {
+        setDefaultValues(slotNumber);
     }
 
-    public BaseItem(Monster monster,Player player){
-        setDefalutValues(monster,player);
+    public BaseItem(Monster monster, Player player) {
+        setDefaultValues(monster, player);
     }
 
     // For add start item
-    public void setDefalutValues(int slotNumber){
+    public void setDefaultValues(int slotNumber) {
         setItemClass(Potion.class);
         setSlot(slotNumber);
         setAdded(true);
@@ -38,7 +37,7 @@ public class BaseItem extends BaseForItem {
 
 
     // For item drop from monster
-    public void setDefalutValues(Monster monster,Player player){
+    public void setDefaultValues(Monster monster, Player player) {
 
         setPlayer(player);
         setX(monster.getX());
@@ -60,6 +59,7 @@ public class BaseItem extends BaseForItem {
         setSpriteCounter(0);
 
     }
+
     public void updateAll(Player player){
         if(!itemOnFloors.isEmpty()){
             for(int i=0;i<itemOnFloors.size();i++){

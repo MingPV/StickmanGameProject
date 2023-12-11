@@ -4,14 +4,15 @@ import entity.Monster;
 import entity.Player;
 import javafx.scene.image.Image;
 
-public class DragonBallBeans extends RedPotion{
+public class DragonBallBeans extends RedPotion {
 
-    public DragonBallBeans(int slotNumber){
+    public DragonBallBeans(int slotNumber) {
         super(slotNumber);
         setItemImage(new Image(String.valueOf(ClassLoader.getSystemResource("item/DragonBallBeans.png"))));
         setDropRange(1);
 
     }
+
     public DragonBallBeans(Monster monster, Player player) {
         super(monster, player);
         setItemImage(new Image(String.valueOf(ClassLoader.getSystemResource("item/DragonBallBeans.png"))));
@@ -21,7 +22,7 @@ public class DragonBallBeans extends RedPotion{
     }
 
     public void use(Player player) {
-        if(player != null){
+        if (player != null) {
             player.setHP(player.getMaxHP());
             deleteItem(player);
         }

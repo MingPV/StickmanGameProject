@@ -1,22 +1,26 @@
 package entity;
 
 import Inventory.InventoryBar;
-import effect.*;
+import effect.ShadowEffect;
+import effect.SuperSaiyan;
+import effect.SpawnEffect;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import main.KeyHandler;
-import object.AttackObj;
+import object.BasicAttackObject;
 import profile.ProfileBox;
+import scenes.SelectedScene;
 
 import java.util.Objects;
 
 import static main.GamePanel.*;
-import static scenes.SelectedScene.playerName;
 import static scenes.SelectedScene.selectedCharacter;
 
 public class Player extends Entity implements EntityFunction {
 
+    BasicAttackObject attackObj;
+    InventoryBar inventoryBar;
     private double playerX;
     private double playerY;
     private int level;
@@ -40,13 +44,11 @@ public class Player extends Entity implements EntityFunction {
     private int monsterDied;
     private int waitForStart;
     private ProfileBox profileBox;
-    private SuperSeiya superSeiya;
+    private SuperSaiyan superSaiyan;
     private boolean isSuperSaiyan;
     private boolean pressedV = false;
-    AttackObj attackObj;
-    InventoryBar inventoryBar;
 
-    public Player(){
+    public Player() {
 
         setDefaultValues();
 
@@ -56,12 +58,12 @@ public class Player extends Entity implements EntityFunction {
 
         // Swordsman and Sage
 
-        if(Objects.equals(selectedCharacter, "1")){
+        if (Objects.equals(selectedCharacter, "1")) {
             setMaxHP(4000);
             setHP(4000);
             setMaxMana(4000);
             setMana(4000);
-        }else if (Objects.equals(selectedCharacter, "2")){
+        } else if (Objects.equals(selectedCharacter, "2")) {
             setMaxHP(3000);
             setHP(3000);
             setMaxMana(5000);
@@ -94,7 +96,7 @@ public class Player extends Entity implements EntityFunction {
 
         setInventoryBar(new InventoryBar());
 
-        setAttackObj(new AttackObj(this));
+        setAttackObj(new BasicAttackObject(this));
 
         setProfileBox(new ProfileBox());
 
@@ -104,26 +106,26 @@ public class Player extends Entity implements EntityFunction {
 
     }
 
-    public void spawn(){
-        if(getWaitForStart() > 10){
+    public void spawn() {
+        if (getWaitForStart() > 10) {
             setY(0);
-        }else{
+        } else {
             setWaitForStart(-1);
         }
-        if(getY() < 300){
-            setY(getY()+10);
-        }else{
+        if (getY() < 300) {
+            setY(getY() + 10);
+        } else {
             setSpawned(true);
-            Effects.add(new spawnEffect(this));
+            Effects.add(new SpawnEffect(this));
             setShadowEffect(new ShadowEffect(this));
             Effects.add(getShadowEffect());
         }
     }
 
 
-    public void loadpic(){
+    public void loadpic() {
 
-        if(Objects.equals(selectedCharacter, "1")){
+        if (Objects.equals(selectedCharacter, "1")) {
             setUp1(new Image(String.valueOf(ClassLoader.getSystemResource("player/boy_up_1.png"))));
             setUp2(new Image(String.valueOf(ClassLoader.getSystemResource("player/boy_up_2.png"))));
             setUp3(new Image(String.valueOf(ClassLoader.getSystemResource("player/boy_up_3.png"))));
@@ -136,7 +138,7 @@ public class Player extends Entity implements EntityFunction {
             setRight1(new Image(String.valueOf(ClassLoader.getSystemResource("player/boy_right_1.png"))));
             setRight2(new Image(String.valueOf(ClassLoader.getSystemResource("player/boy_right_2.png"))));
             setRight3(new Image(String.valueOf(ClassLoader.getSystemResource("player/boy_right_3.png"))));
-        }else if (Objects.equals(selectedCharacter, "2")){
+        } else if (Objects.equals(selectedCharacter, "2")) {
             setUp1(new Image(String.valueOf(ClassLoader.getSystemResource("player/boy2_up_1.png"))));
             setUp2(new Image(String.valueOf(ClassLoader.getSystemResource("player/boy2_up_2.png"))));
             setUp3(new Image(String.valueOf(ClassLoader.getSystemResource("player/boy2_up_3.png"))));
@@ -162,31 +164,30 @@ public class Player extends Entity implements EntityFunction {
 
     public void update() throws InterruptedException {
 
-        if(!isSpawned()){
+        if (!isSpawned()) {
             spawn();
-        }else{
-            if(KeyHandler.getKeyPressed(KeyCode.K)){
+        } else {
+            if (KeyHandler.getKeyPressed(KeyCode.K)) {
                 attack();
-            }else{
+            } else {
                 getAttackObj().setVisible(false);
             }
             // update
             inventoryBar.update(this);
             updatePlayerWalk();
             setAttack(KeyHandler.getKeyPressed(KeyCode.K));
-            SaiyanUpdate();
+            saiyanUpdate();
             updateAttackObj();
 
         }
 
         // counter
         spriteCounter++;
-        if(spriteCounter > 20) {
-            if(spriteNum == 1) {
+        if (spriteCounter > 20) {
+            if (spriteNum == 1) {
                 spriteNum = 2;
                 //System.out.println(spriteNum);
-            }
-            else if(spriteNum == 2) {
+            } else if (spriteNum == 2) {
                 spriteNum = 1;
                 //System.out.println(spriteNum);
             }
@@ -196,15 +197,14 @@ public class Player extends Entity implements EntityFunction {
         profileBox.update(this);
 
         //Game over or not
-        if(getHP() <= 0 || getSleepiness() >= getMaxSleepiness()){
+        if (getHP() <= 0 || getSleepiness() >= getMaxSleepiness()) {
             GameOver = true;
         }
-        if(GameOver){
+        if (GameOver) {
             System.out.println(" Game Over !!");
         }
 
     }
-
 
 
     @Override
@@ -217,179 +217,181 @@ public class Player extends Entity implements EntityFunction {
         drawSleepiness(gc);
         getAttackObj().draw(gc);
 
-        if(getWaitForStart()<10){
-            gc.drawImage(getCurrentImage(),getX(),getY());
+        if (getWaitForStart() < 10) {
+            gc.drawImage(getCurrentImage(), getX(), getY());
             drawHp(gc);
             drawMana(gc);
         }
 
         // Draw name and levels
-        gc.fillText(playerName,getX()-5,getY()-15);
-        gc.strokeText("Lv."+getLevel(),getX()-32,getY()-15);
-        gc.strokeText("Point : ",680,20);
-        gc.fillText(String.valueOf(getPoint()),720,21);
+        gc.fillText(SelectedScene.getPlayerName(), getX() - 5, getY() - 15);
+        gc.strokeText("Lv." + getLevel(), getX() - 32, getY() - 15);
+        gc.strokeText("Point : ", 680, 20);
+        gc.fillText(String.valueOf(getPoint()), 720, 21);
 
     }
 
-    public void updatePlayerWalk(){
-        if (KeyHandler.getKeyPressed(KeyCode.W)){
-            if(isCanWalkUP()){
-                setY(getY()-getSpeed());
+    public void updatePlayerWalk() {
+        if (KeyHandler.getKeyPressed(KeyCode.W)) {
+            if (isCanWalkUP()) {
+                setY(getY() - getSpeed());
             }
             setDirection("up");
         }
-        if (KeyHandler.getKeyPressed(KeyCode.A)){
-            if(isCanWalkLeft()){
-                setX(getX()-getSpeed());
+        if (KeyHandler.getKeyPressed(KeyCode.A)) {
+            if (isCanWalkLeft()) {
+                setX(getX() - getSpeed());
             }
             setDirection("left");
         }
-        if (KeyHandler.getKeyPressed(KeyCode.S)){
-            if(isCanWalkDown()){
-                setY(getY()+getSpeed());
+        if (KeyHandler.getKeyPressed(KeyCode.S)) {
+            if (isCanWalkDown()) {
+                setY(getY() + getSpeed());
             }
             setDirection("down");
         }
-        if (KeyHandler.getKeyPressed(KeyCode.D)){
-            if(isCanWalkRight()){
-                setX(getX()+getSpeed());
+        if (KeyHandler.getKeyPressed(KeyCode.D)) {
+            if (isCanWalkRight()) {
+                setX(getX() + getSpeed());
             }
             setDirection("right");
         }
     }
 
-    public void drawHp(GraphicsContext gc){
-        double dot = getMaxHP()/32;
-        int dots = (int)(getHP()/dot);
-        for(int i=0;i<dots;i++){
-            gc.drawImage(getHPB(),getX()+i,getY()-7);
+    public void drawHp(GraphicsContext gc) {
+        double dot = getMaxHP() / 32;
+        int dots = (int) (getHP() / dot);
+        for (int i = 0; i < dots; i++) {
+            gc.drawImage(getHPB(), getX() + i, getY() - 7);
 
         }
-        double dot2 = getMaxHP()/112;
-        int dots2 = (int)(getHP()/dot2);
-        for(int i=0;i<dots2-1;i++){
-            gc.drawImage(getHPB2(),165+i,29);
+        double dot2 = getMaxHP() / 112;
+        int dots2 = (int) (getHP() / dot2);
+        for (int i = 0; i < dots2 - 1; i++) {
+            gc.drawImage(getHPB2(), 165 + i, 29);
         }
     }
 
-    public void drawMana(GraphicsContext gc){
-        double dot = getMaxMana()/32;
-        int dots = (int)(getMana()/dot);
-        for(int i=0;i<dots;i++){
-            gc.drawImage(getManaB(),getX()+i,getY()-4.5);
+    public void drawMana(GraphicsContext gc) {
+        double dot = getMaxMana() / 32;
+        int dots = (int) (getMana() / dot);
+        for (int i = 0; i < dots; i++) {
+            gc.drawImage(getManaB(), getX() + i, getY() - 4.5);
 
         }
-        double dot2 = getMaxMana()/112;
-        int dots2 = (int)(getMana()/dot2);
-        for(int i=0;i<dots2-1;i++){
-            gc.drawImage(getManaB2(),165+i,47);
-        }
-    }
-    public void drawExp(GraphicsContext gc){
-        double dot = getMaxExp()/800;
-        int dots = (int)(getExp()/dot);
-        for(int i=0;i<dots;i++){
-            gc.drawImage(getExpB(),i,595);
-        }
-    }
-    public void drawSleepiness(GraphicsContext gc){
-        double dot2 = getMaxSleepiness()/207;
-        int dots2 = (int)(getSleepiness()/dot2);
-        for(int i=0;i<dots2-1;i++){
-            gc.drawImage(getSleepB(),34+i,97);
+        double dot2 = getMaxMana() / 112;
+        int dots2 = (int) (getMana() / dot2);
+        for (int i = 0; i < dots2 - 1; i++) {
+            gc.drawImage(getManaB2(), 165 + i, 47);
         }
     }
 
-    public void SaiyanUpdate(){
-        if(!isPressedV() && !isSuperSaiyan()) {
+    public void drawExp(GraphicsContext gc) {
+        double dot = getMaxExp() / 800;
+        int dots = (int) (getExp() / dot);
+        for (int i = 0; i < dots; i++) {
+            gc.drawImage(getExpB(), i, 595);
+        }
+    }
+
+    public void drawSleepiness(GraphicsContext gc) {
+        double dot2 = getMaxSleepiness() / 207;
+        int dots2 = (int) (getSleepiness() / dot2);
+        for (int i = 0; i < dots2 - 1; i++) {
+            gc.drawImage(getSleepB(), 34 + i, 97);
+        }
+    }
+
+    public void saiyanUpdate() {
+        if (!isPressedV() && !isSuperSaiyan()) {
             if (KeyHandler.getKeyPressed(KeyCode.V)) {
-                setSuperSaiyan(new SuperSeiya(this));
+                setSuperSaiyan(new SuperSaiyan(this));
                 Effects.add(getSuperSeiya());
                 setSuperSeiya(true);
                 setPressedV(true);
-                setSpeed(getSpeed()+1);
+                setSpeed(getSpeed() + 1);
 
             }
-        }else if(!isPressedV() && isSuperSaiyan()){
-            if(KeyHandler.getKeyPressed(KeyCode.V)){
+        } else if (!isPressedV() && isSuperSaiyan()) {
+            if (KeyHandler.getKeyPressed(KeyCode.V)) {
                 Effects.remove(getSuperSeiya());
                 setSuperSeiya(false);
                 setPressedV(true);
-                setSpeed(getSpeed()-1);
+                setSpeed(getSpeed() - 1);
 
             }
-        }else{
-            if(!(KeyHandler.getKeyPressed(KeyCode.V))){
+        } else {
+            if (!(KeyHandler.getKeyPressed(KeyCode.V))) {
                 setPressedV(false);
             }
         }
-        if(getMana() == 0 && getSpeed() == 2){
+        if (getMana() == 0 && getSpeed() == 2) {
             setSpeed(1);
         }
     }
 
-    public void setAutoValues(){
-        if(!isSpawned()){
-            setWaitForStart(getWaitForStart()-1);
+    public void setAutoValues() {
+        if (!isSpawned()) {
+            setWaitForStart(getWaitForStart() - 1);
         }
 
-        setHP(getHP()+0.2);
-        setMana(getMana()+0.2);
-        setSleepCounter(getSleepCounter()+2);
+        setHP(getHP() + 0.2);
+        setMana(getMana() + 0.2);
+        setSleepCounter(getSleepCounter() + 2);
 
-        if(getSleepCounter() == 20){
+        if (getSleepCounter() == 20) {
             setSleepCounter(0);
-            setSleepiness(getSleepiness()+5);
+            setSleepiness(getSleepiness() + 5);
         }
     }
 
-    public void setImageWithCounter(){
-        switch(getDirection()) {
+    public void setImageWithCounter() {
+        switch (getDirection()) {
             case "up":
-                if(spriteNum == 1) {
+                if (spriteNum == 1) {
                     setCurrentImage(getUp1());
                 }
-                if(spriteNum == 2) {
-                    if(isAttack()){
+                if (spriteNum == 2) {
+                    if (isAttack()) {
                         setCurrentImage(getUp3());
-                    }else{
+                    } else {
                         setCurrentImage(getUp2());
                     }
                 }
                 break;
             case "down":
-                if(spriteNum == 1) {
+                if (spriteNum == 1) {
                     setCurrentImage(getDown1());
                 }
-                if(spriteNum == 2) {
-                    if(isAttack()){
+                if (spriteNum == 2) {
+                    if (isAttack()) {
                         setCurrentImage(getDown3());
-                    }else{
+                    } else {
                         setCurrentImage(getDown2());
                     }
                 }
                 break;
             case "right":
-                if(spriteNum == 1) {
+                if (spriteNum == 1) {
                     setCurrentImage(getRight1());
                 }
-                if(spriteNum == 2) {
-                    if(isAttack()){
+                if (spriteNum == 2) {
+                    if (isAttack()) {
                         setCurrentImage(getRight3());
-                    }else{
+                    } else {
                         setCurrentImage(getRight2());
                     }
                 }
                 break;
             case "left":
-                if(spriteNum == 1) {
+                if (spriteNum == 1) {
                     setCurrentImage(getLeft1()
                     );
                 }
-                if(spriteNum == 2) {
-                    if(isAttack()){
+                if (spriteNum == 2) {
+                    if (isAttack()) {
                         setCurrentImage(getLeft3());
-                    }else{
+                    } else {
                         setCurrentImage(getLeft2());
                     }
                 }
@@ -399,74 +401,19 @@ public class Player extends Entity implements EntityFunction {
 
     //Setters Getters
 
-    public void setExp(double exp) {
-        if(exp >= getMaxExp()){
-            exp = 0;
-            // change level here
-            // change maxEXP here
-            setMaxExp(getMaxExp()+40); // add MaxEXP+40
-            setMaxHP(getMaxHP()+0.1*(getMaxHP())); // add MaxHP+10%
-            setMaxMana(getMaxMana()+0.1*(getMaxMana())); // add MaxMana+10%
-            setHP(getMaxHP()); // Re HP
-            setMana(getMaxMana()); // Re Mana
-            getAttackObj().setDamage(getAttackObj().getDamage()+getAttackObj().getDamage()*0.3); // add damage+30%
-            setLevel(getLevel()+1);
-        }
-        this.exp = exp;
-    }
-    public void setSleepiness(double sleepiness) {
-        if(sleepiness >= getMaxSleepiness()){
-            System.out.print("Game Over by sleeping");
-            sleepiness = getMaxSleepiness();
-        }
-        this.sleepiness = sleepiness;
-    }
-
-    public void setX(double playerX) {
-        if(playerX > 770){
-            playerX=770;
-        }
-        if(playerX < 0){
-            playerX =0;
-        }
-        this.playerX = playerX;
-    }
-
-    public void setY(double playerY) {
-        if(playerY<0){
-            playerY=0;
-        }
-        if(playerY>600){
-            playerY=600;
-        }
-        this.playerY = playerY;
-    }
-    public void setHP(double HP) {
-        if(HP > getMaxHP()){
-            HP = getMaxHP();
-        }
-        if(getHP()<0){
-            HP = 0;
-        }
-        this.HP = HP;
-    }
-    public void setMana(double mana) {
-        if(mana > getMaxMana()){
-            mana = getMaxMana();
-        }
-        if(mana < 0){
-            mana = 0;
-        }
-        if(mana == 0){
-            setSuperSeiya(false);
-        }
-        this.mana = mana;
-    }
-
-
     @Override
     public double getX() {
         return playerX;
+    }
+
+    public void setX(double playerX) {
+        if (playerX > 770) {
+            playerX = 770;
+        }
+        if (playerX < 0) {
+            playerX = 0;
+        }
+        this.playerX = playerX;
     }
 
     @Override
@@ -474,156 +421,262 @@ public class Player extends Entity implements EntityFunction {
         return playerY;
     }
 
+    public void setY(double playerY) {
+        if (playerY < 0) {
+            playerY = 0;
+        }
+        if (playerY > 600) {
+            playerY = 600;
+        }
+        this.playerY = playerY;
+    }
+
     public double getHP() {
         return HP;
+    }
+
+    public void setHP(double HP) {
+        if (HP > getMaxHP()) {
+            HP = getMaxHP();
+        }
+        if (getHP() < 0) {
+            HP = 0;
+        }
+        this.HP = HP;
     }
 
     public double getMaxHP() {
         return maxHP;
     }
 
-    public Image getHPB() {
-        return HPB;
-    }
-    public void setHPB(Image HPB) {
-        this.HPB = HPB;
-    }
     public void setMaxHP(double maxHP) {
         this.maxHP = maxHP;
     }
-    public void setExpB(Image expB) {
-        this.expB = expB;
+
+    public Image getHPB() {
+        return HPB;
     }
-    public void setMaxExp(double maxExp) {
-        this.maxExp = maxExp;
+
+    public void setHPB(Image HPB) {
+        this.HPB = HPB;
     }
-    public void setMaxMana(double maxMana) {
-        this.maxMana = maxMana;
-    }
-    public void setManaB(Image manaB) {
-        this.manaB = manaB;
-    }
+
     public double getExp() {
         return exp;
     }
+
+    public void setExp(double exp) {
+        if (exp >= getMaxExp()) {
+            exp = 0;
+            // change level here
+            // change maxEXP here
+            setMaxExp(getMaxExp() + 40); // add MaxEXP+40
+            setMaxHP(getMaxHP() + 0.1 * (getMaxHP())); // add MaxHP+10%
+            setMaxMana(getMaxMana() + 0.1 * (getMaxMana())); // add MaxMana+10%
+            setHP(getMaxHP()); // Re HP
+            setMana(getMaxMana()); // Re Mana
+            getAttackObj().setDamage(getAttackObj().getDamage() + getAttackObj().getDamage() * 0.3); // add damage+30%
+            setLevel(getLevel() + 1);
+        }
+        this.exp = exp;
+    }
+
     public double getMana() {
         return mana;
     }
+
+    public void setMana(double mana) {
+        if (mana > getMaxMana()) {
+            mana = getMaxMana();
+        }
+        if (mana < 0) {
+            mana = 0;
+        }
+        if (mana == 0) {
+            setSuperSeiya(false);
+        }
+        this.mana = mana;
+    }
+
     public double getMaxExp() {
         return maxExp;
     }
+
+    public void setMaxExp(double maxExp) {
+        this.maxExp = maxExp;
+    }
+
     public double getMaxMana() {
         return maxMana;
     }
+
+    public void setMaxMana(double maxMana) {
+        this.maxMana = maxMana;
+    }
+
     public Image getExpB() {
         return expB;
     }
+
+    public void setExpB(Image expB) {
+        this.expB = expB;
+    }
+
     public Image getManaB() {
         return manaB;
     }
+
+    public void setManaB(Image manaB) {
+        this.manaB = manaB;
+    }
+
     public double getMaxSleepiness() {
         return maxSleepiness;
     }
-    public double getSleepiness() {
-        return sleepiness;
-    }
+
     public void setMaxSleepiness(double maxSleepiness) {
         this.maxSleepiness = maxSleepiness;
     }
+
+    public double getSleepiness() {
+        return sleepiness;
+    }
+
+    public void setSleepiness(double sleepiness) {
+        if (sleepiness >= getMaxSleepiness()) {
+            System.out.print("Game Over by sleeping");
+            sleepiness = getMaxSleepiness();
+        }
+        if(sleepiness < 0){
+            sleepiness = 0;
+        }
+        this.sleepiness = sleepiness;
+    }
+
     public int getSleepCounter() {
         return sleepCounter;
     }
+
     public void setSleepCounter(int sleepCounter) {
         this.sleepCounter = sleepCounter;
     }
-    public AttackObj getAttackObj() {
+
+    public BasicAttackObject getAttackObj() {
         return attackObj;
     }
-    public void setAttackObj(AttackObj attackObj) {
+
+    public void setAttackObj(BasicAttackObject attackObj) {
         this.attackObj = attackObj;
     }
-    public void updateAttackObj(){
+
+    public void updateAttackObj() {
         getAttackObj().update();
     }
-    public void attack(){
+
+    public void attack() {
         getAttackObj().setVisible(true);
+    }
+
+    public InventoryBar getInventoryBar() {
+        return inventoryBar;
     }
 
     public void setInventoryBar(InventoryBar inventoryBar) {
         this.inventoryBar = inventoryBar;
     }
-    public InventoryBar getInventoryBar() {
-        return inventoryBar;
-    }
-    public void setMonsterDied(int monsterDied) {
-        this.monsterDied = monsterDied;
-    }
+
     public int getMonsterDied() {
         return monsterDied;
     }
-    public void setPoint(int point) {
-        this.point = point;
+
+    public void setMonsterDied(int monsterDied) {
+        this.monsterDied = monsterDied;
     }
+
     public int getPoint() {
         return point;
     }
+
+    public void setPoint(int point) {
+        this.point = point;
+    }
+
     public boolean isSpawned() {
         return isSpawned;
     }
+
     public void setSpawned(boolean spawned) {
         isSpawned = spawned;
     }
+
     public int getWaitForStart() {
         return waitForStart;
     }
+
     public void setWaitForStart(int waitForStart) {
         this.waitForStart = waitForStart;
     }
-    public void setProfileBox(ProfileBox profileBox) {
-        this.profileBox = profileBox;
-    }
+
     public ProfileBox getProfileBox() {
         return profileBox;
     }
+
+    public void setProfileBox(ProfileBox profileBox) {
+        this.profileBox = profileBox;
+    }
+
     public Image getHPB2() {
         return HPB2;
     }
+
     public void setHPB2(Image HPB2) {
         this.HPB2 = HPB2;
     }
+
     public Image getManaB2() {
         return manaB2;
     }
-    public Image getSleepB() {
-        return sleepB;
-    }
-    public void setSleepB(Image sleepB) {
-        this.sleepB = sleepB;
-    }
+
     public void setManaB2(Image manaB2) {
         this.manaB2 = manaB2;
     }
-    public void setSuperSaiyan(SuperSeiya superSaiyan) {
-        this.superSeiya = superSaiyan;
+
+    public Image getSleepB() {
+        return sleepB;
     }
-    public SuperSeiya getSuperSeiya() {
-        return superSeiya;
+
+    public void setSleepB(Image sleepB) {
+        this.sleepB = sleepB;
     }
+
+    public SuperSaiyan getSuperSeiya() {
+        return superSaiyan;
+    }
+
     public void setSuperSeiya(boolean superSeiya) {
         isSuperSaiyan = superSeiya;
     }
+
     public boolean isSuperSaiyan() {
         return isSuperSaiyan;
     }
+
+    public void setSuperSaiyan(SuperSaiyan superSaiyan) {
+        this.superSaiyan = superSaiyan;
+    }
+
     public boolean isPressedV() {
         return pressedV;
     }
+
     public void setPressedV(boolean pressedV) {
         this.pressedV = pressedV;
     }
+
     public int getLevel() {
         return level;
     }
+
     public void setLevel(int level) {
         this.level = level;
     }

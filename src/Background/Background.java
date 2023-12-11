@@ -4,12 +4,12 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 
-public class Background  {
+public class Background {
 
-    private final Image Background = new Image(String.valueOf(ClassLoader.getSystemResource("background/BackgroundG.png")));
+    private final Image Background = new Image(String.valueOf(ClassLoader.getSystemResource("background/background.gif")));
 
     public void draw(GraphicsContext gc) {
-        gc.drawImage(Background,0,0);
+        gc.drawImage(Background, 0, 0);
     }
 
 }
