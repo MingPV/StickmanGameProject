@@ -1,62 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="3bba2e9f-5c1b-4db9-b360-3be0cd240e52" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/2110215__zipdrop.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/2110215__zipdrop1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/StartScene.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2110215--zipdrop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/2110215--zipdrop.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoffeeSlayer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CoffeeSlayer.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newgamedemo0.iml" beforeDir="false" afterPath="$PROJECT_DIR$/newgamedemo0.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Background/Background.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Background/Background.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Inventory/InventoryBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Inventory/InventoryBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item/BaseItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/BaseItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item/BluePotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/BluePotion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item/CoffeePotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/CoffeePotion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item/DragonBallBeans.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/DragonBallBeans.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item/ItemFunction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item/Potion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/Potion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item/RedPotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/RedPotion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/effect/BaseEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/BaseEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/effect/DiedEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/DiedEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/effect/Effect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/Effect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/effect/EffectFunction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/effect/ShadowEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/ShadowEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/effect/SpawnEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/SpawnEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/effect/SuperSaiyan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/effect/SuperSaiyan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/BaseProp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/BaseProp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Boss.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/ChristmasTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/ChristmasTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/EntityFunction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Gift.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Gift.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Gift2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Gift2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Monster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Prop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Prop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/PropFunction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Snowman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Snowman.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/font/Number.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/font/Number.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/MusicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MusicController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/AttackObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/AttackObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/AttackObjectFunction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/BasicAttackObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/BasicAttackObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/profile/ProfileBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/profile/ProfileBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/GameScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/SelectedScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/SelectedScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/StartScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/StartScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/umltest2.puml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,26 +15,26 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2ZPK7GJeqsdnQN7o1gWv8Vtttjc" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.Main" />
